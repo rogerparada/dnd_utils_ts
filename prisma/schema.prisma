@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Spell {
+  id            Int           @id @default(autoincrement())
+  level         Int
+  name          String
+  casting       String
+  range         String
+  duration      String
+  description   String
+  concentration Boolean
+  components    String
+  material      String
+  school        String
+  SpellClases   SpellClases[]
+}
+
+model Clases {
+  id          Int           @id @default(autoincrement())
+  name        String
+  SpellClases SpellClases[]
+}
+
+model SpellClases {
+  id      Int    @id @default(autoincrement())
+  spellId Int
+  spell   Spell  @relation(fields: [spellId], references: [id])
+  classId Int
+  class   Clases @relation(fields: [classId], references: [id])
+}
