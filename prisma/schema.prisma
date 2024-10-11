@@ -14,30 +14,30 @@ datasource db {
 }
 
 model Spell {
-  id            Int           @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   level         Int
   name          String
   casting       String
   range         String
   duration      String
-  description   String
+  description   String       @db.Text()
   concentration Boolean
   components    String
   material      String
   school        String
-  SpellClases   SpellClases[]
+  SpellClasses  SpellClass[]
 }
 
-model Clases {
-  id          Int           @id @default(autoincrement())
-  name        String
-  SpellClases SpellClases[]
+model Classes {
+  id           Int          @id @default(autoincrement())
+  name         String
+  SpellClasses SpellClass[]
 }
 
-model SpellClases {
-  id      Int    @id @default(autoincrement())
+model SpellClass {
+  id      Int     @id @default(autoincrement())
   spellId Int
-  spell   Spell  @relation(fields: [spellId], references: [id])
+  spell   Spell   @relation(fields: [spellId], references: [id])
   classId Int
-  class   Clases @relation(fields: [classId], references: [id])
+  class   Classes @relation(fields: [classId], references: [id])
 }
