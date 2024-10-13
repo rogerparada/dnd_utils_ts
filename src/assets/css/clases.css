@@ -1,0 +1,156 @@
+.level1 {
+	background-color: white;
+	border-bottom-right-radius: 50%;
+	font-weight: 900;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Bardo {
+	--classColor: #ab6dad;
+	background-color: var(--classColor);
+
+	.level {
+		border: 1px solid var(--classColor);
+	}
+}
+
+.Brujo {
+	--classColor: #7b469b;
+	background-color: var(--classColor);
+	.level {
+		border: 1px solid var(--classColor);
+	}
+}
+
+.Clérigo {
+	--classColor: #91a1b2;
+	background-color: var(--classColor);
+	.level {
+		border: 1px solid var(--classColor);
+		color: var(--classColor);
+	}
+}
+
+.Druida {
+	--classColor: #7a853b;
+	background-color: var(--classColor);
+	.level {
+		color: var(--classColor);
+		border: 1px solid var(--classColor);
+	}
+}
+
+.Explorador {
+	--classColor: #507f62;
+	background-color: var(--classColor);
+	.level {
+		color: var(--classColor);
+		border: 1px solid var(--classColor);
+	}
+}
+
+.Hechicero {
+	--classColor: #992e2e;
+	background-color: var(--classColor);
+	.level {
+		color: var(--classColor);
+		border: 1px solid var(--classColor);
+	}
+}
+
+.Mago {
+	--classColor: #2a50a1;
+	background-color: var(--classColor);
+	.level {
+		border: 1px solid var(--classColor);
+	}
+}
+
+.Paladín {
+	--classColor: #b59e54;
+	background-color: var(--classColor);
+	.level {
+		border: 1px solid var(--classColor);
+	}
+}
+
+.description {
+	text-align: left;
+}
+
+.description p {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.description ul {
+	list-style-type: square;
+	padding-left: 1em;
+}
+
+.description li {
+	padding-left: 0px;
+}
+
+.description table,
+th,
+tr,
+td {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.description th {
+	background-color: rgb(198, 198, 198);
+}
+
+.description th:nth-child(1) {
+	width: 12%;
+}
+.description th:nth-child(2) {
+	width: 5%;
+	text-align: center;
+}
+.description th:nth-child(3) {
+	width: 5%;
+	text-align: center;
+}
+.description th:nth-child(4) {
+	width: 40%;
+}
+.description th:nth-child(5) {
+	width: 5%;
+	text-align: center;
+}
+.description th:nth-child(6) {
+	width: 5%;
+	text-align: center;
+}
+
+.description td:nth-child(1) {
+	width: 10%;
+}
+.description td:nth-child(2) {
+	text-align: center;
+}
+.description td:nth-child(3) {
+	text-align: center;
+}
+.description td:nth-child(4) {
+	width: 40%;
+}
+.description td:nth-child(5) {
+	width: 5%;
+	text-align: center;
+}
+.description td:nth-child(6) {
+	width: 5%;
+	text-align: center;
+}

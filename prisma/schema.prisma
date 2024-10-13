@@ -25,13 +25,16 @@ model Spell {
   components    String
   material      String
   school        String
-  SpellClasses  SpellClass[]
+  classes       SpellClass[]
 }
 
 model Classes {
-  id           Int          @id @default(autoincrement())
-  name         String
-  SpellClasses SpellClass[]
+  id             Int          @id @default(autoincrement())
+  name           String
+  spells         SpellClass[]
+  description    String
+  lang_es        String
+  description_es String
 }
 
 model SpellClass {
