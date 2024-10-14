@@ -1,4 +1,4 @@
-import { Colors } from "./types";
+import { Colors, ClassImages } from "./types";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -10,4 +10,16 @@ export const colors: Colors = {
 	Wizard: { bg: "bg-blue-600", text: "text-blue-600", border: "border-blue-600" },
 	Paladin: { bg: "bg-amber-300", text: "text-amber-300", border: "border-amber-300" },
 	None: { bg: "bg-cyan-300", text: "text-cyan-300", border: "border-cyan-300" },
+};
+
+export const images: ClassImages = {
+	Bard: { src: "/images/Classes/Bardo.svg", alt: "Bard" },
+	Warlock: { src: "/images/Classes/Brujo.svg", alt: "Warlock" },
+	Cleric: { src: "/images/Classes/Clerigo.svg", alt: "Cleric" },
+	Druid: { src: "/images/Classes/Druida Invert.svg", alt: "Druid" },
+	Ranger: { src: "/images/Classes/Ranger.svg", alt: "Ranger" },
+	Sorcerer: { src: "/images/Classes/Hechicero.svg", alt: "Sorcerer" },
+	Wizard: { src: "/images/Classes/Mago.svg", alt: "Wizard" },
+	Paladin: { src: "/images/Classes/Paladin.svg", alt: "Paladin" },
+	None: { src: "/images/Dices/D20.svg", alt: "D20" },
 };
