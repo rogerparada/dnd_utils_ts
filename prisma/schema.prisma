@@ -35,6 +35,8 @@ model Classes {
   description    String
   lang_es        String
   description_es String
+  primaryChar    String
+  secondaryChar  String
 }
 
 model SpellClass {

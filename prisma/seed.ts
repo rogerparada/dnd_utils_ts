@@ -10,6 +10,7 @@ async function main() {
 		await prisma.spell.createMany({
 			data: spells,
 		});
+
 		await prisma.classes.createMany({
 			data: clases,
 		});

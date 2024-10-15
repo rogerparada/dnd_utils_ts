@@ -1,4 +1,4 @@
-import { Colors, ClassImages } from "./types";
+import { Colors, ClassImages, Abilities } from "./types";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -22,4 +22,37 @@ export const images: ClassImages = {
 	Wizard: { src: "/images/Classes/Mago.svg", alt: "Wizard" },
 	Paladin: { src: "/images/Classes/Paladin.svg", alt: "Paladin" },
 	None: { src: "/images/Dices/D20.svg", alt: "D20" },
+};
+
+export const abilities: Abilities = {
+	Strength: {
+		en: "Strength",
+		es: "Fuerza",
+		de: "Stärke",
+	},
+	Dexterity: {
+		en: "Dexterity",
+		es: "Destreza",
+		de: "Geschicklichkeit",
+	},
+	Constitution: {
+		en: "Constitution",
+		es: "Constitución",
+		de: "Konstitution",
+	},
+	Intelligence: {
+		en: "Intelligence",
+		es: "Inteligencia",
+		de: "Intelligenz",
+	},
+	Wisdom: {
+		en: "Wisdom",
+		es: "Sabiduría",
+		de: "Weisheit",
+	},
+	Charisma: {
+		en: "Charisma",
+		es: "Carisma",
+		de: "Charisma",
+	},
 };

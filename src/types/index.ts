@@ -16,3 +16,13 @@ export type ClassImage = {
 export type ClassImages = {
 	[key: string]: ClassImage;
 };
+
+export type Ability = {
+	en: string;
+	es: string;
+	de: string;
+};
+
+export type Abilities = {
+	[key: string]: Ability;
+};
