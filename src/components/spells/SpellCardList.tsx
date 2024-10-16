@@ -1,8 +1,9 @@
 import { Spell } from "@prisma/client";
-import SpellDescription from "./SpellDescription";
 import Modifiers from "./Modifiers";
 import Casting from "./Casting";
 import { colors } from "@/src/Global";
+import Markdown from "markdown-to-jsx";
+import ListItem from "./ListItem";
 
 type SpellCardListProps = {
 	className: string;
@@ -27,7 +28,11 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 							<hr className="my-2" />
 							<Modifiers spell={spell} />
 							<hr className="my-2" />
-							<SpellDescription description={description} />
+							<div className="px-3">
+								<Markdown className="text-xs space-y-2" options={{ overrides: { li: ListItem }, wrapper: "article" }}>
+									{description}
+								</Markdown>
+							</div>
 						</div>
 						<div className="text-xs text-white grid grid-cols-2 px-2 w-full items-center">
 							<div className="">
