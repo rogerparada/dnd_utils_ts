@@ -7,14 +7,29 @@ type CastingProps = {
 
 export default function Casting({ type }: CastingProps) {
 	if (type === "1 acción") {
-		return <span className="icon-[ph--circle-fill] text-green-500 border border-white"></span>;
+		return (
+			<div className="space-x-2">
+				<span className="icon-[ph--circle-fill] text-green-500 border border-white" />
+				<span>{type}</span>
+			</div>
+		);
 	}
 
 	if (type === "1 acción adicional") {
-		return <span className="icon-[mdi--triangle] text-yellow-500 border border-white"></span>;
+		return (
+			<div className="space-x-2">
+				<span className="icon-[mdi--triangle] text-yellow-500 border border-white" />
+				<span>{type}</span>
+			</div>
+		);
 	}
 	if (type === "1 reacción") {
-		return <span className="icon-[material-symbols--square] text-red-500 border border-white" />;
+		return (
+			<div className="space-x-2">
+				<span className="icon-[material-symbols--square] text-red-500 border border-white" />
+				<span>{type}</span>
+			</div>
+		);
 	}
 
 	if (type.includes("hora") || type.includes("minutos") || type.includes("minuto")) {
@@ -26,5 +41,5 @@ export default function Casting({ type }: CastingProps) {
 		);
 	}
 
-	return <span className="absolute bottom-0 left-2">{type}</span>;
+	return <span>{type}</span>;
 }

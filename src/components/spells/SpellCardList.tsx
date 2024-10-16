@@ -29,15 +29,13 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 							<Modifiers spell={spell} />
 							<hr className="my-2" />
 							<div className="px-3">
-								<Markdown className="text-xs space-y-2" options={{ overrides: { li: ListItem }, wrapper: "article" }}>
+								<Markdown className="text-xs space-y-4 overflow-auto" options={{ overrides: { li: ListItem }, wrapper: "article" }}>
 									{description}
 								</Markdown>
 							</div>
 						</div>
-						<div className="text-xs text-white grid grid-cols-2 px-2 w-full items-center">
-							<div className="">
-								<Casting type={spell.casting} />
-							</div>
+						<div className="text-xs text-white grid grid-cols-2 px-2 w-full items-center overflow-hidden">
+							<Casting type={spell.casting} />
 
 							<div className="text-right">
 								{className}&nbsp;
