@@ -1,7 +1,7 @@
 "use client";
 import { Classes } from "@prisma/client";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type SpellsSelectorProps = {
 	clases?: Pick<Classes, "name" | "lang_es">[];

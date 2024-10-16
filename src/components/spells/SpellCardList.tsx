@@ -48,11 +48,6 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 						</div>
 						<div className="text-xs text-white grid grid-cols-2 px-2 w-full items-center overflow-hidden">
 							<Casting type={spell.casting} />
-
-							<div className="text-right">
-								{className}&nbsp;
-								{/* TODO: Admin Button */}
-							</div>
 						</div>
 					</div>
 				);
