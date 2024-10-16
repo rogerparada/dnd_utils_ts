@@ -29,7 +29,19 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 							<Modifiers spell={spell} />
 							<hr className="my-2" />
 							<div className="px-3">
-								<Markdown className="text-xs space-y-4 overflow-auto" options={{ overrides: { li: ListItem }, wrapper: "article" }}>
+								<Markdown
+									className="text-xs space-y-4 overflow-auto"
+									options={{
+										overrides: {
+											li: ListItem,
+											thead: { props: { className: `${color.bg} text-white text-left uppercase text-xxs` } },
+											tr: { props: { className: `border ${color.border}` } },
+											td: { props: { className: `border ${color.border} px-1 text-xxs` } },
+											th: { props: { className: `border ${color.border} px-1` } },
+										},
+										wrapper: "article",
+									}}
+								>
 									{description}
 								</Markdown>
 							</div>

@@ -15,6 +15,12 @@ const config: Config = {
 				background: "var(--background)",
 				foreground: "var(--foreground)",
 			},
+			fontSize: {
+				xxs: "0.65rem",
+			},
+			lineHeight: {
+				xxs: "0.75rem",
+			},
 		},
 	},
 	plugins: [addDynamicIconSelectors(), tailwindForms],
