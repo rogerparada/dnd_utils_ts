@@ -13,6 +13,7 @@
 	},
 	"dependencies": {
 		"@prisma/client": "^5.20.0",
+		"@tailwindcss/forms": "^0.5.9",
 		"markdown-to-jsx": "^7.5.0",
 		"next": "14.2.15",
 		"next-mdx-remote": "^5.0.0",

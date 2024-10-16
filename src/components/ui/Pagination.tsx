@@ -4,9 +4,10 @@ type PaginationProps = {
 	page: number;
 	totalPages: number;
 	route: string;
+	items: number;
 };
 
-export default function Pagination({ page, totalPages, route }: PaginationProps) {
+export default function Pagination({ page, totalPages, route, items }: PaginationProps) {
 	const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
 	return (
@@ -25,7 +26,7 @@ export default function Pagination({ page, totalPages, route }: PaginationProps)
 					className={`${
 						page === pageNum ? "bg-red-600 text-white font-black" : "bg-white text-gray-900"
 					} px-4 py-2 text-sm  ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}
-					href={`${route}page=${pageNum}`}
+					href={`${route}page=${pageNum}&items=${items}`}
 				>
 					{pageNum}
 				</Link>

@@ -40,7 +40,7 @@ export default async function SpellPage({ searchParams }: { searchParams: { page
 
 			<SpellSummary spells={spells} />
 
-			<Pagination page={page} totalPages={totalPages} route={`/spells?items=${pageSize}&`} />
+			<Pagination page={page} totalPages={totalPages} route={`/spells?`} items={pageSize} />
 		</>
 	);
 }
