@@ -51,10 +51,10 @@ export default function ComponentsForm({ components, material }: ComponentsFormP
 	}, [components]);
 
 	return (
-		<div className="grid grid-cols-5 items-center my-3">
+		<div className="grid grid-cols-5 items-baseline my-3">
 			<label className="col-span-2 md:col-span-1 font-bold">Componente:</label>
-			<div className="flex gap-3 col-span-3 md:col-span-4 items-center flex-col md:flex-row">
-				<div className="flex gap-3">
+			<div className="flex gap-3 mt-3 md:mt-0 md:items-center flex-col md:flex-row">
+				<div className="flex gap-3 text-sm items-center font-bold">
 					<label htmlFor="verbal">V</label>
 					<input type="checkbox" name="verbal" checked={checkboxes.verbal} onChange={handleChecked} />
 					<label htmlFor="somatic">S</label>
@@ -62,8 +62,10 @@ export default function ComponentsForm({ components, material }: ComponentsFormP
 					<label htmlFor="material">M</label>
 					<input type="checkbox" name="material" checked={checkboxes.material} onChange={handleChecked} />
 				</div>
+			</div>
+			<div className="col-span-5 md:col-span-3 mt-3 md:mt-0">
 				<div className={`w-full ${!checkboxes.material && "hidden"}`}>
-					<input type="text" name="materials" className="w-full" defaultValue={material} />
+					<input type="text" name="materials" className="w-full text-sm" defaultValue={material} />
 				</div>
 				<input type="hidden" name="component" value={component} />
 			</div>

@@ -1,14 +1,12 @@
 "use client";
 
-import { updateSpell } from "@/actions/update-spell-action";
-import { updateSpellClasses } from "@/actions/update-spellClasses";
-import { clases } from "@/prisma/data/clases";
-import { useParams, useRouter } from "next/navigation";
+import { createSpell } from "@/actions/create-spell-action";
+import { createSpellClasses } from "@/actions/create-spellClasses";
+import { useRouter } from "next/navigation";
 
-export default function EditSpellForm({ children }: { children: React.ReactNode }) {
+export default function NewSpellForm({ children }: { children: React.ReactNode }) {
 	const router = useRouter();
-	const params = useParams();
-	const id = +params.id!;
+
 	const handleSubmit = async (formData: FormData) => {
 		const data = {
 			name: formData.get("name"),
@@ -23,19 +21,12 @@ export default function EditSpellForm({ children }: { children: React.ReactNode 
 			material: formData.get("materials"),
 		};
 		const classes = formData.get("clases")?.toString();
-
-		const response = await updateSpell(data, id);
+		const response = await createSpell(data);
 		if (response?.errors) {
 			console.log(response.errors);
 			return;
 		}
-
-		const classResponse = await updateSpellClasses(id, classes!);
-		if (classResponse?.errors) {
-			console.log(classResponse.errors);
-			return;
-		}
-
+		await createSpellClasses(response.id, classes!);
 		router.push("/admin/spells");
 	};
 

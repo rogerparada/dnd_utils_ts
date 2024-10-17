@@ -3,6 +3,7 @@ import Pagination from "@/src/components/ui/Pagination";
 import { prisma } from "@/src/lib/prisma";
 import { redirect } from "next/navigation";
 import "@/src/assets/css/clases.css";
+import Heading from "@/src/components/ui/Heading";
 
 async function spellsCount() {
 	return await prisma.spell.count();
@@ -36,10 +37,8 @@ export default async function SpellPage({ searchParams }: { searchParams: { page
 
 	return (
 		<>
-			<h1 className="text-5xl font-black">Spells List</h1>
-
+			<Heading className="mt-20">Lista de conjuros</Heading>
 			<SpellSummary spells={spells} />
-
 			<Pagination page={page} totalPages={totalPages} route={`/spells?`} items={pageSize} />
 		</>
 	);

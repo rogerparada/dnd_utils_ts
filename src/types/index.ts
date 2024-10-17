@@ -1,3 +1,5 @@
+import { Classes, Spell, SpellClass } from "@prisma/client";
+
 export type Color = {
 	bg: string;
 	text: string;
@@ -25,4 +27,14 @@ export type Ability = {
 
 export type Abilities = {
 	[key: string]: Ability;
+};
+
+export type FullSpellClass = SpellClass & { clase: Classes };
+
+export type FullSpell = Spell & {
+	classes: FullSpellClass[];
+};
+
+export type SpellClasses = Spell & {
+	classes: SpellClass[];
 };
