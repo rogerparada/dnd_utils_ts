@@ -1,3 +1,4 @@
+import SpellSearchForm from "@/src/components/spells/forms/SpellSearchForm";
 import SpellsTable from "@/src/components/spells/SpellsTable";
 import Heading from "@/src/components/ui/Heading";
 import Pagination from "@/src/components/ui/Pagination";
@@ -37,10 +38,11 @@ export default async function SpellsAdminPage({ searchParams }: { searchParams: 
 	return (
 		<>
 			<Heading className="mt-10">Administrar conjuros</Heading>
-			<div>
-				<Link href={"spells/new"} className="p-3 bg-blue-400 text-white font-bold float-right">
+			<div className="flex flex-col lg:flex-row lg:justify-between gap-5 mt-10">
+				<Link href={"spells/new"} className="p-3 bg-blue-400 text-white font-bold">
 					Nuevo conjuro
 				</Link>
+				<SpellSearchForm />
 			</div>
 			<SpellsTable spells={spells} />
 			<Pagination page={page} totalPages={totalPages} route="/admin/spells/?" items={pageSize} />

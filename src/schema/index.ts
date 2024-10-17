@@ -27,3 +27,7 @@ export const MultiClassSchema = z
 	.min(1, { message: "One class is required" })
 	.transform((str) => str.split(",").map((s) => +s))
 	.or(z.array(z.number()));
+
+export const SearchSchema = z.object({
+	search: z.string().trim().min(1, "The search cannot be empty"),
+});
