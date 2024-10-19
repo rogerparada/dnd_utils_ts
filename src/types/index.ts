@@ -38,3 +38,15 @@ export type FullSpell = Spell & {
 export type SpellClasses = Spell & {
 	classes: SpellClass[];
 };
+
+export type Dice = {
+	faces?: number;
+	value: number;
+	primary?: string;
+	secondary?: string;
+	tertiary?: string;
+	symbols?: string;
+	rolling?: boolean;
+	empty?: boolean;
+	id: number;
+};

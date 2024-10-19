@@ -11,10 +11,6 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			colors: {
-				background: "var(--background)",
-				foreground: "var(--foreground)",
-			},
 			fontSize: {
 				xxs: "0.65rem",
 			},

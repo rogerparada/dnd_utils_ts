@@ -31,3 +31,20 @@ export const MultiClassSchema = z
 export const SearchSchema = z.object({
 	search: z.string().trim().min(1, "The search cannot be empty"),
 });
+
+export const UserCreateFormSchema = z
+	.object({
+		name: z.string().min(2, { message: "Se requiere un nombre de usuario" }),
+		email: z.string().email().min(2, { message: "Se requiere un email de registro" }),
+		password: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
+		password_confirm: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
+	})
+	.refine((value) => value.password === value.password_confirm, { message: "Las contraseñas no coinciden", path: ["password_confirm"] });
+
+export const UserLoginFormSchema = z.object({
+	email: z.string().email().min(2, { message: "Se requiere un email de registro" }),
+	password: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
+});
+
+export type UserLogin = z.infer<typeof UserLoginFormSchema>;
+export type UserCreate = z.infer<typeof UserCreateFormSchema>;

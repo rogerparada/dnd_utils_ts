@@ -1,8 +1,7 @@
 "use client";
 
 import { updateSpell } from "@/actions/update-spell-action";
-import { updateSpellClasses } from "@/actions/update-spellClasses";
-import { clases } from "@/prisma/data/clases";
+import { updateSpellClasses } from "@/actions/update-spellClasses-action";
 import { useParams, useRouter } from "next/navigation";
 
 export default function EditSpellForm({ children }: { children: React.ReactNode }) {
