@@ -1,6 +1,8 @@
-import api from "@/src/lib/axios";
+"use server";
+import { prisma } from "@/src/lib/prisma";
 import { UserLoginFormSchema } from "@/src/schema";
-import { isAxiosError } from "axios";
+import { checkPassword } from "@/src/utils/auth";
+import { getJWT } from "@/src/utils/jwt";
 
 export async function login(data: unknown) {
 	const response = UserLoginFormSchema.safeParse(data);
@@ -9,15 +11,25 @@ export async function login(data: unknown) {
 			errors: response.error.issues,
 		};
 	}
-	const url = "/api/v1/login";
-
-	try {
-		await api.post(url, response.data);
-	} catch (error) {
-		if (isAxiosError(error)) {
-			return {
-				errors: [{ message: error.message }],
-			};
-		}
+	const { email, password } = response.data;
+	const user = await prisma.user.findFirst({
+		where: {
+			email,
+		},
+	});
+	if (!user) {
+		return { errors: [{ message: "Credenciales no válidas" }] };
 	}
+
+	const checkPass = await checkPassword(password, user.password);
+	console.log(checkPass);
+	if (!checkPass) {
+		return { errors: [{ message: "Credenciales no válidas" }] };
+	}
+
+	if (!user.confirmed) {
+		return { errors: [{ message: "Debe confirmar su email" }] };
+	}
+
+	return getJWT({ id: user.id, name: user.name, role: user.role });
 }

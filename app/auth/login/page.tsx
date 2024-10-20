@@ -1,10 +1,11 @@
 "use client";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 import { login } from "@/actions/login-user-action";
-import LoginDice from "@/src/components/ui/LoginDice";
 import { Dice } from "@/src/types";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useState } from "react";
+import LoginDice from "@/src/components/ui/LoginDice";
+import { verifyJWT } from "@/src/utils/jwt";
 
 export default function LoginPage() {
 	const [dice, setDice] = useState<Dice>({
@@ -27,12 +28,14 @@ export default function LoginPage() {
 		};
 		const response = await login(data);
 
-		if (response?.errors) {
-			setError("Pifia - error de usuario o contraseña");
+		if (typeof response !== "string" && response?.errors) {
+			const fullError = response.errors.reduce((str, issue) => (str += issue.message + "\n"), "");
+			setError(`Pifia - ${fullError}`);
 			setDice({ ...dice, empty: false, value: 1, rolling: false });
 			return;
 		}
 
+		localStorage.setItem("userToken", JSON.stringify(response));
 		setDice({ ...dice, empty: false, value: 20, rolling: false });
 		redirect("/");
 	};
@@ -47,13 +50,13 @@ export default function LoginPage() {
 					{error && <div className="p-4 bg-red-500 text-white uppercase font-black text-center text-xs">{error}</div>}
 					<div className="w-full borde-2 border-blue-400 rounded-lg flex">
 						<div className="bg-blue-500 text-white p-2 w-10 flex justify-center items-center rounded-l-lg">
-							<span className="icon-[bxs--user]" />
+							<span className="icon-[material-symbols--mail]" />
 						</div>
 						<input
 							type="text"
 							name="email"
 							id="email"
-							placeholder="Nombre de usuario"
+							placeholder="Correo electrónico"
 							className="rounded-r-lg flex-1 focus:border"
 							required
 							aria-required
@@ -71,7 +74,7 @@ export default function LoginPage() {
 
 			<div className="text-center mt-5">
 				<span>Necesitas una cuenta, regístrate </span>
-				<Link href={"/auth//user/create"} className="text-blue-300">
+				<Link href={"/auth/register"} className="text-blue-300">
 					aquí
 				</Link>
 			</div>

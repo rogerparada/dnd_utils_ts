@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 			return NextResponse.json({ message: "Debe confirmar su email" }, { status: 403 });
 		}
 
-		const token = getJWT({ id: user.id });
+		const token = getJWT({ id: user.id, name: user.name, role: user.role });
 		const response = NextResponse.json({ message: "Login OK" });
 		response.cookies.set("userToken", token, {
 			httpOnly: true,
