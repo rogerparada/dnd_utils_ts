@@ -1,6 +1,6 @@
 "use client";
 
-import createUser from "@/actions/create-user-action";
+import createUser from "@/actions/register-user-action";
 import LoginDice from "@/src/components/ui/LoginDice";
 import { Dice } from "@/src/types";
 import Link from "next/link";
@@ -20,12 +20,12 @@ export default function RegisterPage() {
 			password_confirm: formData.get("password_confirm"),
 		};
 		const response = await createUser(data);
-		if (response?.errors) {
-			console.log(response.errors);
-			setError(response.errors.reduce((str, issue) => (str += issue.message + "\n"), ""));
+		if (response?.error) {
+			console.log(response.error);
+			setError(response.error);
 			return;
 		}
-		redirect("/auth/login");
+		redirect("/auth/registered");
 	};
 
 	return (

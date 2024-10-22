@@ -1,11 +1,10 @@
 "use client";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { login } from "@/actions/login-user-action";
 import { Dice } from "@/src/types";
 import Link from "next/link";
 import LoginDice from "@/src/components/ui/LoginDice";
-import { verifyJWT } from "@/src/utils/jwt";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
 	const [dice, setDice] = useState<Dice>({
@@ -26,16 +25,15 @@ export default function LoginPage() {
 			email: formData.get("email"),
 			password: formData.get("password"),
 		};
-		const response = await login(data);
 
-		if (typeof response !== "string" && response?.errors) {
-			const fullError = response.errors.reduce((str, issue) => (str += issue.message + "\n"), "");
-			setError(`Pifia - ${fullError}`);
+		const response = await login(data);
+		if (response?.error) {
+			setError(`Pifia - ${response.error}`);
 			setDice({ ...dice, empty: false, value: 1, rolling: false });
 			return;
 		}
 
-		localStorage.setItem("userToken", JSON.stringify(response));
+		console.log(response);
 		setDice({ ...dice, empty: false, value: 20, rolling: false });
 		redirect("/");
 	};

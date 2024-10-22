@@ -1,11 +1,34 @@
 "use server";
-import { prisma } from "@/src/lib/prisma";
+import { signIn } from "@/auth";
 import { UserLoginFormSchema } from "@/src/schema";
-import { checkPassword } from "@/src/utils/auth";
-import { getJWT } from "@/src/utils/jwt";
+import { error } from "console";
+import { AuthError } from "next-auth";
 
 export async function login(data: unknown) {
-	const response = UserLoginFormSchema.safeParse(data);
+	try {
+		const response = UserLoginFormSchema.safeParse(data);
+		if (!response.success) {
+			return {
+				errors: response.error.issues,
+			};
+		}
+		const { email, password } = response.data;
+		await signIn("credentials", {
+			email,
+			password,
+			redirect: false,
+		});
+		return {
+			success: true,
+		};
+	} catch (error) {
+		if (error instanceof AuthError) {
+			return { error: error.cause?.err?.message };
+		}
+		console.log(typeof error);
+		return { error: "Error 500" };
+	}
+	/*const response = UserLoginFormSchema.safeParse(data);
 	if (!response.success) {
 		return {
 			errors: response.error.issues,
@@ -21,15 +44,15 @@ export async function login(data: unknown) {
 		return { errors: [{ message: "Credenciales no válidas" }] };
 	}
 
-	const checkPass = await checkPassword(password, user.password);
-	console.log(checkPass);
+	const checkPass = await checkPassword(password, user.password!);
+
 	if (!checkPass) {
 		return { errors: [{ message: "Credenciales no válidas" }] };
 	}
 
-	if (!user.confirmed) {
+	if (!user.emailVerified) {
 		return { errors: [{ message: "Debe confirmar su email" }] };
 	}
 
-	return getJWT({ id: user.id, name: user.name, role: user.role });
+	return getJWT({ id: user.id, name: user.username!, role: user.role });*/
 }

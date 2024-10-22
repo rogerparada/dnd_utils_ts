@@ -2,29 +2,37 @@
 import { prisma } from "@/src/lib/prisma";
 import { UserCreateFormSchema } from "@/src/schema";
 import { hashPassword } from "@/src/utils/auth";
-import { v4 as uuidV4 } from "uuid";
+import { nanoid } from "nanoid";
 
 export default async function createUser(data: unknown) {
 	const response = UserCreateFormSchema.safeParse(data);
 
 	if (!response.success) {
 		return {
-			errors: response.error.issues,
+			error: "Invalid Data",
 		};
 	}
 	const userExist = await prisma.user.count({ where: { email: response.data.email } });
 	if (userExist > 0) {
-		return { errors: [{ message: "El email ya esta en uso" }] };
+		return { error: "El email ya esta en uso" };
 	}
-	const id = uuidV4();
+
 	const password = await hashPassword(response.data.password);
 
 	await prisma.user.create({
 		data: {
-			id,
 			name: response.data.name,
 			email: response.data.email,
 			password,
+		},
+	});
+
+	const token = nanoid();
+	await prisma.verificationToken.create({
+		data: {
+			identifier: response.data.email,
+			token,
+			expires: new Date(Date.now() + 1000 * 3600 * 24),
 		},
 	});
 }
