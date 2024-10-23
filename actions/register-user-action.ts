@@ -1,5 +1,6 @@
 "use server";
 import { prisma } from "@/src/lib/prisma";
+import { sendVerificationEmail } from "@/src/lib/resend";
 import { UserCreateFormSchema } from "@/src/schema";
 import { hashPassword } from "@/src/utils/auth";
 import { nanoid } from "nanoid";
@@ -35,4 +36,9 @@ export default async function createUser(data: unknown) {
 			expires: new Date(Date.now() + 1000 * 3600 * 24),
 		},
 	});
+
+	const sendMail = await sendVerificationEmail(response.data.name, token, response.data.email);
+	if (sendMail?.error) {
+		return { error: "Error al enviar el email de verificación" };
+	}
 }

@@ -4,6 +4,7 @@ import { prisma } from "./src/lib/prisma";
 import { UserLoginFormSchema } from "./src/schema";
 import { checkPassword } from "./src/utils/auth";
 import { nanoid } from "nanoid";
+import { sendVerificationEmail } from "./src/lib/resend";
 
 export default {
 	providers: [
@@ -58,6 +59,8 @@ export default {
 							expires: new Date(Date.now() + 1000 * 3600 * 24),
 						},
 					});
+
+					await sendVerificationEmail(user.name!, token, user.email!);
 
 					throw new Error("Se ha enviado un email para verificar tu cuenta");
 				}

@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { login } from "@/actions/login-user-action";
 import { Dice } from "@/src/types";
 import Link from "next/link";
 import LoginDice from "@/src/components/ui/LoginDice";
 import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+export default function LoginPage({ searchParams }: { searchParams: { verified: string } }) {
 	const [dice, setDice] = useState<Dice>({
 		id: 1,
 		value: 1,
@@ -18,6 +18,8 @@ export default function LoginPage() {
 	});
 
 	const [error, setError] = useState("");
+
+	const verified = searchParams.verified;
 
 	const handleSubmit = async (formData: FormData) => {
 		setDice({ ...dice, rolling: true });
@@ -32,11 +34,17 @@ export default function LoginPage() {
 			setDice({ ...dice, empty: false, value: 1, rolling: false });
 			return;
 		}
-
-		console.log(response);
 		setDice({ ...dice, empty: false, value: 20, rolling: false });
 		redirect("/");
 	};
+
+	useEffect(() => {
+		if (verified) {
+			setDice({ ...dice, empty: false, value: 20, rolling: false, primary: "rgb(34 197 94)", secondary: "rgb(34 197 94)" });
+		}
+	}, []);
+
+	/**/
 
 	return (
 		<>
@@ -44,6 +52,11 @@ export default function LoginPage() {
 				<div className="flex justify-center my-5">
 					<LoginDice dice={dice} />
 				</div>
+				{verified && (
+					<div className="p-4 bg-green-500 text-white uppercase font-black text-center text-xs mx-12 mb-10">
+						Has verificado tu cuenta, por favor inicia sesión
+					</div>
+				)}
 				<form action={handleSubmit} className="space-y-5 mx-12">
 					{error && <div className="p-4 bg-red-500 text-white uppercase font-black text-center text-xs">{error}</div>}
 					<div className="w-full borde-2 border-blue-400 rounded-lg flex">

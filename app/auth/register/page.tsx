@@ -84,7 +84,7 @@ export default function RegisterPage() {
 							required
 						/>
 					</div>
-					<input type="submit" value="Iniciar sesión" className="bg-blue-500 text-white uppercase font-black text-sm p-3 w-full rounded-lg" />
+					<input type="submit" value="Crear cuenta" className="bg-blue-500 text-white uppercase font-black text-sm p-3 w-full rounded-lg" />
 				</form>
 			</div>
 
