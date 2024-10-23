@@ -10,6 +10,8 @@ type PaginationProps = {
 export default function Pagination({ page, totalPages, route, items }: PaginationProps) {
 	const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+	if (totalPages <= 1) return;
+
 	return (
 		<nav className="flex justify-center py-10">
 			{page > 1 && (

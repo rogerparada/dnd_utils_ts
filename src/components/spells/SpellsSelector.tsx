@@ -32,7 +32,7 @@ export default function SpellsSelector({ clases }: SpellsSelectorProps) {
 			[name]: event.target.value,
 		};
 		const route =
-			(newValues.level ? `${newValues.clase}?level=${newValues.level}` : `${newValues.clase}`) +
+			(newValues.level ? `/classes/${newValues.clase}?level=${newValues.level}` : `${newValues.clase}`) +
 			(+newValues.items > 10 ? `${newValues.level ? "&" : "?"}items=${newValues.items}` : "");
 
 		router.push(route);

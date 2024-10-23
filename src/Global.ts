@@ -9,7 +9,7 @@ export const colors: Colors = {
 	Sorcerer: { bg: "bg-red-500", text: "text-red-500", border: "border-red-500" },
 	Wizard: { bg: "bg-blue-600", text: "text-blue-600", border: "border-blue-600" },
 	Paladin: { bg: "bg-amber-300", text: "text-amber-300", border: "border-amber-300" },
-	None: { bg: "bg-cyan-300", text: "text-cyan-300", border: "border-cyan-300" },
+	None: { bg: "bg-cyan-900", text: "text-cyan-900", border: "border-cyan-900" },
 };
 
 export const images: ClassImages = {

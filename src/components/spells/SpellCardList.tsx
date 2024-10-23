@@ -1,13 +1,13 @@
-import { Spell } from "@prisma/client";
-import Modifiers from "./Modifiers";
 import Casting from "./Casting";
-import { colors } from "@/src/Global";
+import Modifiers from "./Modifiers";
 import Markdown from "markdown-to-jsx";
 import ListItem from "./ListItem";
+import { colors } from "@/src/Global";
+import { SpellWithClasses } from "@/app/spells/page";
 
 type SpellCardListProps = {
 	className: string;
-	spells: Spell[];
+	spells: SpellWithClasses;
 };
 
 export default async function SpellCardList({ className, spells }: SpellCardListProps) {
@@ -46,8 +46,9 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 								</Markdown>
 							</div>
 						</div>
-						<div className="text-xs text-white px-2 w-full items-center overflow-hidden">
+						<div className="grid grid-cols-2 text-xs text-white pr-2">
 							<Casting type={spell.casting} />
+							<div className="text-right">{spell.classes.map((clase) => clase.class.lang_es).join(", ")}</div>
 						</div>
 					</div>
 				);

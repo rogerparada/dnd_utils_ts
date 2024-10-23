@@ -4,14 +4,14 @@ import { NextResponse } from "next/server";
 
 const { auth: middleware } = NextAuth(authConfig);
 
-const publicRoutes = ["/", "/auth/login", "/auth/register", "/auth/registered", "/spells", "/api/verify-email"];
+const publicRoutes = ["/", "/auth/login", "/auth/register", "/auth/registered", "/spells", "/spells/search", "/classes", "/api/verify-email"];
 
 export default middleware((req) => {
 	const { nextUrl, auth } = req;
 	const isLoggedIn = !!auth?.user;
-	console.log(isLoggedIn);
-
-	if (!publicRoutes.includes(nextUrl.pathname) && !isLoggedIn) {
+	const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+	const isClassRoute = nextUrl.pathname.startsWith("/classes/");
+	if (!isPublicRoute && !isClassRoute && !isLoggedIn) {
 		return NextResponse.redirect(new URL("/auth/login", nextUrl));
 	}
 	return NextResponse.next();

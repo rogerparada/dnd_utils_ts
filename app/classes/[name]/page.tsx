@@ -45,7 +45,15 @@ async function getSpells(classId: number, level: number, pageSize: number, skip:
 		skip,
 		where,
 		include: {
-			spell: true,
+			spell: {
+				include: {
+					classes: {
+						include: {
+							class: true,
+						},
+					},
+				},
+			},
 		},
 		orderBy: [{ spell: { level: "asc" } }, { spell: { name: "asc" } }],
 	});

@@ -1,11 +1,11 @@
 "use client";
 import { SearchSchema } from "@/src/schema";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 export default function SpellSearchForm() {
 	const router = useRouter();
-
+	const pathName = usePathname();
 	const handleSearchForm = (formData: FormData) => {
 		const data = {
 			search: formData.get("search"),
@@ -16,7 +16,8 @@ export default function SpellSearchForm() {
 			result.error.issues.forEach((issue) => console.log(issue.message));
 			return;
 		}
-		router.push(`/admin/spells/search?search=${result.data.search}`);
+
+		router.push(`${pathName}/search?search=${result.data.search}`);
 	};
 
 	return (
