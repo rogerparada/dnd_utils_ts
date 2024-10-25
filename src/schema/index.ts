@@ -46,5 +46,23 @@ export const UserLoginFormSchema = z.object({
 	password: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
 });
 
+export const CharacterTypeEnum = z.enum(["Player", "Enemy", "Ally", "Neutral", "Boss"]);
+
+export const CharacterSchema = z.object({
+	id: z.string().min(1, { message: "Id is required" }),
+	name: z.string().min(1, { message: "Name is required" }),
+	type: CharacterTypeEnum,
+	image: z.string().url().optional(),
+	initiative: z
+		.string()
+		.min(1, "Initiative required")
+		.transform((value) => parseInt(value))
+		.refine((value) => value >= 1, { message: "Initiative cannot be less than 0" })
+		.or(z.number()),
+	disabled: z.boolean().default(false).optional(),
+});
+
 export type UserLogin = z.infer<typeof UserLoginFormSchema>;
 export type UserCreate = z.infer<typeof UserCreateFormSchema>;
+export type Character = z.infer<typeof CharacterSchema>;
+export type CharacterType = z.infer<typeof CharacterTypeEnum>;

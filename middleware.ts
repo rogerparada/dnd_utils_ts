@@ -4,7 +4,18 @@ import { NextResponse } from "next/server";
 
 const { auth: middleware } = NextAuth(authConfig);
 
-const publicRoutes = ["/", "/auth/login", "/auth/register", "/auth/registered", "/spells", "/spells/search", "/classes", "/api/verify-email"];
+const publicRoutes = [
+	"/",
+	"/auth/login",
+	"/auth/register",
+	"/auth/registered",
+	"/spells",
+	"/spells/search",
+	"/classes",
+	"/api/verify-email",
+	"/master",
+	"/master/combat",
+];
 
 export default middleware((req) => {
 	const { nextUrl, auth } = req;
