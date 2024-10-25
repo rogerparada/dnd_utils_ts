@@ -42,9 +42,7 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 		if (verified) {
 			setDice({ ...dice, empty: false, value: 20, rolling: false, primary: "rgb(34 197 94)", secondary: "rgb(34 197 94)" });
 		}
-	}, []);
-
-	/**/
+	}, [verified, dice]);
 
 	return (
 		<>

@@ -40,7 +40,7 @@ export default function MultiClassSelector({ classes, selected }: MultiClassSele
 		}
 
 		setCheckboxes(newCheckboxes);
-	}, []);
+	}, [classes, selected]);
 
 	return (
 		<div className="grid grid-cols-5 items-center">

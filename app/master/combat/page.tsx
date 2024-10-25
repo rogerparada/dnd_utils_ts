@@ -25,7 +25,7 @@ export default function CombatPage() {
 		if (players.length === 0) {
 			fillPlayers(defaultPlayers);
 		}
-	}, []);
+	}, [defaultPlayers, fillPlayers, players.length]);
 
 	return (
 		<div className="container mx-auto p-5 min-h-dvh flex flex-col">

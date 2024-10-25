@@ -1,5 +1,4 @@
 import { SpellWithClasses } from "@/app/spells/page";
-import { Spell } from "@prisma/client";
 import Link from "next/link";
 
 type SpellsTableProps = {

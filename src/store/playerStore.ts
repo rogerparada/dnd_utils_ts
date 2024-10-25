@@ -4,7 +4,7 @@ import { devtools, persist } from "zustand/middleware";
 
 interface PlayerStore {
 	players: Character[];
-	combatMode: Boolean;
+	combatMode: boolean;
 	fillPlayers: (players: Character[]) => void;
 	addPlayer: (player: Character) => void;
 	deletePlayer: (id: Character["id"]) => void;
