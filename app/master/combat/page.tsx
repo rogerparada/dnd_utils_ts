@@ -4,16 +4,14 @@ import CombatButton from "@/src/components/combat/CombatButton";
 import Player from "@/src/components/combat/Player";
 import PlayerList from "@/src/components/combat/PlayerList";
 import Heading from "@/src/components/ui/Heading";
-import { Character } from "@/src/schema";
 import { usePlayerStore } from "@/src/store/playerStore";
-import { useEffect } from "react";
 
 export default function CombatPage() {
 	const players = usePlayerStore((state) => state.players);
-	const fillPlayers = usePlayerStore((state) => state.fillPlayers);
+	//const fillPlayers = usePlayerStore((state) => state.fillPlayers);
 	const clearPlayers = usePlayerStore((state) => state.clearPlayers);
 
-	const defaultPlayers: Character[] = [
+	/*const defaultPlayers: Character[] = [
 		{ id: "1", name: "Druid", type: "Player", initiative: 1 },
 		{ id: "2", name: "Troll", type: "Enemy", initiative: 1 },
 		{ id: "3", name: "Archer", type: "Ally", initiative: 1 },
@@ -25,7 +23,7 @@ export default function CombatPage() {
 		if (players.length === 0) {
 			fillPlayers(defaultPlayers);
 		}
-	}, [defaultPlayers, fillPlayers, players.length]);
+	}, [defaultPlayers, fillPlayers, players.length]);*/
 
 	return (
 		<div className="container mx-auto p-5 min-h-dvh flex flex-col">
