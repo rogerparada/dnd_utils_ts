@@ -1,6 +1,3 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
 export const hashPassword = async (password: string) => {
 	const bcrypt = require("bcrypt");
 	const salt = await bcrypt.genSalt(10);
