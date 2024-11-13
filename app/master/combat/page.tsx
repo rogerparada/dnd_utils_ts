@@ -4,12 +4,12 @@ import CombatButton from "@/src/components/combat/CombatButton";
 import Player from "@/src/components/combat/Player";
 import PlayerList from "@/src/components/combat/PlayerList";
 import Heading from "@/src/components/ui/Heading";
-import { usePlayerStore } from "@/src/store/playerStore";
+import { useAppStore } from "@/src/store/useAppStore";
 
 export default function CombatPage() {
-	const players = usePlayerStore((state) => state.players);
+	const players = useAppStore((state) => state.players);
 	//const fillPlayers = usePlayerStore((state) => state.fillPlayers);
-	const clearPlayers = usePlayerStore((state) => state.clearPlayers);
+	const clearPlayers = useAppStore((state) => state.clearPlayers);
 
 	/*const defaultPlayers: Character[] = [
 		{ id: "1", name: "Druid", type: "Player", initiative: 1 },

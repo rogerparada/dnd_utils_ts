@@ -28,7 +28,7 @@ export default async function SpellForm({ spell }: SpellFormProps) {
 				<label htmlFor="school" className="font-bold ">
 					Escuela:
 				</label>
-				<select className="w-full col-span-4 text-sm" name="school">
+				<select className="w-full col-span-4 text-sm" name="school" defaultValue={spell?.school}>
 					{schools.map((school, index) => (
 						<option value={school} key={`school-${index}`}>
 							{school}
@@ -41,7 +41,7 @@ export default async function SpellForm({ spell }: SpellFormProps) {
 				<label htmlFor="level" className="font-bold">
 					Nivel:
 				</label>
-				<select className="w-full col-span-4 text-sm" name="level">
+				<select className="w-full col-span-4 text-sm" name="level" defaultValue={spell?.level}>
 					{levels.map((level, index) => (
 						<option value={level} key={`level-${index}`}>
 							{level}

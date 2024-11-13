@@ -1,21 +1,5 @@
 export const clases = [
 	{
-		name: "Druid",
-		lang_es: "Druida",
-		description: "A guardian of nature, using magic to commune with the wild and shapeshift.",
-		description_es: "Un guardián de la naturaleza que usa magia para comunicarse con lo salvaje y cambiar de forma.",
-		primaryChar: "Wisdom",
-		secondaryChar: "Constitution",
-	},
-	{
-		name: "Cleric",
-		lang_es: "Clérigo",
-		description: "A divine healer and protector, serving gods through spells and healing magic.",
-		description_es: "Un sanador divino y protector, que sirve a los dioses a través de conjuros y magia curativa.",
-		primaryChar: "Wisdom",
-		secondaryChar: "Strength",
-	},
-	{
 		name: "Bard",
 		lang_es: "Bardo",
 		description: "A versatile performer skilled in music and magic.",
@@ -29,6 +13,22 @@ export const clases = [
 		description: "A spellcaster who gains magical powers through pacts with mysterious beings.",
 		description_es: "Un hechicero que obtiene poderes mágicos mediante pactos con seres misteriosos.",
 		primaryChar: "Charisma",
+		secondaryChar: "Constitution",
+	},
+	{
+		name: "Cleric",
+		lang_es: "Clérigo",
+		description: "A divine healer and protector, serving gods through spells and healing magic.",
+		description_es: "Un sanador divino y protector, que sirve a los dioses a través de conjuros y magia curativa.",
+		primaryChar: "Wisdom",
+		secondaryChar: "Strength",
+	},
+	{
+		name: "Druid",
+		lang_es: "Druida",
+		description: "A guardian of nature, using magic to commune with the wild and shapeshift.",
+		description_es: "Un guardián de la naturaleza que usa magia para comunicarse con lo salvaje y cambiar de forma.",
+		primaryChar: "Wisdom",
 		secondaryChar: "Constitution",
 	},
 

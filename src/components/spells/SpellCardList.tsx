@@ -4,6 +4,7 @@ import Markdown from "markdown-to-jsx";
 import ListItem from "./ListItem";
 import { colors } from "@/src/Global";
 import { SpellWithClasses } from "@/app/spells/page";
+import SpellTitle from "./ui/SpellTitle";
 
 type SpellCardListProps = {
 	className: string;
@@ -14,7 +15,7 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 	const color = colors[className];
 
 	return (
-		<div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 text-black">
+		<div className="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 text-black">
 			{spells.map((spell) => {
 				const description = spell.material ? "**Requiere:** " + spell.material + ". \n \n  " + spell.description : spell.description;
 
@@ -24,7 +25,7 @@ export default async function SpellCardList({ className, spells }: SpellCardList
 							<span className={`w-full text-center text-xl font-black ${color.text}`}>{spell.level}</span>
 						</div>
 						<div className="w-full bg-white flex-1 overflow-hidden">
-							<div className="uppercase pt-2 pl-10 pr-2 font-bold text-sm">{spell.name}</div>
+							<SpellTitle name={spell.name} color={color} />
 							<hr className="my-2" />
 							<Modifiers spell={spell} />
 							<hr className="my-2" />

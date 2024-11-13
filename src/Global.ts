@@ -1,4 +1,5 @@
 import { Colors, ClassImages, Abilities } from "./types";
+import { Characteristic, ClassSelect, HabilitesItem, ItemSelect } from "./types/Player";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -56,3 +57,124 @@ export const abilities: Abilities = {
 		de: "Charisma",
 	},
 };
+
+const clases: ClassSelect[] = [
+	{ name: "Bárbaro", spellCaster: false },
+	{ name: "Bardo", spellCaster: true },
+	{ name: "Brujo", spellCaster: true },
+	{ name: "Clérigo", spellCaster: true },
+	{ name: "Druida", spellCaster: true },
+	{ name: "Explorador", spellCaster: true },
+	{ name: "Guerrero", spellCaster: false },
+	{ name: "Hechicero", spellCaster: true },
+	{ name: "Mago", spellCaster: true },
+	{ name: "Paladín", spellCaster: true },
+	{ name: "Picaro", spellCaster: false },
+	{ name: "Monje", spellCaster: false },
+];
+const races: ItemSelect[] = [
+	{
+		name: "Enano",
+		sub: [{ name: "Enano de las colinas" }, { name: "Enano de las montañas" }, { name: "Druegar" }],
+	},
+	{
+		name: "Elfo",
+		sub: [{ name: "Alto Elfo" }, { name: "Elfo de los bosques" }, { name: "Elfo Oscuro (Drow)" }],
+	},
+	{
+		name: "Mediano",
+		sub: [{ name: "Mediano Pies Ligeros" }, { name: "Mediano Fornido" }],
+	},
+	{
+		name: "Humano",
+		sub: [],
+	},
+	{
+		name: "Dracónido",
+		sub: [],
+	},
+	{
+		name: "Gnomo",
+		sub: [{ name: "Gnomo del bosque" }, { name: "Gnomo de la Roca" }],
+	},
+	{
+		name: "SemiElfo",
+		sub: [],
+	},
+	{
+		name: "SemiOrco",
+		sub: [],
+	},
+	{
+		name: "Tiefling",
+		sub: [],
+	},
+];
+const trasfondo: ItemSelect[] = [
+	{ name: "Acólito" },
+	{ name: "Charlatán" },
+	{ name: "Criminal" },
+	{ name: "Artista" },
+	{ name: "Héroe del Pueblo" },
+	{ name: "Artesano Gremial" },
+	{ name: "Ermitaño" },
+	{ name: "Noble" },
+	{ name: "Forastero" },
+	{ name: "Sabio" },
+	{ name: "Marinero" },
+	{ name: "Soldado" },
+	{ name: "Huérfano" },
+];
+const alineamiento: ItemSelect[] = [
+	{ name: "Legal Bueno" },
+	{ name: "Neutral Bueno" },
+	{ name: "Caótico Bueno" },
+	{ name: "Legal Neutral" },
+	{ name: "Neutral" },
+	{ name: "Caótico Neutral" },
+	{ name: "Legal Maligno" },
+	{ name: "Neutral Maligno" },
+	{ name: "Caótico Maligno" },
+];
+
+const characteristics: Characteristic[] = [
+	{ name: "Fuerza", value: 0 },
+	{ name: "Destreza", value: 0 },
+	{ name: "Constitución", value: 0 },
+	{ name: "Inteligencia", value: 0 },
+	{ name: "Sabiduría", value: 0 },
+	{ name: "Carisma", value: 0 },
+];
+
+const chars: Record<string, number> = {
+	Fuerza: 0,
+	Destreza: 0,
+	Constitución: 0,
+	Inteligencia: 0,
+	Sabiduría: 0,
+	Carisma: 0,
+};
+
+const habilidades: HabilitesItem[] = [
+	{ name: "Acrobacias", value: 0, depende: "Destreza" },
+	{ name: "Atletismo", value: 0, depende: "Fuerza" },
+	{ name: "C. Arcano", value: 0, depende: "Inteligencia" },
+	{ name: "Engaño", value: 0, depende: "Carisma" },
+	{ name: "Historia", value: 0, depende: "Inteligencia" },
+	{ name: "Interpretación", value: 0, depende: "Carisma" },
+	{ name: "Intimidación", value: 0, depende: "Inteligencia" },
+	{ name: "Juego Manos", value: 0, depende: "Destreza" },
+	{ name: "Medicina", value: 0, depende: "Sabiduría" },
+	{ name: "Naturaleza", value: 0, depende: "Inteligencia" },
+	{ name: "Percepción", value: 0, depende: "Sabiduría" },
+	{ name: "Perspicacia", value: 0, depende: "Sabiduría" },
+	{ name: "Persuasión", value: 0, depende: "Carisma" },
+	{ name: "Religión", value: 0, depende: "Inteligencia" },
+	{ name: "Sigilo", value: 0, depende: "Destreza" },
+	{ name: "Supervivencia", value: 0, depende: "Sabiduría" },
+	{ name: "T. Animales", value: 0, depende: "Sabiduría" },
+];
+
+const escuelas: string[] = ["Abjuración", "Adivinación", "Conjuración", "Encantamiento", "Evocación", "Ilusión", "Nigromancia", "Transmutación"];
+
+export { clases, races, alineamiento, trasfondo, characteristics, habilidades, chars, escuelas };

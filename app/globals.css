@@ -3,25 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	background: var(--background);
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+.modifier {
+	border: solid 0.5px black;
+	border-radius: 50%;
+	height: 36px;
+	width: 56px;
+	margin: auto !important;
+	text-align: center;
+	font-weight: bold;
+	background-color: white;
+	-webkit-appearance: none;
+}
+
+.modifier::-webkit-outer-spin-button,
+.modifier::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.modifier {
+	-moz-appearance: textfield;
+}
+
+@media (width < 768px) {
+	.modifier {
+		height: 34px;
+		width: 52px;
+	}
 }
