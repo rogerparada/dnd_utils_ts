@@ -1,13 +1,13 @@
 "use client";
 
 import { CharacterSchema } from "@/src/schema";
-import { usePlayerStore } from "@/src/store/playerStore";
+import { useAppStore } from "@/src/store/useAppStore";
 import { nanoid } from "nanoid";
 
 export default function AddPlayer() {
 	const initiative = Array.from({ length: 20 }, (_, i) => i + 1);
 
-	const addPlayer = usePlayerStore((state) => state.addPlayer);
+	const addPlayer = useAppStore((state) => state.addPlayer);
 	const handleSubmit = (formData: FormData) => {
 		const data = {
 			id: nanoid(),
