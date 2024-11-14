@@ -1,5 +1,5 @@
 import { Character } from "@/src/schema";
-import { usePlayerStore } from "@/src/store/playerStore";
+import { useAppStore } from "@/src/store/useAppStore";
 import { Color } from "@/src/types";
 import Image from "next/image";
 
@@ -20,8 +20,8 @@ const colors: FullCharacter = {
 };
 
 export default function Player({ player }: PlayerProps) {
-	const combatMode = usePlayerStore((state) => state.combatMode);
-	const nextInCombat = usePlayerStore((state) => state.nextInCombat);
+	const combatMode = useAppStore((state) => state.combatMode);
+	const nextInCombat = useAppStore((state) => state.nextInCombat);
 
 	const color = colors[player.type];
 	return (
