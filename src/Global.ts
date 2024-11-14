@@ -1,5 +1,5 @@
 import { Colors, ClassImages, Abilities } from "./types";
-import { Characteristic, ClassSelect, HabilitesItem, ItemSelect } from "./types/Player";
+import { ClassSelect, HabilitesItem, ItemSelect } from "./types/Player";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -137,15 +137,6 @@ const alineamiento: ItemSelect[] = [
 	{ name: "Caótico Maligno" },
 ];
 
-const characteristics: Characteristic[] = [
-	{ name: "Fuerza", value: 0 },
-	{ name: "Destreza", value: 0 },
-	{ name: "Constitución", value: 0 },
-	{ name: "Inteligencia", value: 0 },
-	{ name: "Sabiduría", value: 0 },
-	{ name: "Carisma", value: 0 },
-];
-
 const chars: Record<string, number> = {
 	Fuerza: 0,
 	Destreza: 0,
@@ -177,4 +168,4 @@ const habilidades: HabilitesItem[] = [
 
 const escuelas: string[] = ["Abjuración", "Adivinación", "Conjuración", "Encantamiento", "Evocación", "Ilusión", "Nigromancia", "Transmutación"];
 
-export { clases, races, alineamiento, trasfondo, characteristics, habilidades, chars, escuelas };
+export { clases, races, alineamiento, trasfondo, habilidades, chars, escuelas };
