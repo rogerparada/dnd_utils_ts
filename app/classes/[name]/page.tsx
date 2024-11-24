@@ -1,3 +1,4 @@
+import { clases } from "@/prisma/data/clases";
 import SpellCardList from "@/src/components/spells/SpellCardList";
 import SpellsSelector from "@/src/components/spells/SpellsSelector";
 import Pagination from "@/src/components/ui/Pagination";
@@ -8,8 +9,9 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export const generateStaticParams = async () => {
-	const classes = await prisma.classes.findMany();
-	return classes.map((clase) => ({ name: clase.name }));
+	//const classes = await prisma.classes.findMany();
+
+	return clases.map((clase) => ({ name: clase.name }));
 };
 
 export const generateMetadata = async ({ params }: { params: { name: string } }) => {
