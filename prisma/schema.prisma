@@ -93,3 +93,59 @@ model VerificationToken {
 
   @@id([identifier])
 }
+
+model Player {
+  id              String            @id @default(cuid())
+  name            String
+  className       String
+  race            String
+  background      String
+  alignment       String
+  playerName      String
+  experience      Int
+  level           Int
+  PlayerSkills    PlayerSkills[]
+  PlayerAbilities PlayerAbilities[]
+}
+
+model PlayerAbilities {
+  id                     Int     @id @default(autoincrement())
+  Strength               Int
+  Dexterity              Int
+  Constitution           Int
+  Intelligence           Int
+  Wisdom                 Int
+  Charisma               Int
+  StrengthCompetence     Boolean
+  DexterityCompetence    Boolean
+  ConstitutionCompetence Boolean
+  IntelligenceCompetence Boolean
+  WisdomCompetence       Boolean
+  CharismaCompetence     Boolean
+  playerId               String?
+  player                 Player? @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model PlayerSkills {
+  id             Int     @id @default(autoincrement())
+  Acrobatics     Boolean @default(false) // Dexterity
+  AnimalHandling Boolean @default(false) // Wisdom
+  Arcana         Boolean @default(false) // Intelligence
+  Athletics      Boolean @default(false) // Strength
+  Deception      Boolean @default(false) // Charisma
+  History        Boolean @default(false) // Intelligence
+  Insight        Boolean @default(false) // Wisdom
+  Intimidation   Boolean @default(false) // Charisma
+  Investigation  Boolean @default(false) // Intelligence
+  Medicine       Boolean @default(false) // Wisdom
+  Nature         Boolean @default(false) // Intelligence
+  Perception     Boolean @default(false) // Wisdom
+  Performance    Boolean @default(false) // Charisma
+  Persuasion     Boolean @default(false) // Charisma
+  Religion       Boolean @default(false) // Intelligence
+  SleightOfHand  Boolean @default(false) // Dexterity
+  Stealth        Boolean @default(false) // Dexterity
+  Survival       Boolean @default(false) // Wisdom
+  playerId       String?
+  player         Player? @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}

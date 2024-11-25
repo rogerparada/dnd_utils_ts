@@ -1,9 +1,14 @@
+import { calculateValue } from "@/src/utils";
+import { useMemo } from "react";
+
 type CardProps = {
 	name: string;
 	value: number;
 };
 
 export default function Card({ name, value }: CardProps) {
+	const calculated = useMemo(() => calculateValue(value), [value]);
+
 	return (
 		<svg id="Recuadro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.73 300" className="h-54 w-32">
 			<path
@@ -78,7 +83,7 @@ export default function Card({ name, value }: CardProps) {
 					{name}
 				</text>
 				<text y={200} x="50%" textAnchor="middle" fontSize={120}>
-					{value > 0 ? `+${value}` : value}
+					{calculated}
 				</text>
 			</g>
 		</svg>

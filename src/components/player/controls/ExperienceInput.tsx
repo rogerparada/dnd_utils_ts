@@ -6,7 +6,7 @@ type NumericInputProps = {
 	value?: number;
 };
 
-export const ExperienceInput = ({ name, label, value }: NumericInputProps) => {
+export default function ExperienceInput({ name, label, value }: NumericInputProps) {
 	const changeExperiencePoints = useAppStore((state) => state.changeExperiencePoints);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,4 +20,4 @@ export const ExperienceInput = ({ name, label, value }: NumericInputProps) => {
 			<label className="text-xs font-bold">{label}</label>
 		</div>
 	);
-};
+}

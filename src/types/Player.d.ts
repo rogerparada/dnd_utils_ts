@@ -31,10 +31,14 @@ export type Player = {
 };
 
 export type Attributes = {
-	Strength: { raw: number; value: number };
-	Dexterity: { raw: number; value: number };
-	Constitution: { raw: number; value: number };
-	Intelligence: { raw: number; value: number };
-	Wisdom: { raw: number; value: number };
-	Charisma: { raw: number; value: number };
+	Strength: { value: number; proficiency: boolean };
+	Dexterity: { value: number; proficiency: boolean };
+	Constitution: { value: number; proficiency: boolean };
+	Intelligence: { value: number; proficiency: boolean };
+	Wisdom: { value: number; proficiency: boolean };
+	Charisma: { value: number; proficiency: boolean };
+};
+
+export type Skill = {
+	[key: string]: boolean;
 };

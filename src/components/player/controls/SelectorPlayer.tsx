@@ -10,7 +10,7 @@ interface SelectorProps {
 	value: string;
 }
 
-export const SelectorPlayer = ({ items, label, name, value }: SelectorProps) => {
+export default function SelectorPlayer({ items, label, name, value }: SelectorProps) {
 	const changeDescription = useAppStore((state) => state.changeDescription);
 
 	const handleSelectionChange = (event: ChangeEvent<HTMLSelectElement>): void => {
@@ -48,4 +48,4 @@ export const SelectorPlayer = ({ items, label, name, value }: SelectorProps) => 
 			<label className="text-xs ml-2 font-bold">{label}</label>
 		</div>
 	);
-};
+}

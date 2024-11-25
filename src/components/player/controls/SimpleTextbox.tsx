@@ -6,7 +6,7 @@ type SimpleTextboxProps = {
 	value: string;
 };
 
-export const SimpleTextbox = ({ name, label, value }: SimpleTextboxProps) => {
+export default function SimpleTextbox({ name, label, value }: SimpleTextboxProps) {
 	const changeDescription = useAppStore((state) => state.changeDescription);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,4 +20,4 @@ export const SimpleTextbox = ({ name, label, value }: SimpleTextboxProps) => {
 			<label className="text-xs font-bold">{label}</label>
 		</div>
 	);
-};
+}

@@ -1,9 +1,13 @@
+import { calculateValue } from "@/src/utils";
+import { useMemo } from "react";
+
 type ShieldBoxProps = {
 	name: string;
 	value?: number;
 };
 
 export default function ShieldBox({ name, value = 0 }: ShieldBoxProps) {
+	const calculated = useMemo(() => calculateValue(value), [value]);
 	return (
 		<div id={name} className="grid text-center w-24 md:w-32 h-32 md:h-32  gap-1 mb-5 md:m-auto">
 			<div className={"m-auto z-0 w-32 mt-3"}>
@@ -37,7 +41,7 @@ export default function ShieldBox({ name, value = 0 }: ShieldBoxProps) {
 							{name}
 						</text>
 						<text fontSize={135} y={200} x="50%" textAnchor="middle">
-							{value}
+							{calculated}
 						</text>
 					</g>
 				</svg>

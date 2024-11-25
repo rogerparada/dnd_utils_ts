@@ -1,7 +1,7 @@
 import { useAppStore } from "@/src/store/useAppStore";
 import Card from "./Card";
 
-export const Characteristics = () => {
+export default function Characteristics() {
 	const attributes = useAppStore((state) => state.attributes);
 	const changeAttributes = useAppStore((state) => state.changeAttributes);
 
@@ -24,7 +24,7 @@ export const Characteristics = () => {
 						name={"Strength"}
 						className="text-lg md:text-xl relative -bottom-2 md:bottom-2 modifier"
 						onChange={handleChange}
-						value={attributes.Strength.raw}
+						value={attributes.Strength.value}
 					/>
 				</div>
 			</div>
@@ -40,7 +40,7 @@ export const Characteristics = () => {
 						name="Dexterity"
 						className="text-lg md:text-xl relative -bottom-2 md:bottom-2 modifier"
 						onChange={handleChange}
-						value={attributes.Dexterity.raw}
+						value={attributes.Dexterity.value}
 					/>
 				</div>
 			</div>
@@ -56,7 +56,7 @@ export const Characteristics = () => {
 						name="Constitution"
 						className="text-lg md:text-xl relative -bottom-2 md:bottom-2 modifier"
 						onChange={handleChange}
-						value={attributes.Constitution.raw}
+						value={attributes.Constitution.value}
 					/>
 				</div>
 			</div>
@@ -72,7 +72,7 @@ export const Characteristics = () => {
 						name="Intelligence"
 						className="text-lg md:text-xl relative -bottom-2 md:bottom-2 modifier"
 						onChange={handleChange}
-						value={attributes.Intelligence.raw}
+						value={attributes.Intelligence.value}
 					/>
 				</div>
 			</div>
@@ -88,7 +88,7 @@ export const Characteristics = () => {
 						name="Wisdom"
 						className="text-lg md:text-xl relative -bottom-2 md:bottom-2 modifier"
 						onChange={handleChange}
-						value={attributes.Wisdom.raw}
+						value={attributes.Wisdom.value}
 					/>
 				</div>
 			</div>
@@ -104,10 +104,10 @@ export const Characteristics = () => {
 						name="Charisma"
 						className="text-lg md:text-xl relative -bottom-2 md:bottom-2 modifier"
 						onChange={handleChange}
-						value={attributes.Charisma.raw}
+						value={attributes.Charisma.value}
 					/>
 				</div>
 			</div>
 		</div>
 	);
-};
+}

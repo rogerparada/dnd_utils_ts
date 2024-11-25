@@ -1,9 +1,9 @@
 type RoundAttributeBoxProps = {
 	name: string;
 	label: string;
-	bonus?: boolean;
+	value?: number | string;
 };
-export default function RoundAttributeBox({ name, label }: RoundAttributeBoxProps) {
+export default function RoundAttributeBox({ name, label, value }: RoundAttributeBoxProps) {
 	return (
 		<div className="flex items-center pt-2">
 			<div className="w-10">
@@ -11,6 +11,7 @@ export default function RoundAttributeBox({ name, label }: RoundAttributeBoxProp
 					type="text"
 					name={name}
 					id={name}
+					defaultValue={value ? value : ""}
 					className="rounded-full border-solid border-2 w-16 h-16 text-2xl text-center border-black font-extrabold"
 				/>
 			</div>
