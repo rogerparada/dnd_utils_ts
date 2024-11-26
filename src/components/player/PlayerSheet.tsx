@@ -1,6 +1,6 @@
 import AttributeBox from "./controls/AttributeBox";
 import Characteristics from "./controls/Characteristics";
-import DescriptionBox from "./controls/DescriptionBox";
+import DescriptionBox from "./controls/Boxes/DescriptionBox";
 import ExperienceInput from "./controls/ExperienceInput";
 import LevelCalculator from "./controls/LevelCalculator";
 import MultipleBox from "./controls/MultipleBox";
@@ -9,11 +9,16 @@ import SalvationBox from "./controls/SalvationBox";
 import SelectorPlayer from "./controls/SelectorPlayer";
 import ShieldBox from "./Shields/ShieldBox";
 import SimpleTextbox from "./controls/SimpleTextbox";
-import SkillsBox from "./controls/SkillsBox";
+import SkillsBox from "./controls/Boxes/SkillsBox";
 import SquareShieldBox from "./Shields/SquareShieldBox";
 
 import { alineamiento, clases, races, trasfondo } from "@/src/Global";
 import { useAppStore } from "@/src/store/useAppStore";
+import PassivePerceptionBox from "./controls/PassivePerceptionBox";
+import HitDices from "./controls/HitDices";
+import Salvations from "./controls/Salvations";
+import EnchantsWeapon from "./controls/EnchantsWeapon";
+import PlatesBox from "./controls/Plates/PlatesBox";
 
 export default function PlayerSheet() {
 	const player = useAppStore((state) => state.player);
@@ -43,9 +48,12 @@ export default function PlayerSheet() {
 					</div>
 				</div>
 			</div>
-			<div id="columnas" className="grid md:grid-cols-3 border-black w-full border-2 my-5 rounded-lg min-h-96 gap-5 p-5 bg-white">
+			<div
+				id="columnas"
+				className="grid md:grid-cols-2 xl:grid-cols-3 border-black w-full border-2 my-5 rounded-lg min-h-96 md:gap-8 xl:gap-5 p-5 bg-white"
+			>
 				<div id="col1" className="w-full">
-					<div className="flex gap-3 flex-col md:flex-row">
+					<div className="flex gap-3 flex-col xl:flex-row">
 						<Characteristics />
 						<div className="w-full ">
 							<AttributeBox name="inspiración" label="Inspiración" />
@@ -55,7 +63,7 @@ export default function PlayerSheet() {
 						</div>
 					</div>
 					<div className="w-full">
-						<RoundAttributeBox name="spp" label="Sabiduría Percepción Pasiva" value={0} />
+						<PassivePerceptionBox />
 						<DescriptionBox name="oce" label="Otras competencias e idiomas" big />
 					</div>
 				</div>
@@ -67,16 +75,16 @@ export default function PlayerSheet() {
 							<SquareShieldBox name="velocidad" />
 						</div>
 						<MultipleBox name="puntos" labels={["Puntos de golpe actuales", "Puntos de golpe temporales"]} />
-						{/*<div className="hits w-full border-2 flex gap-4">
-                <HitDices />
-                <Salvations />*/}
+						<div className="hits w-full border-2 flex gap-4">
+							<HitDices />
+							<Salvations pass={0} fails={0} />
+						</div>
 					</div>
-				</div>
-				{/*
-        <EnchantsWeapon values={armasHechizos} add={onAddArmorEnchant} del={onDeleteArmorEnchant} mod={onModifyArmorEnchant} />
-        <PlatesBox name="mne" label="Dinero y equipo" />*/}
 
-				<div id="col3" className="">
+					<EnchantsWeapon />
+					<PlatesBox name="mne" label="Dinero y equipo" />
+				</div>
+				<div id="col3" className="flex flex-col">
 					<div className="bg-gray-300 w-full p-5 rounded-xl">
 						<MultipleBox name="puntos" labels={["Rasgos de personalidad", "Ideales", "Vínculos", "Defectos"]} />
 					</div>

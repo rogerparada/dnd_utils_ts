@@ -23,6 +23,8 @@
 		"Religion": "Religion",
 		"SleightOfHand": "Sleight of Hand",
 		"Stealth": "Stealth",
-		"Survival": "Survival"
+		"Survival": "Survival",
+
+		"Passive Perception": "Passive Perception"
 	}
 }

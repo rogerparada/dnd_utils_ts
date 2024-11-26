@@ -1,4 +1,4 @@
-import DescriptionBox from "./DescriptionBox";
+import DescriptionBox from "./Boxes/DescriptionBox";
 
 type MultipleBoxProps = {
 	name: string;

@@ -4,7 +4,9 @@ export default function PlayerLayout({ children }: { children: React.ReactNode }
 	return (
 		<div className="relative">
 			<PlayerBar />
-			<div className="container mx-auto pt-5 px-5 lg:px-0">{children}</div>
+			<div id="player" className=" w-full xl:container mx-auto lg:pt-5 lg:px-0">
+				{children}
+			</div>
 		</div>
 	);
 }

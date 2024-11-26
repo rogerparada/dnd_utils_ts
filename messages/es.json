@@ -23,6 +23,8 @@
 		"Religion": "Religión",
 		"SleightOfHand": "Juego de Manos",
 		"Stealth": "Sigilo",
-		"Survival": "Supervivencia"
+		"Survival": "Supervivencia",
+
+		"Passive Perception": "Sabiduría Percepción Pasiva"
 	}
 }

@@ -1,6 +1,6 @@
 import { useAppStore } from "@/src/store/useAppStore";
 
-import ListBoxSkillItem from "./ListBoxSkillItem";
+import ListBoxSkillItem from "./Boxes/ListBoxSkillItem";
 import { skillsDependencies } from "@/src/Global";
 
 type SalvationBoxProps = {
