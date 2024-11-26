@@ -1,5 +1,5 @@
-import { Colors, ClassImages, Abilities } from "./types";
-import { ClassSelect, HabilitesItem, ItemSelect, SkillDependence } from "./types/Player";
+import { Colors, ClassImages } from "./types";
+import { Attributes, ClassSelect, HabilitesItem, ItemSelect, SkillDependence } from "./types/Player";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -25,84 +25,52 @@ export const images: ClassImages = {
 	None: { src: "/images/Dices/D20.svg", alt: "D20" },
 };
 
-export const abilities: Abilities = {
-	Strength: {
-		en: "Strength",
-		es: "Fuerza",
-		de: "Stärke",
-	},
-	Dexterity: {
-		en: "Dexterity",
-		es: "Destreza",
-		de: "Geschicklichkeit",
-	},
-	Constitution: {
-		en: "Constitution",
-		es: "Constitución",
-		de: "Konstitution",
-	},
-	Intelligence: {
-		en: "Intelligence",
-		es: "Inteligencia",
-		de: "Intelligenz",
-	},
-	Wisdom: {
-		en: "Wisdom",
-		es: "Sabiduría",
-		de: "Weisheit",
-	},
-	Charisma: {
-		en: "Charisma",
-		es: "Carisma",
-		de: "Charisma",
-	},
-};
-
-const clases: ClassSelect[] = [
-	{ name: "Bárbaro", spellCaster: false },
-	{ name: "Bardo", spellCaster: true },
-	{ name: "Brujo", spellCaster: true },
-	{ name: "Clérigo", spellCaster: true },
-	{ name: "Druida", spellCaster: true },
-	{ name: "Explorador", spellCaster: true },
-	{ name: "Guerrero", spellCaster: false },
-	{ name: "Hechicero", spellCaster: true },
-	{ name: "Mago", spellCaster: true },
-	{ name: "Paladín", spellCaster: true },
-	{ name: "Picaro", spellCaster: false },
-	{ name: "Monje", spellCaster: false },
+export const classes: ClassSelect[] = [
+	{ name: "Barbarian", spellCaster: false },
+	{ name: "Bard", spellCaster: true },
+	{ name: "Warlock", spellCaster: true },
+	{ name: "Cleric", spellCaster: true },
+	{ name: "Druid", spellCaster: true },
+	{ name: "Ranger", spellCaster: true },
+	{ name: "Fighter", spellCaster: false },
+	{ name: "Sorcerer", spellCaster: true },
+	{ name: "Wizard", spellCaster: true },
+	{ name: "Paladin", spellCaster: true },
+	{ name: "Rogue", spellCaster: false },
+	{ name: "Monk", spellCaster: false },
 ];
-const races: ItemSelect[] = [
+
+export const races: ItemSelect[] = [
 	{
-		name: "Enano",
-		sub: [{ name: "Enano de las colinas" }, { name: "Enano de las montañas" }, { name: "Druegar" }],
+		name: "Dwarf",
+		sub: [{ name: "Hill Dwarf" }, { name: "Mountain Dwarf" }, { name: "Duergar" }],
 	},
 	{
-		name: "Elfo",
-		sub: [{ name: "Alto Elfo" }, { name: "Elfo de los bosques" }, { name: "Elfo Oscuro (Drow)" }],
+		name: "Elf",
+		sub: [{ name: "High Elf" }, { name: "Wood Elf" }, { name: "Dark Elf (Drow)" }],
 	},
 	{
-		name: "Mediano",
-		sub: [{ name: "Mediano Pies Ligeros" }, { name: "Mediano Fornido" }],
+		name: "Halfling",
+		sub: [{ name: "Lightfoot Halfling" }, { name: "Stout Halfling" }],
 	},
 	{
-		name: "Humano",
+		name: "Human",
 		sub: [],
 	},
 	{
-		name: "Dracónido",
+		name: "Dragonborn",
 		sub: [],
 	},
 	{
-		name: "Gnomo",
-		sub: [{ name: "Gnomo del bosque" }, { name: "Gnomo de la Roca" }],
+		name: "Gnome",
+		sub: [{ name: "Forest Gnome" }, { name: "Rock Gnome" }],
 	},
 	{
-		name: "SemiElfo",
+		name: "Half-Elf",
 		sub: [],
 	},
 	{
-		name: "SemiOrco",
+		name: "Half-Orc",
 		sub: [],
 	},
 	{
@@ -110,34 +78,36 @@ const races: ItemSelect[] = [
 		sub: [],
 	},
 ];
-const trasfondo: ItemSelect[] = [
-	{ name: "Acólito" },
-	{ name: "Charlatán" },
+
+export const background: ItemSelect[] = [
+	{ name: "Acolyte" },
+	{ name: "Charlatan" },
 	{ name: "Criminal" },
-	{ name: "Artista" },
-	{ name: "Héroe del Pueblo" },
-	{ name: "Artesano Gremial" },
-	{ name: "Ermitaño" },
+	{ name: "Entertainer" },
+	{ name: "Folk Hero" },
+	{ name: "Guild Artisan" },
+	{ name: "Hermit" },
 	{ name: "Noble" },
-	{ name: "Forastero" },
-	{ name: "Sabio" },
-	{ name: "Marinero" },
-	{ name: "Soldado" },
-	{ name: "Huérfano" },
-];
-const alineamiento: ItemSelect[] = [
-	{ name: "Legal Bueno" },
-	{ name: "Neutral Bueno" },
-	{ name: "Caótico Bueno" },
-	{ name: "Legal Neutral" },
-	{ name: "Neutral" },
-	{ name: "Caótico Neutral" },
-	{ name: "Legal Maligno" },
-	{ name: "Neutral Maligno" },
-	{ name: "Caótico Maligno" },
+	{ name: "Outlander" },
+	{ name: "Sage" },
+	{ name: "Sailor" },
+	{ name: "Soldier" },
+	{ name: "Urchin" },
 ];
 
-const chars: Record<string, number> = {
+export const alignment: ItemSelect[] = [
+	{ name: "Lawful Good" },
+	{ name: "Neutral Good" },
+	{ name: "Chaotic Good" },
+	{ name: "Lawful Neutral" },
+	{ name: "True Neutral" },
+	{ name: "Chaotic Neutral" },
+	{ name: "Lawful Evil" },
+	{ name: "Neutral Evil" },
+	{ name: "Chaotic Evil" },
+];
+
+export const chars: Record<string, number> = {
 	Fuerza: 0,
 	Destreza: 0,
 	Constitución: 0,
@@ -146,7 +116,7 @@ const chars: Record<string, number> = {
 	Carisma: 0,
 };
 
-const habilidades: HabilitesItem[] = [
+export const habilidades: HabilitesItem[] = [
 	{ name: "Acrobacias", value: 0, depende: "Destreza" },
 	{ name: "Atletismo", value: 0, depende: "Fuerza" },
 	{ name: "C. Arcano", value: 0, depende: "Inteligencia" },
@@ -166,9 +136,18 @@ const habilidades: HabilitesItem[] = [
 	{ name: "T. Animales", value: 0, depende: "Sabiduría" },
 ];
 
-const escuelas: string[] = ["Abjuración", "Adivinación", "Conjuración", "Encantamiento", "Evocación", "Ilusión", "Nigromancia", "Transmutación"];
+export const escuelas: string[] = [
+	"Abjuración",
+	"Adivinación",
+	"Conjuración",
+	"Encantamiento",
+	"Evocación",
+	"Ilusión",
+	"Nigromancia",
+	"Transmutación",
+];
 
-const skillsDependencies: SkillDependence[] = [
+export const skillsDependencies: SkillDependence[] = [
 	{ name: "Acrobatics", dependence: "Strength" },
 	{ name: "Athletics", dependence: "Strength" },
 	{ name: "Arcana", dependence: "Intelligence" },
@@ -187,4 +166,4 @@ const skillsDependencies: SkillDependence[] = [
 	{ name: "AnimalHandling", dependence: "Wisdom" },
 ];
 
-export { clases, races, alineamiento, trasfondo, habilidades, chars, escuelas, skillsDependencies };
+export const attributes: (keyof Attributes)[] = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];

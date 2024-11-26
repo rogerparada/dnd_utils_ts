@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useAppStore } from "@/src/store/useAppStore";
 import { ItemSelect } from "@/src/types/Player";
 import { ChangeEvent } from "react";
@@ -11,6 +12,8 @@ interface SelectorProps {
 }
 
 export default function SelectorPlayer({ items, label, name, value }: SelectorProps) {
+	const common = useTranslations("common");
+	const t = useTranslations(name);
 	const changeDescription = useAppStore((state) => state.changeDescription);
 
 	const handleSelectionChange = (event: ChangeEvent<HTMLSelectElement>): void => {
@@ -21,16 +24,16 @@ export default function SelectorPlayer({ items, label, name, value }: SelectorPr
 	return (
 		<div className="w-full mb-2">
 			<select name={name} id={name} className="w-full text-sm" onChange={handleSelectionChange} value={value}>
-				<option value="">Seleccione uno</option>
+				<option value="">{common("Select")}</option>
 				{items &&
 					items.map((item) => {
 						if (item.sub && item.sub?.length > 0) {
 							return (
-								<optgroup label={item.name} key={item.name}>
+								<optgroup label={t(item.name)} key={item.name}>
 									{item.sub.map((si) => {
 										return (
 											<option value={si.name} key={si.name}>
-												{si.name}
+												{t(si.name)}
 											</option>
 										);
 									})}
@@ -39,7 +42,7 @@ export default function SelectorPlayer({ items, label, name, value }: SelectorPr
 						}
 						return (
 							<option value={item.name} key={item.name}>
-								{item.name}
+								{t(item.name)}
 							</option>
 						);
 					})}

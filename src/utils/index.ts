@@ -1,11 +1,3 @@
-import { abilities } from "../Global";
-import { Ability } from "../types";
-
-export const getAbilityTranslation = (ability: string, lang: string = "en"): string => {
-	const key = lang as keyof Ability;
-	return abilities[ability][key] ?? ability;
-};
-
 export const calculateValue = (value: number): string => {
 	const result = Math.floor((value - 10) / 2);
 	return result > 0 ? "+" + result : "" + result;

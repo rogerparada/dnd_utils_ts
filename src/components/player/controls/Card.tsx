@@ -79,7 +79,7 @@ export default function Card({ name, value }: CardProps) {
 				}}
 			/>
 			<g name="text">
-				<text y={50} x="50%" textAnchor="middle" style={{ textTransform: "uppercase", fontWeight: "bold", fontSize: 25, textAlign: "center" }}>
+				<text y={50} x="50%" textAnchor="middle" style={{ textTransform: "uppercase", fontWeight: "bold", fontSize: 22, textAlign: "center" }}>
 					{name}
 				</text>
 				<text y={200} x="50%" textAnchor="middle" fontSize={120}>

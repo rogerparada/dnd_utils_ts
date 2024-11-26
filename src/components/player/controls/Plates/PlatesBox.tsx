@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function PlatesBox({ name, label }: Props) {
-	const labels = ["PC ", "PP ", "PE ", "PO ", "PPT"];
+	const labels = ["Cooper", "Silver", "Electron", "Gold", "Platinum"];
 	return (
 		<div className="mt-3 border-solid border-2 p-3 overflow-hidden w-full border-black bg-white rounded-lg">
 			<div className="plates absolute -ml-8 flex flex-col gap-4">
