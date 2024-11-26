@@ -7,6 +7,39 @@
 	--foreground: #171717;
 }
 
+@layer base {
+	:root {
+		--ring-color: 0 68 98;
+		--second-ring-color: 255 255 255;
+		--bg-color: #222;
+	}
+
+	[type="text"],
+	label,
+	select {
+		@apply text-sm;
+	}
+
+	[type="checkbox"]:focus,
+	[type="checkbox"]:hover {
+		--tw-ring-color: rgb(var(--ring-color));
+		@apply bg-white border-[--bg-color];
+	}
+
+	[type="text"]:focus {
+		--tw-ring-color: rgb(var(--second-ring-color));
+		@apply bg-white border-[--bg-color];
+	}
+
+	[type="checkbox"]:checked,
+	[type="checkbox"]:checked:focus,
+	[type="checkbox"]:hover,
+	[type="checkbox"]:hover:checked {
+		--tw-ring-color: rgb(var(--ring-color));
+		@apply bg-[--bg-color] border-[--bg-color];
+	}
+}
+
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background: #0a0a0a;

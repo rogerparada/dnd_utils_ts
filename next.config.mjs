@@ -1,14 +1,13 @@
-/** @type {import('next').NextConfig} */
+import createNextIntlPlugin from "next-intl/plugin";
 
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
 	webpack: (config) => {
 		config.externals = [...config.externals, "bcrypt"];
 		return config;
 	},
-	i18n: {
-		locales: ["en", "es", "de"],
-		defaultLocale: "es",
-	},
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

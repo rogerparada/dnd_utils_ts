@@ -11,6 +11,11 @@ export const calculateValue = (value: number): string => {
 	return result > 0 ? "+" + result : "" + result;
 };
 
+export const calculateProficiency = (value: number, proficiency: number) => {
+	const result = Math.floor((value - 10) / 2) + proficiency;
+	return result > 0 ? "+" + result : "" + result;
+};
+
 export const calculateProficiencyBonus = (level: number): string => {
 	if (level < 1 || level > 20) {
 		throw new Error("Level must be between 1 and 20.");

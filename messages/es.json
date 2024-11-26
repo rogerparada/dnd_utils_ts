@@ -1,0 +1,28 @@
+{
+	"common": {
+		"Strength": "Fuerza",
+		"Dexterity": "Destreza",
+		"Constitution": "Constitución",
+		"Intelligence": "Inteligencia",
+		"Wisdom": "Sabiduría",
+		"Charisma": "Carisma",
+		"Acrobatics": "Acrobacias",
+		"AnimalHandling": "T. animales",
+		"Arcana": "C. Arcano",
+		"Athletics": "Atletismo",
+		"Deception": "Engaño",
+		"History": "Historia",
+		"Insight": "Percepción",
+		"Intimidation": "Intimidación",
+		"Investigation": "Investigación",
+		"Medicine": "Medicina",
+		"Nature": "Naturaleza",
+		"Perception": "Percepción",
+		"Performance": "Interpretación",
+		"Persuasion": "Persuasión",
+		"Religion": "Religión",
+		"SleightOfHand": "Juego de Manos",
+		"Stealth": "Sigilo",
+		"Survival": "Supervivencia"
+	}
+}

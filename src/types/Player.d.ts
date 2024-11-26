@@ -39,6 +39,25 @@ export type Attributes = {
 	Charisma: { value: number; proficiency: boolean };
 };
 
-export type Skill = {
-	[key: string]: boolean;
+export type Skills = {
+	Acrobatics: boolean;
+	AnimalHandling: boolean;
+	Arcana: boolean;
+	Athletics: boolean;
+	Deception: boolean;
+	History: boolean;
+	Insight: boolean;
+	Intimidation: boolean;
+	Investigation: boolean;
+	Medicine: boolean;
+	Nature: boolean;
+	Perception: boolean;
+	Performance: boolean;
+	Persuasion: boolean;
+	Religion: boolean;
+	SleightOfHand: boolean;
+	Stealth: boolean;
+	Survival: boolean;
 };
+
+export type SkillDependence = { name: keyof Skills; dependence: keyof Attributes };

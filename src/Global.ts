@@ -1,5 +1,5 @@
 import { Colors, ClassImages, Abilities } from "./types";
-import { ClassSelect, HabilitesItem, ItemSelect } from "./types/Player";
+import { ClassSelect, HabilitesItem, ItemSelect, SkillDependence } from "./types/Player";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -168,4 +168,23 @@ const habilidades: HabilitesItem[] = [
 
 const escuelas: string[] = ["Abjuración", "Adivinación", "Conjuración", "Encantamiento", "Evocación", "Ilusión", "Nigromancia", "Transmutación"];
 
-export { clases, races, alineamiento, trasfondo, habilidades, chars, escuelas };
+const skillsDependencies: SkillDependence[] = [
+	{ name: "Acrobatics", dependence: "Strength" },
+	{ name: "Athletics", dependence: "Strength" },
+	{ name: "Arcana", dependence: "Intelligence" },
+	{ name: "Deception", dependence: "Charisma" },
+	{ name: "History", dependence: "Intelligence" },
+	{ name: "Performance", dependence: "Charisma" },
+	{ name: "SleightOfHand", dependence: "Dexterity" },
+	{ name: "Medicine", dependence: "Wisdom" },
+	{ name: "Nature", dependence: "Intelligence" },
+	{ name: "Perception", dependence: "Wisdom" },
+	{ name: "Insight", dependence: "Wisdom" },
+	{ name: "Persuasion", dependence: "Charisma" },
+	{ name: "Religion", dependence: "Intelligence" },
+	{ name: "Stealth", dependence: "Dexterity" },
+	{ name: "Survival", dependence: "Wisdom" },
+	{ name: "AnimalHandling", dependence: "Wisdom" },
+];
+
+export { clases, races, alineamiento, trasfondo, habilidades, chars, escuelas, skillsDependencies };

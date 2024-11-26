@@ -3,24 +3,26 @@ import { useTranslations } from "next-intl";
 import { calculateProficiency, calculateValue } from "@/src/utils";
 import { useAppStore } from "@/src/store/useAppStore";
 
-type ListBoxItemProps = {
+type ListBoxSkillItemProps = {
 	name: string;
 	value: number;
+	dependence: string;
 	checked: boolean;
 };
 
-export default function ListBoxItem({ name, value, checked }: ListBoxItemProps) {
+export default function ListBoxSkillItem({ name, value, dependence, checked }: ListBoxSkillItemProps) {
 	const t = useTranslations("common");
 
-	const changeAttributesProficiency = useAppStore((state) => state.changeAttributesProficiency);
+	const changeSkillsProficiency = useAppStore((state) => state.changeSkillsProficiency);
 	const proficiency = useAppStore((state) => state.proficiency);
 
 	const calculated = useMemo(() => (checked ? calculateProficiency(value, proficiency) : calculateValue(value)), [value, checked, proficiency]);
-	const label = useMemo(() => t(name), [name]);
+	const label = useMemo(() => t(name), [name, t]);
+	const newDependence = useMemo(() => t(dependence), [dependence, t]);
 
 	const toggleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { checked } = e.target;
-		changeAttributesProficiency(name, checked);
+		changeSkillsProficiency(name, checked);
 	};
 
 	return (
@@ -29,7 +31,9 @@ export default function ListBoxItem({ name, value, checked }: ListBoxItemProps) 
 			<label htmlFor={name} className="text-sm border-b-2  w-6 flex justify-center">
 				{calculated}
 			</label>
-			<label className="text-xs">{label}</label>
+			<label className="text-xs">
+				{label} <i className="text-gray-600">{`(${newDependence.substring(0, 3)})`}</i>
+			</label>
 		</div>
 	);
 }

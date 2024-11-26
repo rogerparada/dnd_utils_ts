@@ -1,15 +1,17 @@
 import { StateCreator } from "zustand";
-import { Attributes, Player, Skill } from "../types/Player";
+import { Attributes, Player, Skills } from "../types/Player";
 import { calculateLevel } from "../utils";
 
 export type PlayerSliceType = {
 	player: Player;
 	proficiency: number;
 	attributes: Attributes;
-	skillProficiency: Skill;
+	skillProficiency: Skills;
 	changeExperiencePoints: (exp: number) => void;
 	changeDescription: (name: string, value: string) => void;
 	changeAttributes: (name: string, value: number) => void;
+	changeAttributesProficiency: (name: string, proficiency: boolean) => void;
+	changeSkillsProficiency: (name: string, proficiency: boolean) => void;
 };
 
 const MIN_EXP = 0;
@@ -34,7 +36,7 @@ const defaultPlayer: Player = {
 	experiencePoints: 0,
 };
 
-const defaultSkill: Skill = {
+const defaultSkill: Skills = {
 	Acrobatics: false,
 	AnimalHandling: false,
 	Arcana: false,
@@ -55,7 +57,7 @@ const defaultSkill: Skill = {
 	Survival: false,
 };
 
-export const createPlayerSlice: StateCreator<PlayerSliceType> = (set) => ({
+export const createPlayerSlice: StateCreator<PlayerSliceType> = (set, get) => ({
 	player: defaultPlayer,
 	proficiency: 2,
 	attributes: defaultAttributes,
@@ -87,5 +89,26 @@ export const createPlayerSlice: StateCreator<PlayerSliceType> = (set) => ({
 				},
 			}));
 		}
+	},
+	changeAttributesProficiency: (name, proficiency) => {
+		const key = name as keyof Attributes;
+		const value = get().attributes[key].value;
+
+		set((state) => ({
+			...state,
+			attributes: {
+				...state.attributes,
+				[key]: { value, proficiency },
+			},
+		}));
+	},
+	changeSkillsProficiency: (name, proficiency) => {
+		set((state) => ({
+			...state,
+			skillProficiency: {
+				...state.skillProficiency,
+				[name]: proficiency,
+			},
+		}));
 	},
 });

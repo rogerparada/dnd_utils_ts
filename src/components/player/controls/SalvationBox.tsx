@@ -13,14 +13,8 @@ export default function SalvationBox({ name }: SalvationBoxProps) {
 	return (
 		<div className="mt-3 border-solid border-2 p-3 overflow-hidden relative w-full rounded-lg border-black">
 			{values.map((a, i) => (
-				<ListBoxItem name={a} label={a} value={attributes[a].value} key={`${a}-${i}`} />
+				<ListBoxItem name={a} value={attributes[a].value} checked={attributes[a].proficiency} key={`${a}-${i}`} />
 			))}
-
-			{/* <ListBoxItem name="Strength" label="Fuerza" value={attributes.Strength.value} />
-			<ListBoxItem name="Dexterity" label="Destreza" value={attributes.Dexterity.value} />
-			<ListBoxItem name="Constitution" label="Constitución" value={attributes.Constitution.value} />
-			<ListBoxItem name="Intelligence" label="Inteligencia" value={attributes.Intelligence.value} />
-			<ListBoxItem name="Charisma" label="Carisma" value={attributes.Charisma.value} /> */}
 			<div className="flex justify-center relative -bottom-1 text-center mt-2">
 				<span className="uppercase text-xs font-bold">{name}</span>
 			</div>
