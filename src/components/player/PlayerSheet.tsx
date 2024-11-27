@@ -10,7 +10,7 @@ import PassivePerceptionBox from "./controls/PassivePerceptionBox";
 import PlatesBox from "./controls/Plates/PlatesBox";
 import RoundAttributeBox from "./controls/RoundAttributeBox";
 import SalvationBox from "./controls/Boxes/SalvationBox";
-import Salvations from "./controls/Salvations";
+import SavingThrows from "./controls/SavingThrows";
 import SelectorPlayer from "./controls/SelectorPlayer";
 import ShieldBox from "./Shields/ShieldBox";
 import SimpleTextbox from "./controls/SimpleTextbox";
@@ -92,7 +92,7 @@ export default function PlayerSheet() {
 						<MultipleBox name="puntos" labels={[t("HP"), t("THP")]} />
 						<div className="hits w-full border-2 flex gap-4">
 							<HitDices />
-							<Salvations pass={0} fails={0} />
+							<SavingThrows pass={0} fails={0} />
 						</div>
 					</div>
 
