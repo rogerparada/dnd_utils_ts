@@ -30,7 +30,7 @@ export default function PlayerSheet() {
 
 	return (
 		<>
-			<div id="header" className="my-5 md:flex w-full border-black border-2 rounded-lg gap-2 p-3 bg-white">
+			<div id="header" className="my-5 md:flex w-full border-black text-black border-2 rounded-lg gap-2 p-3 bg-white">
 				<div id="playerName" className="playerName p-5 md:w-1/3 w-full">
 					<SimpleTextbox name="name" label={t("CharacterName")} value={player.name} />
 					<LevelCalculator />
@@ -53,7 +53,7 @@ export default function PlayerSheet() {
 			</div>
 			<div
 				id="columnas"
-				className="grid md:grid-cols-2 xl:grid-cols-3 border-black w-full border-2 my-5 rounded-lg min-h-96 md:gap-8 xl:gap-5 p-5 bg-white"
+				className="grid md:grid-cols-2 xl:grid-cols-3 border-black w-full border-2 my-5 rounded-lg min-h-96 md:gap-8 xl:gap-5 p-5 bg-white text-black"
 			>
 				<div id="col1" className="w-full">
 					<div className="flex gap-3 flex-col xl:flex-row">

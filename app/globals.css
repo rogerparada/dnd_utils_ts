@@ -59,6 +59,23 @@ body {
 	}
 }
 
+.triangle-container {
+	position: relative;
+}
+
+.triangle-container::before {
+	content: "";
+	position: absolute;
+	top: -10px; /* Ajusta la posición */
+	right: 5px; /* Centra el triángulo horizontalmente */
+
+	border-style: solid;
+	border-width: 0 10px 10px 10px; /* Ancho de los bordes: derecha, abajo, izquierda */
+	border-color: transparent transparent white transparent; /* Solo el borde inferior tiene color */
+	width: 0;
+	height: 0;
+}
+
 .modifier {
 	border: solid 0.5px black;
 	border-radius: 50%;

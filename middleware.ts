@@ -15,6 +15,7 @@ const publicRoutes = [
 	"/api/verify-email",
 	"/master",
 	"/master/combat",
+	"/player/new",
 ];
 
 export default middleware((req) => {
@@ -22,10 +23,20 @@ export default middleware((req) => {
 	const isLoggedIn = !!auth?.user;
 	const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 	const isClassRoute = nextUrl.pathname.startsWith("/classes/");
+
+	const resp = NextResponse.next();
+	const locale = req.cookies.get("NEXT_LOCALE")?.value;
+
+	if (!locale) {
+		const acceptLanguage = req.headers.get("accept-language") || "";
+		const language = acceptLanguage.split(",")[0];
+		resp.cookies.set("NEXT_LOCALE", language);
+	}
+
 	if (!isPublicRoute && !isClassRoute && !isLoggedIn) {
 		return NextResponse.redirect(new URL("/auth/login", nextUrl));
 	}
-	return NextResponse.next();
+	return resp;
 });
 
 export const config = {
