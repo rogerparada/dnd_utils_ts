@@ -22,7 +22,7 @@ export default function HitDices() {
 	const level = useAppStore((state) => state.player.level);
 	const playerClass = useAppStore((state) => state.player.playerClass);
 
-	const hitDice = useMemo(() => `${level}d${dices[playerClass] || 6}`, [level, playerClass]);
+	const hitDice = useMemo(() => (dices[playerClass] ? `${level}d${dices[playerClass]}` : ""), [level, playerClass]);
 
 	return (
 		<div className="bg-white border-2 border-gray-800 w-1/2 h-32 rounded-md p-2">
