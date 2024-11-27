@@ -38,3 +38,24 @@ export const calculateLevel = (points: number) => {
 	if (points < 355000) return 19;
 	return 20;
 };
+
+export const calculateSpeed = (race: string): number => {
+	if (!race) return 0;
+
+	const races: { [key: string]: number } = {
+		"Wood Elf": 35,
+		"Hill Dwarf": 25,
+		"Mountain Dwarf": 25,
+		"Lightfoot Halfling": 25,
+		"Stout Halfling": 25,
+		"Forest Gnome": 25,
+		"Rock Gnome": 25,
+		Duergar: 25,
+	};
+	return races[race] || 30;
+};
+
+export const speedSpecialModifier = (playerClass: string): boolean => {
+	const classes = ["Monk", "Bard", "Barbarian"];
+	return classes.includes(playerClass);
+};

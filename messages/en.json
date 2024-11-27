@@ -132,5 +132,8 @@
 		"Lawful Evil": "Lawful Evil",
 		"Neutral Evil": "Neutral Evil",
 		"Chaotic Evil": "Chaotic Evil"
+	},
+	"message": {
+		"SpeedSpecial": "Your class may have a modifier"
 	}
 }

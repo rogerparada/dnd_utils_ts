@@ -132,5 +132,8 @@
 		"Lawful Evil": "Legal Malvado",
 		"Neutral Evil": "Neutral Malvado",
 		"Chaotic Evil": "Caótico Malvado"
+	},
+	"message": {
+		"SpeedSpecial": "Su clase puede tener un modificador"
 	}
 }

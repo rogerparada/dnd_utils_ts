@@ -131,5 +131,8 @@
 		"Lawful Evil": "Rechtmäßig Böse",
 		"Neutral Evil": "Neutral Böse",
 		"Chaotic Evil": "Chaotisch Böse"
+	},
+	"message": {
+		"SpeedSpecial": "Ihre Klasse kann einen Modifikator haben"
 	}
 }

@@ -6,8 +6,8 @@ type ShieldBoxProps = {
 
 export default function ShieldBox({ name, value = 0 }: ShieldBoxProps) {
 	return (
-		<div id={name} className="grid text-center w-24 md:w-32 h-32 md:h-32  gap-1 mb-5 md:m-auto">
-			<div className={"m-auto z-0 w-32 mt-0"}>
+		<div id={name} className="grid text-center w-24 md:w-28 xl:w-32 h-32 xl:h-32  gap-1 mb-5 md:m-auto">
+			<div className={"m-auto z-0 w-full mt-0"}>
 				<svg id="Escudo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216.53 250">
 					<path
 						d="m4.07,70.43c4.11-1.79,11.53-5.71,17.73-13.64,10.11-12.92,9.78-27.31,9.55-31.38,25.95-7.5,51.91-15.01,77.86-22.51l74.93,21.14c0,4.68.65,16.19,8.19,27.97,7.01,10.95,16.26,16.31,20.46,18.42,2.3,16.12,2.99,37.33-2.9,60.84-18.8,75.03-88.56,109.69-101.46,115.82-11.62-4.98-77.23-34.38-99.29-104.92C.05,113.1,1.51,87.14,4.07,70.43Z"

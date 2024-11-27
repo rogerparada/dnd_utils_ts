@@ -20,13 +20,19 @@ import SquareShieldBox from "./Shields/SquareShieldBox";
 import { useTranslations } from "next-intl";
 import { useAppStore } from "@/src/store/useAppStore";
 import { alignment, classes, races, background } from "@/src/Global";
+import { useMemo } from "react";
+import { calculateSpeed, speedSpecialModifier } from "@/src/utils";
+import MessageBox from "../ui/MessageBox";
 
 export default function PlayerSheet() {
 	const t = useTranslations("player");
+	const message = useTranslations("message");
 
 	const player = useAppStore((state) => state.player);
 	const proficiency = useAppStore((state) => state.proficiency);
 	const dexterity = useAppStore((state) => state.attributes.Dexterity);
+	const speed = useMemo(() => calculateSpeed(player.race), [player.race]);
+	const special = useMemo(() => speedSpecialModifier(player.playerClass), [player.playerClass]);
 
 	return (
 		<>
@@ -74,9 +80,15 @@ export default function PlayerSheet() {
 					<div className="bg-gray-300 w-full rounded-xl p-3 flex flex-col md:gap-3">
 						<div className="flex justify-center gap-3">
 							<ShieldBox name={t("AC")} />
-							<SquareShieldBox name={t("Initiative")} value={dexterity.value} />
-							<SquareShieldBox name={t("Speed")} />
+							<SquareShieldBox name={t("Initiative")} value={dexterity.value} ability />
+							<SquareShieldBox name={t("Speed")} value={speed} special={special} />
 						</div>
+						{special && (
+							<MessageBox>
+								<sup>*</sup>
+								{message("SpeedSpecial")}
+							</MessageBox>
+						)}
 						<MultipleBox name="puntos" labels={[t("HP"), t("THP")]} />
 						<div className="hits w-full border-2 flex gap-4">
 							<HitDices />

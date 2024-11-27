@@ -4,13 +4,15 @@ import { useMemo } from "react";
 type ShieldBoxProps = {
 	name: string;
 	value?: number;
+	ability?: boolean;
+	special?: boolean;
 };
 
-export default function ShieldBox({ name, value = 0 }: ShieldBoxProps) {
-	const calculated = useMemo(() => calculateValue(value), [value]);
+export default function ShieldBox({ name, value = 0, ability, special }: ShieldBoxProps) {
+	const calculated = useMemo(() => (ability ? calculateValue(value) : value), [value, ability]);
 	return (
-		<div id={name} className="grid text-center w-24 md:w-32 h-32 md:h-32  gap-1 mb-5 md:m-auto">
-			<div className={"m-auto z-0 w-32 mt-3"}>
+		<div id={name} className="grid text-center w-24 md:w-28 xl:w-32 h-32 xl:h-32  gap-1 mb-5 md:m-auto">
+			<div className={"m-auto z-0 w-full mt-3"}>
 				<svg id="Square" data-name="Capa 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270.74 250">
 					<polygon
 						points="1.61 22.27 23.92 .67 241.41 .67 267.7 22.27 267.7 223.04 243.8 249.33 25.51 249.33 1.61 225.43 1.61 22.27"
@@ -43,6 +45,11 @@ export default function ShieldBox({ name, value = 0 }: ShieldBoxProps) {
 						<text fontSize={135} y={200} x="50%" textAnchor="middle">
 							{calculated}
 						</text>
+						{special && (
+							<text fontSize={60} x={210} y={120}>
+								*
+							</text>
+						)}
 					</g>
 				</svg>
 			</div>
