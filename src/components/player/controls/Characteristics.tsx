@@ -15,7 +15,7 @@ export default function Characteristics() {
 	};
 
 	return (
-		<div className="flex gap-10 lg:gap-3 flex-wrap lg:flex-col mx-auto">
+		<div className="flex gap-10 lg:gap-3 flex-wrap xl:flex-col mx-auto">
 			{attributes.map((attribute) => (
 				<div className="grid text-center w-28 md:w-32 h-32 md:h-36 gap-1 mx-auto relative" key={`${attribute}Box`}>
 					<div id="Recuadro" className="m-auto z-0">

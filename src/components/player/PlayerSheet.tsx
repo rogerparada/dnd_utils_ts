@@ -1,7 +1,7 @@
-import AttributeBox from "./controls/AttributeBox";
+import AttributeBox from "./controls/Boxes/AttributeBox";
 import Characteristics from "./controls/Characteristics";
 import DescriptionBox from "./controls/Boxes/DescriptionBox";
-import EnchantsWeapon from "./controls/EnchantsWeapon";
+import AttackSpellList from "./controls/AttackSpells/AttackSpellList";
 import ExperienceInput from "./controls/ExperienceInput";
 import HitDices from "./controls/HitDices";
 import LevelCalculator from "./controls/LevelCalculator";
@@ -96,7 +96,7 @@ export default function PlayerSheet() {
 						</div>
 					</div>
 
-					<EnchantsWeapon />
+					<AttackSpellList />
 					<PlatesBox name="mne" label={t("MoneyEquipment")} />
 				</div>
 				<div id="col3" className="flex flex-col">
