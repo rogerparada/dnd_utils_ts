@@ -48,51 +48,6 @@ model SpellClass {
   class   Classes @relation(fields: [classId], references: [id])
 }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  username      String?   @unique
-  email         String?   @unique
-  emailVerified DateTime?
-  password      String?
-  role          String    @default("user")
-  image         String?
-  accounts      Account[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-}
-
-model Account {
-  id                       String  @id @default(cuid())
-  userId                   String  @unique
-  type                     String
-  provider                 String
-  providerAccountId        String
-  refresh_token            String?
-  access_token             String?
-  expires_at               Int?
-  token_type               String?
-  scope                    String?
-  id_token                 String?
-  session_state            String?
-  refresh_token_expires_in Int?
-  user                     User?   @relation(fields: [userId], references: [id])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([provider, providerAccountId])
-  @@index([userId])
-}
-
-model VerificationToken {
-  identifier String   @unique
-  token      String
-  expires    DateTime
-
-  @@id([identifier])
-}
-
 model Player {
   id              String            @id @default(cuid())
   name            String
@@ -148,3 +103,50 @@ model PlayerSkills {
   playerId       String?
   player         Player? @relation(fields: [playerId], references: [id], onDelete: Cascade)
 }
+
+// Auth
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  username      String?   @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  password      String?
+  role          String    @default("user")
+  image         String?
+  //accounts      Account[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// model Account {
+//   id                       String  @id @default(cuid())
+//   userId                   String  @unique
+//   type                     String
+//   provider                 String
+//   providerAccountId        String
+//   refresh_token            String?
+//   access_token             String?
+//   expires_at               Int?
+//   token_type               String?
+//   scope                    String?
+//   id_token                 String?
+//   session_state            String?
+//   refresh_token_expires_in Int?
+//   user                     User?   @relation(fields: [userId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+//   @@unique([provider, providerAccountId])
+//   @@index([userId])
+// }
+
+// model VerificationToken {
+//   identifier String   @unique
+//   token      String
+//   expires    DateTime
+
+//   @@id([identifier])
+// }
