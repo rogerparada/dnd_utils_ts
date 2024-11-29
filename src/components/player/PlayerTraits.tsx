@@ -3,9 +3,7 @@ import React from "react";
 import MultipleBox from "./controls/MultipleBox";
 import DescriptionBox from "./controls/Boxes/DescriptionBox";
 
-type Props = {};
-
-export default function PlayerTraits({}: Props) {
+export default function PlayerTraits() {
 	const t = useTranslations("player");
 	return (
 		<>

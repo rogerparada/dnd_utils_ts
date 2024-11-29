@@ -1,15 +1,15 @@
+import { clases as classes } from "@/prisma/data/clases";
 import SpellCardList from "@/src/components/spells/SpellCardList";
 import SpellsSelector from "@/src/components/spells/SpellsSelector";
 import Pagination from "@/src/components/ui/Pagination";
 import { images } from "@/src/Global";
 import { prisma } from "@/src/lib/prisma";
-import { getAbilityTranslation } from "@/src/utils";
+import { getTranslations } from "next-intl/server";
+
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export const generateStaticParams = async () => {
-	const classes = await prisma.classes.findMany();
-
 	return classes.map((clase) => ({ name: clase.name }));
 };
 
@@ -69,15 +69,6 @@ async function spellsCount(classId: number, level: number) {
 	});
 }
 
-async function getClasses() {
-	return await prisma.classes.findMany({
-		select: {
-			name: true,
-			lang_es: true,
-		},
-	});
-}
-
 const PAGE_SIZE = 10;
 
 export default async function ClassPage({
@@ -94,12 +85,13 @@ export default async function ClassPage({
 	const skip = (page - 1) * pageSize;
 	const clase = await getClassInfo(name);
 
+	const getAbilityTranslation = await getTranslations("common");
+
 	if (!clase || page < 0) return redirect("/classes");
 
-	const classes = await getClasses();
 	const spells = (await getSpells(clase.id, level, pageSize, skip)).spells.map((spell) => spell.spell);
 	const { src, alt } = images[clase.name];
-	const characteristics = getAbilityTranslation(clase.primaryChar, "es") + ", " + getAbilityTranslation(clase.secondaryChar, "es");
+	const characteristics = getAbilityTranslation(clase.primaryChar) + ", " + getAbilityTranslation(clase.secondaryChar);
 	const totalSpells = await spellsCount(clase.id, level);
 	const totalPages = Math.ceil(totalSpells / pageSize);
 	const route = level ? `/classes/${name}?level=${level}&` : `/classes/${name}?`;
