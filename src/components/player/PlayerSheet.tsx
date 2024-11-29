@@ -4,7 +4,7 @@ import { calculateSpeed, speedSpecialModifier } from "@/src/utils";
 import PlayerHeader from "./PlayerHeader";
 import PlayerCharacteristics from "./PlayerCharacteristics";
 import PLayerEquipment from "./PLayerEquipment";
-import PlayerTraits from "./PLayerTraits";
+import PlayerTraits from "./PlayerTraits";
 
 export default function PlayerSheet() {
 	const player = useAppStore((state) => state.player);
