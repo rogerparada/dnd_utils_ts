@@ -108,11 +108,11 @@ model PlayerSkills {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
-  username      String?   @unique
-  email         String?   @unique
+  // name          String?
+  username      String    @unique
+  email         String    @unique
   emailVerified DateTime?
-  password      String?
+  password      String
   role          String    @default("user")
   image         String?
   //accounts      Account[]
@@ -143,10 +143,10 @@ model User {
 //   @@index([userId])
 // }
 
-// model VerificationToken {
-//   identifier String   @unique
-//   token      String
-//   expires    DateTime
+model VerificationToken {
+  identifier String   @unique
+  token      String
+  expires    DateTime
 
-//   @@id([identifier])
-// }
+  @@id([identifier])
+}

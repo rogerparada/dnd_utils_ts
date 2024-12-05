@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { login } from "@/actions/login-user-action";
 import { Dice } from "@/src/types";
 import Link from "next/link";
@@ -24,25 +24,21 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 	const handleSubmit = async (formData: FormData) => {
 		setDice({ ...dice, rolling: true });
 		const data = {
-			email: formData.get("email"),
+			username: formData.get("username"),
 			password: formData.get("password"),
 		};
 
 		const response = await login(data);
-		if (response?.error) {
-			setError(`Pifia - ${response.error}`);
+
+		if (!response.success && response.errors) {
+			setError(`Pifia - ${response?.errors[0]}`);
 			setDice({ ...dice, empty: false, value: 1, rolling: false });
 			return;
 		}
 		setDice({ ...dice, empty: false, value: 20, rolling: false });
+
 		redirect("/");
 	};
-
-	useEffect(() => {
-		if (verified) {
-			setDice({ ...dice, empty: false, value: 20, rolling: false, primary: "rgb(34 197 94)", secondary: "rgb(34 197 94)" });
-		}
-	}, [verified, dice]);
 
 	return (
 		<>
@@ -59,12 +55,12 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 					{error && <div className="p-4 bg-red-500 text-white uppercase font-black text-center text-xs">{error}</div>}
 					<div className="w-full borde-2 border-blue-400 rounded-lg flex">
 						<div className="bg-blue-500 text-white p-2 w-10 flex justify-center items-center rounded-l-lg">
-							<span className="icon-[material-symbols--mail]" />
+							<span className="icon-[lucide--user]" />
 						</div>
 						<input
 							type="text"
-							name="email"
-							id="email"
+							name="username"
+							id="username"
 							placeholder="Correo electrónico"
 							className="rounded-r-lg flex-1 focus:border"
 							required

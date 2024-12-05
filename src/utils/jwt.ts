@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 type UserPayload = {
 	id: string;
-	name: string;
+	username: string;
 	role: string;
 };
 
@@ -13,7 +13,6 @@ export function getJWT(payload: UserPayload) {
 
 export function verifyJWT(token: string) {
 	const secret = process.env.SECRET_KEY;
-	console.log(process.env.SECRET_KEY);
 	try {
 		return jwt.verify(token, secret!);
 	} catch (error) {

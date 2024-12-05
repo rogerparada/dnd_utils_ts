@@ -34,7 +34,7 @@ export const SearchSchema = z.object({
 
 export const UserCreateFormSchema = z
 	.object({
-		name: z.string().min(2, { message: "Se requiere un nombre de usuario" }),
+		username: z.string().min(2, { message: "Se requiere un nombre de usuario" }),
 		email: z.string().email().min(2, { message: "Se requiere un email de registro" }),
 		password: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
 		password_confirm: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
@@ -42,7 +42,7 @@ export const UserCreateFormSchema = z
 	.refine((value) => value.password === value.password_confirm, { message: "Las contraseñas no coinciden", path: ["password_confirm"] });
 
 export const UserLoginFormSchema = z.object({
-	email: z.string().email().min(2, { message: "Se requiere un email de registro" }),
+	username: z.string().min(2, { message: "Se requiere un usuario de registro" }),
 	password: z.string().min(8, { message: "La contraseña debe tener al menos 8 caracteres" }),
 });
 
@@ -60,6 +60,23 @@ export const CharacterSchema = z.object({
 		.refine((value) => value >= 1, { message: "Initiative cannot be less than 0" })
 		.or(z.number()),
 	disabled: z.boolean().default(false).optional(),
+});
+
+export const AuthTokenSchema = z.object({
+	id: z.string(),
+	username: z.string(),
+	role: z.enum(["user", "admin"]),
+	iat: z.string(),
+	exp: z.string().refine(
+		(value) => {
+			const date = new Date(value);
+			if (isNaN(date.getTime())) throw new Error("Invalid Format");
+
+			const currentDate = new Date();
+			return date >= currentDate;
+		},
+		{ message: "Token expired or invalid date" }
+	),
 });
 
 export type UserLogin = z.infer<typeof UserLoginFormSchema>;

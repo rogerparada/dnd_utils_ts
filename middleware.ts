@@ -22,6 +22,7 @@ export default function middleware(req: NextRequest) {
 
 	const resp = NextResponse.next();
 	const locale = cookies.get("NEXT_LOCALE");
+	const authCookie = cookies.get("auth_token");
 
 	if (!locale) {
 		const acceptLanguage = headers.get("accept-language") || "";
@@ -29,7 +30,7 @@ export default function middleware(req: NextRequest) {
 		resp.cookies.set("NEXT_LOCALE", language);
 	}
 
-	if (!isPublicRoute && !isClassRoute) {
+	if (!isPublicRoute && !isClassRoute && authCookie) {
 		return NextResponse.redirect(new URL("/auth/login", nextUrl));
 	}
 

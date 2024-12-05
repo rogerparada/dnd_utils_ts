@@ -1,11 +1,15 @@
-import AdminSideBar from "@/src/components/AdminSideBar";
-//import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
-export default async function layout({ children }: { children: React.ReactNode }) {
-	// const session = await auth();
-	// if (session?.user.role !== "admin") {
-	// 	return redirect("/");
-	// }
+import AdminSideBar from "@/src/components/AdminSideBar";
+import { checkLogin } from "@/src/utils/auth";
+import { AuthTokenSchema } from "@/src/schema";
+
+export default function layout({ children }: { children: React.ReactNode }) {
+	const result = AuthTokenSchema.safeParse(checkLogin());
+	console.log("🚀 ~ layout ~ result:", result);
+	if (!result.success) return redirect("/");
+	if (result.data.role !== "admin") return redirect("/");
+
 	return (
 		<div className="flex">
 			<AdminSideBar />

@@ -14,7 +14,7 @@ export default function RegisterPage() {
 
 	const handleSubmit = async (formData: FormData) => {
 		const data = {
-			name: formData.get("name"),
+			username: formData.get("username"),
 			email: formData.get("email"),
 			password: formData.get("password"),
 			password_confirm: formData.get("password_confirm"),
@@ -43,8 +43,8 @@ export default function RegisterPage() {
 						</div>
 						<input
 							type="text"
-							name="name"
-							id="name"
+							name="username"
+							id="username"
 							placeholder="Nombre de usuario"
 							className="rounded-r-lg flex-1 focus:border"
 							required

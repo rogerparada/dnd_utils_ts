@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	webpack: (config) => {
-		config.externals = [...config.externals, "bcrypt"];
+		// config.externals = [...config.externals, "bcrypt"];
 		return config;
 	},
 };
