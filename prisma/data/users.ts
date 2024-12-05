@@ -9,8 +9,7 @@ export const hashPassword = async (password: string) => {
 export const users = async () => {
 	const admin: User = {
 		id: "firstAdmin",
-		name: "Roger",
-		username: "roger.parada10@gmail.com",
+		username: "Roger",
 		email: "roger.parada10@gmail.com",
 		emailVerified: new Date(Date.now()),
 		password: await hashPassword("Password1"),
