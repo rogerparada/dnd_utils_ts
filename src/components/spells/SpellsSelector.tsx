@@ -43,7 +43,7 @@ export default function SpellsSelector({ clases }: SpellsSelectorProps) {
 			<label htmlFor="clase" className="font-black">
 				Clase:
 			</label>
-			<select name="clase" onChange={handleChange} value={values.clase}>
+			<select name="clase" onChange={handleChange} value={values.clase} className="text-black">
 				{clases?.map((clase, index) => (
 					<option key={`class-${index}`} value={clase.name}>
 						{clase.lang_es}
@@ -54,7 +54,7 @@ export default function SpellsSelector({ clases }: SpellsSelectorProps) {
 			<label htmlFor="level" className="font-black">
 				Nivel:
 			</label>
-			<select name="level" onChange={handleChange} value={values.level}>
+			<select name="level" onChange={handleChange} value={values.level} className="text-black">
 				<option value="">-- Selecciona uno --</option>
 				{levels.map((level) => (
 					<option key={`level-${level}`} value={level}>
@@ -65,7 +65,7 @@ export default function SpellsSelector({ clases }: SpellsSelectorProps) {
 			<label htmlFor="items" className="font-black">
 				Hechizos por pagina:
 			</label>
-			<select name="items" onChange={handleChange} value={values.items}>
+			<select name="items" onChange={handleChange} value={values.items} className="text-black">
 				<option value={10}>10</option>
 				<option value={20}>20</option>
 				<option value={50}>50</option>

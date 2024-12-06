@@ -26,7 +26,7 @@ export default function Pagination({ page, totalPages, route, items }: Paginatio
 				<Link
 					key={pageNum}
 					className={`${
-						page === pageNum ? "bg-red-600 text-white font-black" : "bg-white text-gray-900"
+						page === pageNum ? "bg-red-600 dark:bg-black text-white font-black" : "bg-white text-gray-900"
 					} px-4 py-2 text-sm  ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}
 					href={`${route}page=${pageNum}&items=${items}`}
 				>
