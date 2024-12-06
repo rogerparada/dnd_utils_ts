@@ -20,3 +20,27 @@ export const checkLogin = () => {
 
 	return verifyJWT(value);
 };
+
+export const generateSecurePassword = (): string => {
+	const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+	const numbers = "0123456789";
+	const specialChars = "!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~";
+
+	const allCharacters = upperCase + lowerCase + numbers + specialChars;
+
+	const getRandomChar = (chars: string): string => chars[Math.floor(Math.random() * chars.length)];
+
+	const passwordArray = [getRandomChar(upperCase), getRandomChar(lowerCase), getRandomChar(numbers), getRandomChar(specialChars)];
+
+	while (passwordArray.length < 8) {
+		passwordArray.push(getRandomChar(allCharacters));
+	}
+
+	for (let i = passwordArray.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[passwordArray[i], passwordArray[j]] = [passwordArray[j], passwordArray[i]];
+	}
+
+	return passwordArray.join("");
+};

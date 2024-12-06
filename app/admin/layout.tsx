@@ -6,7 +6,6 @@ import { AuthTokenSchema } from "@/src/schema";
 import { prisma } from "@/src/lib/prisma";
 
 const checkAccessRole = async (userId: string): Promise<boolean> => {
-	console.log("first");
 	const user = await prisma.user.findUnique({
 		where: {
 			id: userId,

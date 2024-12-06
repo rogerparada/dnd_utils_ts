@@ -1,10 +1,8 @@
 import { redirect } from "next/navigation";
-
-import SpellSearchForm from "@/src/components/spells/forms/SpellSearchForm";
+import Link from "next/link";
 import UsersTable from "@/src/components/spells/ui/tables/UsersTable";
 import Heading from "@/src/components/ui/Heading";
 import Pagination from "@/src/components/ui/Pagination";
-import Link from "next/link";
 import { prisma } from "@/src/lib/prisma";
 
 async function usersCount() {
@@ -34,10 +32,10 @@ export default async function UsersPage({ searchParams }: { searchParams: { page
 		<>
 			<Heading className="mt-10">Administrar usuarios</Heading>
 			<div className="flex flex-col lg:flex-row lg:justify-between gap-5 mt-10">
-				<Link href={"spells/new"} className="p-3 bg-blue-400 text-white font-bold">
-					Nuevo conjuro
+				<Link href={"users/new"} className="p-3 bg-blue-400 text-white font-bold">
+					Nuevo Usuario
 				</Link>
-				<SpellSearchForm />
+				{/* TODO: Buscador de usuarios */}
 			</div>
 			<UsersTable users={spells} />
 			<Pagination page={page} totalPages={totalPages} route="/admin/users/?" items={pageSize} />
