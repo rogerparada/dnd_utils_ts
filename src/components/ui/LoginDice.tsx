@@ -2,20 +2,24 @@ import { Dice } from "@/src/types";
 import { DotLoader } from "react-spinners";
 
 type Props = {
-	dice: Dice;
+	dice?: Dice;
+	width?: number;
+	height?: number;
 };
 
-export default function D20({ dice }: Props) {
-	const { primary, secondary, symbols } = dice;
+export default function D20({ dice, height = 300, width = 300 }: Props) {
+	const colorDice: Dice = !dice ? { id: 0, primary: "red", secondary: "red", symbols: "white", value: 20, empty: false } : dice;
+
+	const { primary, secondary, symbols } = colorDice;
 
 	return (
-		<div className="flex justify-center w-72 relative">
-			{dice.rolling && (
+		<div className="flex justify-center w-72">
+			{colorDice.rolling && (
 				<div className="w-0">
 					<DotLoader className="absolute top-24 left-28" color="white" />
 				</div>
 			)}
-			<svg id="D20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+			<svg id="D20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width={width} height={height}>
 				<g>
 					<polygon
 						points="250 9.66 41.91 129.8 41.91 370.09 250 490.23 458.09 370.09 458.09 129.8 250 9.66"
@@ -145,9 +149,9 @@ export default function D20({ dice }: Props) {
 					/>
 				</g>
 				<g y={280}>
-					{!dice.empty && (
-						<text y="280" x={dice.value === 20 ? 190 : 215} fill={symbols} fontSize={105}>
-							{dice.value}
+					{!colorDice.empty && (
+						<text y="280" x={colorDice.value === 20 ? 190 : 215} fill={symbols} fontSize={105}>
+							{colorDice.value}
 						</text>
 					)}
 				</g>

@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 type UserPayload = {
 	id: string;
 	username: string;
-	role: string;
 };
 
 export function getJWT(payload: UserPayload) {

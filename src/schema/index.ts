@@ -65,13 +65,11 @@ export const CharacterSchema = z.object({
 export const AuthTokenSchema = z.object({
 	id: z.string(),
 	username: z.string(),
-	role: z.enum(["user", "admin"]),
-	iat: z.string(),
-	exp: z.string().refine(
+	iat: z.number(),
+	exp: z.number().refine(
 		(value) => {
-			const date = new Date(value);
+			const date = new Date(value * 1000);
 			if (isNaN(date.getTime())) throw new Error("Invalid Format");
-
 			const currentDate = new Date();
 			return date >= currentDate;
 		},

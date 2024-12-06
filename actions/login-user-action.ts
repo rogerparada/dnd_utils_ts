@@ -32,7 +32,7 @@ export async function login(data: unknown): Promise<{ success: boolean; errors?:
 			return { success: false, errors: ["User not found"] };
 		}
 
-		const token = getJWT({ id: user.id, username: user.username, role: user.role });
+		const token = getJWT({ id: user.id, username: user.username });
 
 		return createAuthCookie(token);
 	} catch (error) {
