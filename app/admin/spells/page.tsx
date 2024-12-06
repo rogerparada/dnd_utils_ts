@@ -29,7 +29,7 @@ export default async function SpellsAdminPage({ searchParams }: { searchParams: 
 	const pageSize = 10;
 	const skip = (page - 1) * 10;
 
-	if (page < 0) redirect("/admin/products");
+	if (page < 0) redirect("/admin/spells");
 
 	const totalSpellsData = spellsCount();
 	const spellsData = getSpells(skip, pageSize);
