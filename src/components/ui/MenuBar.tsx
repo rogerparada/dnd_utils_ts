@@ -42,6 +42,18 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 				</div>
 				<div className={`w-full transition-all ease-in-out duration-500 ${hideMenu ? "max-h-0 opacity-0" : "max-h-96 opacity-100"}`}>
 					<div className="text-white font-black flex flex-col gap-2 w-full">
+						{!username && (
+							<div className="flex gap-3 w-full p-3 justify-between h-18 px-4">
+								<Link href={"/auth/login"} className="flex items-center gap-2 text-xl font-black border p-2 rounded-md ">
+									<span className="icon-[fluent-mdl2--signin]" />
+									<span className="text-sm">Iniciar sesión</span>
+								</Link>
+								<Link href={"/auth/register"} className="flex items-center gap-2 text-xl font-black border p-2 rounded-md ">
+									<span className="icon-[grommet-icons--user-new]" />
+									<span className="text-sm">Registrarse</span>
+								</Link>
+							</div>
+						)}
 						<hr className="border-red-800 dark:border-slate-700" />
 						<Link className="w-full pr-5 text-right" href={"/spells"}>
 							Conjuros
@@ -65,18 +77,6 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 					<Language hideMenu={openItems["language"]} handleClose={handleCloseMenu} />
 					<hr className=" border-red-800 dark:border-slate-700" />
 					{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} />}
-					{!username && (
-						<div className="flex gap-3 w-full p-3 justify-center h-18">
-							<Link href={"/auth/login"} className="flex items-center gap-2 text-xl font-black border p-2 rounded-md ">
-								<span className="icon-[fluent-mdl2--signin]" />
-								<span className="text-sm">Iniciar sesión</span>
-							</Link>
-							<Link href={"/auth/register"} className="flex items-center gap-2 text-xl font-black border p-2 rounded-md ">
-								<span className="icon-[grommet-icons--user-new]" />
-								<span className="text-sm">Registrarse</span>
-							</Link>
-						</div>
-					)}
 				</div>
 			</div>
 			<div className="hidden w-full md:flex place-items-center px-2 gap-2">

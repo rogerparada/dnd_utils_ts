@@ -20,28 +20,30 @@ export default function Language({ hideMenu, handleClose }: LanguageProps) {
 	return (
 		<>
 			<div className="md:hidden">
-				<div className="flex justify-end pr-4 items-center font-black w-full">
-					<span>Idioma</span>
-					<button className="text-white text-2xl p-2 rounded-md w-auto h-10 flex justify-center gap-2" onClick={() => handleClose("language")}>
-						<span className="icon-[ion--language]" />
-					</button>
-				</div>
+				<div className="flex flex-col justify-end items-center font-black w-full min-h-10 ">
+					<div className="flex justify-end pr-4 items-center font-black w-full">
+						<span>Idioma</span>
+						<button className="text-white text-2xl p-2 rounded-md w-auto flex justify-center" onClick={() => handleClose("language")}>
+							<span className="icon-[ion--language]" />
+						</button>
+					</div>
 
-				<div className={`flex flex-col w-full transition-all ease-in-out duration-300 ${hideMenu ? "max-h-0 opacity-0" : "max-h-40 opacity-100"}`}>
-					<button className="flex gap-2 w-full p-1 items-center px-3" onClick={() => handleClick("es")}>
-						<span className="icon-[circle-flags--es]" />
-						<span>Spanish{hideMenu}</span>
-					</button>
-					<hr className="border-red-800 dark:border-slate-700" />
-					<button className="flex gap-2 w-full p-1 items-center px-3" onClick={() => handleClick("en")}>
-						<span className="icon-[circle-flags--uk]" />
-						<span>English</span>
-					</button>
-					<hr className="border-red-800 dark:border-slate-700" />
-					<button className="flex gap-2 w-full p-1 items-center rounded-b-md  px-3" onClick={() => handleClick("de")}>
-						<span className="icon-[circle-flags--de]" />
-						<span>German</span>
-					</button>
+					<div className={`flex flex-col w-full transition-all ease-in-out duration-300 ${hideMenu ? "max-h-0 opacity-0" : "max-h-40 opacity-100"}`}>
+						<div className={`${hideMenu ? "hidden " : ""}flex gap-2 w-full p-1 items-center px-3`} onClick={() => handleClick("es")}>
+							<span className="icon-[circle-flags--es]" />
+							<span>Spanish{hideMenu}</span>
+						</div>
+						<hr className="border-red-800 dark:border-slate-700" />
+						<div className={`${hideMenu ? "hidden " : ""}flex gap-2 w-full p-1 items-center px-3`} onClick={() => handleClick("en")}>
+							<span className="icon-[circle-flags--uk]" />
+							<span>English</span>
+						</div>
+						<hr className="border-red-800 dark:border-slate-700" />
+						<div className={`${hideMenu ? "hidden " : ""}flex gap-2 w-full p-1 items-center px-3`} onClick={() => handleClick("de")}>
+							<span className="icon-[circle-flags--de]" />
+							<span>German</span>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className="relative hidden md:block">
