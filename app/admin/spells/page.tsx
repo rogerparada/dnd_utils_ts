@@ -36,7 +36,7 @@ export default async function SpellsAdminPage({ searchParams }: { searchParams: 
 	const [spells, totalSpells] = await Promise.all([spellsData, totalSpellsData]);
 	const totalPages = Math.ceil(totalSpells / pageSize);
 	return (
-		<>
+		<div className="p-5">
 			<Heading className="mt-10">Administrar conjuros</Heading>
 			<div className="flex flex-col lg:flex-row lg:justify-between gap-5 mt-10">
 				<Link href={"spells/new"} className="p-3 bg-blue-400 text-white font-bold">
@@ -46,6 +46,6 @@ export default async function SpellsAdminPage({ searchParams }: { searchParams: 
 			</div>
 			<SpellsTable spells={spells} />
 			<Pagination page={page} totalPages={totalPages} route="/admin/spells/?" items={pageSize} />
-		</>
+		</div>
 	);
 }

@@ -4,6 +4,7 @@ import AdminSideBar from "@/src/components/AdminSideBar";
 import { checkLogin } from "@/src/utils/auth";
 import { AuthTokenSchema } from "@/src/schema";
 import { prisma } from "@/src/lib/prisma";
+import MenuBar from "../../src/components/ui/MenuBar";
 
 const checkAccessRole = async (userId: string): Promise<boolean> => {
 	const user = await prisma.user.findUnique({
@@ -29,9 +30,12 @@ export default async function layout({ children }: { children: React.ReactNode }
 	if (!authorized) return redirect("/");
 
 	return (
-		<div className="flex">
-			<AdminSideBar />
-			<div className="flex-1 p-5">{children}</div>
-		</div>
+		<>
+			<MenuBar username={result.data.username} isAdmin={authorized} />
+			<div className="flex">
+				<AdminSideBar />
+				<div className="flex-1">{children}</div>
+			</div>
+		</>
 	);
 }
