@@ -1,4 +1,6 @@
+"use client";
 import { useAppStore } from "@/src/store/useAppStore";
+
 import { useMemo } from "react";
 import { calculateSpeed, speedSpecialModifier } from "@/src/utils";
 import PlayerHeader from "./PlayerHeader";

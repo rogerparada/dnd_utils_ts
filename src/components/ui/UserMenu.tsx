@@ -22,19 +22,19 @@ export default function UserMenu({ username, hideMenu, handleClose, isAdmin }: U
 					<button className="flex gap-2 text-left w-full p-1 items-center px-3" disabled>
 						Bienvenido {username}
 					</button>
-					<hr className="border-red-800" />
-					<button className="flex gap-2 w-full p-1 items-center border-x border-slate-400 px-3">Perfil</button>
-					<hr className="border-red-800" />
-					<button className="flex gap-2 w-full p-1 items-center border-x border-slate-400 px-3">Personajes</button>
+					<hr className="border-red-800 dark:border-slate-400" />
+					<button className="flex gap-2 w-full p-1 items-center  px-3">Perfil</button>
+					<hr className="border-red-800 dark:border-slate-400" />
+					<button className="flex gap-2 w-full p-1 items-center px-3">Personajes</button>
 					{isAdmin && (
 						<>
-							<hr className="border-red-800" />
+							<hr className="border-red-800 dark:border-slate-400" />
 							<Link href={"/admin"} className="flex gap-2 w-full p-1 items-center border-x border-slate-400 px-3">
-								Personajes
+								Panel de Administrador
 							</Link>
 						</>
 					)}
-					<hr className="border-red-800" />
+					<hr className="border-red-800 dark:border-slate-400" />
 					<button className="flex gap-2 w-full p-1 items-center px-3">Cerrar sesión</button>
 				</div>
 			</div>

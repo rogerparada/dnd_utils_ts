@@ -30,7 +30,7 @@ export default async function PlayersPage({ searchParams }: { searchParams: { pa
 		<>
 			<Heading className="mt-10">Administrar personajes</Heading>
 			<div className="flex flex-col lg:flex-row lg:justify-between gap-5 mt-10">{/* TODO: Implementar buscador */}</div>
-			<PlayersTable players={spells} />
+			<PlayersTable players={spells} showOwner />
 			<Pagination page={page} totalPages={totalPages} route="/admin/players/?" items={pageSize} />
 		</>
 	);

@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { verifyJWT } from "./jwt";
+import { prisma } from "../lib/prisma";
 
 export const hashPassword = async (password: string) => {
 	const salt = await bcrypt.genSalt(10);
@@ -43,4 +44,17 @@ export const generateSecurePassword = (): string => {
 	}
 
 	return passwordArray.join("");
+};
+
+export const checkAccessRole = async (userId?: string): Promise<boolean> => {
+	if (!userId) return false;
+	const user = await prisma.user.findUnique({
+		where: {
+			id: userId,
+		},
+	});
+
+	if (!user) return false;
+	if (user.role === "admin") return true;
+	return false;
 };

@@ -3,9 +3,10 @@ import Link from "next/link";
 
 type PlayersTableProps = {
 	players: Player[];
+	showOwner?: boolean;
 };
 
-export default function PlayersTable({ players }: PlayersTableProps) {
+export default function PlayersTable({ players, showOwner }: PlayersTableProps) {
 	return (
 		<div className="px-4 sm:px-6 lg:px-8 mt-20">
 			<div className="mt-8 flow-root ">
@@ -26,9 +27,11 @@ export default function PlayersTable({ players }: PlayersTableProps) {
 									<th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
 										Clase
 									</th>
-									<th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-										Propietario
-									</th>
+									{showOwner && (
+										<th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+											Propietario
+										</th>
+									)}
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
@@ -38,7 +41,7 @@ export default function PlayersTable({ players }: PlayersTableProps) {
 										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.level}</td>
 										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.race}</td>
 										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.className}</td>
-										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.playerName}</td>
+										{showOwner && <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.playerName}</td>}
 
 										<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
 											<Link href={`/admin/players/${player.id}/edit`} className="text-blue-400 hover:text-blue-500">
