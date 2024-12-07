@@ -95,7 +95,7 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 				<span className="flex-1"></span>
 				<Language hideMenu={openItems["language"]} handleClose={handleCloseMenu} />
 				{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} isAdmin={isAdmin} />}
-				{username && (
+				{!username && (
 					<div className="flex gap-3">
 						<Link
 							href={"/auth/login"}
