@@ -24,6 +24,12 @@ const config: Config = {
 				xl: "1280px",
 				"2xl": "1536px",
 			},
+			maxHeight: {
+				"100": "25rem",
+				"128": "32rem",
+				"144": "36rem",
+				"160": "40rem",
+			},
 			extend: {
 				backgroundImage: {
 					"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

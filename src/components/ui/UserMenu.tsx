@@ -20,9 +20,9 @@ export default function UserMenu({ username, hideMenu, handleClose, isAdmin }: U
 						</button>
 					</div>
 
-					<div className={`flex flex-col w-full transition-all ease-in-out duration-300 ${hideMenu ? "max-h-0 opacity-0" : "max-h-40 opacity-100"}`}>
+					<div className={`flex flex-col w-full transition-all ease-in-out duration-300 ${hideMenu ? "max-h-0 opacity-0" : "max-h-96 opacity-100"}`}>
 						<button className="flex gap-2 text-left w-full p-1 items-center px-3" disabled>
-							Bienvenido {username}
+							Bienvenido {username} {isAdmin || "Error"}
 						</button>
 						<hr className="border-red-800 dark:border-slate-400" />
 						<button className="flex gap-2 w-full p-1 items-center  px-3">Perfil</button>
@@ -31,7 +31,7 @@ export default function UserMenu({ username, hideMenu, handleClose, isAdmin }: U
 						{isAdmin && (
 							<>
 								<hr className="border-red-800 dark:border-slate-400" />
-								<Link href={"/admin"} className="flex gap-2 w-full p-1 items-center border-x border-slate-400 px-3">
+								<Link href={"/admin"} className="flex gap-2 w-full p-1 items-center px-3">
 									Panel de Administrador
 								</Link>
 							</>

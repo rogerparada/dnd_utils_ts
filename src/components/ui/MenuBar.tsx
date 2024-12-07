@@ -40,7 +40,7 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 						onClick={() => handleClickMobileMenu()}
 					/>
 				</div>
-				<div className={`w-full transition-all ease-in-out duration-500 ${hideMenu ? "max-h-0 opacity-0" : "max-h-96 opacity-100"}`}>
+				<div className={`w-full transition-all ease-in-out duration-500 ${hideMenu ? "max-h-0 opacity-0" : "max-h-128 opacity-100"}`}>
 					<div className="text-white font-black flex flex-col gap-2 w-full">
 						{!username && (
 							<div className="flex gap-3 w-full p-3 justify-between h-18 px-4">
@@ -76,7 +76,7 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 					<span className="flex-1"></span>
 					<Language hideMenu={openItems["language"]} handleClose={handleCloseMenu} />
 					<hr className=" border-red-800 dark:border-slate-700" />
-					{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} />}
+					{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} isAdmin={isAdmin} />}
 				</div>
 			</div>
 			<div className="hidden w-full md:flex place-items-center px-2 gap-2">
