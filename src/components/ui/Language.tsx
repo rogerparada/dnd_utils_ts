@@ -32,12 +32,12 @@ export default function Language({ hideMenu, handleClose }: LanguageProps) {
 						<span className="icon-[circle-flags--es]" />
 						<span>Spanish{hideMenu}</span>
 					</button>
-					<hr className="border-red-800" />
-					<button className="flex gap-2 w-full p-1 items-center border-x border-slate-400 px-3" onClick={() => handleClick("en")}>
+					<hr className="border-red-800 dark:border-slate-700" />
+					<button className="flex gap-2 w-full p-1 items-center px-3" onClick={() => handleClick("en")}>
 						<span className="icon-[circle-flags--uk]" />
 						<span>English</span>
 					</button>
-					<hr className="border-red-800" />
+					<hr className="border-red-800 dark:border-slate-700" />
 					<button className="flex gap-2 w-full p-1 items-center rounded-b-md  px-3" onClick={() => handleClick("de")}>
 						<span className="icon-[circle-flags--de]" />
 						<span>German</span>

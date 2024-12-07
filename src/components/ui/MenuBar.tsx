@@ -35,34 +35,36 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 						<span className="text-xl font-black">Dnd Utilities</span>
 					</div>
 					<span className="flex-1"></span>
-					<span className="icon-[line-md--menu] text-2xl font-black" onClick={() => handleClickMobileMenu()} />
+					<span
+						className={`${hideMenu ? "icon-[line-md--menu]" : "icon-[line-md--menu-to-close-transition]"} text-2xl font-black `}
+						onClick={() => handleClickMobileMenu()}
+					/>
 				</div>
 				<div className={`w-full transition-all ease-in-out duration-500 ${hideMenu ? "max-h-0 opacity-0" : "max-h-96 opacity-100"}`}>
 					<div className="text-white font-black flex flex-col gap-2 w-full">
-						<hr className="border border-red-800" />
+						<hr className="border-red-800 dark:border-slate-700" />
 						<Link className="w-full pr-5 text-right" href={"/spells"}>
 							Conjuros
 						</Link>
-						<hr className="border border-red-800" />
+						<hr className="border-red-800 dark:border-slate-700" />
 						<Link className="w-full pr-5 text-right" href={"/classes"}>
 							Clases
 						</Link>
-						<hr className="border border-red-800" />
+						<hr className="border-red-800 dark:border-slate-700" />
 						<Link className="w-full pr-5 text-right" href={"/player/new"}>
 							Personajes
 						</Link>
-						<hr className="border border-red-800" />
+						<hr className="border-red-800 dark:border-slate-700" />
 						<Link className="w-full pr-5 text-right" href={"/master/combat"}>
 							Master
 						</Link>
-						<hr className="border border-red-800" />
+						<hr className="border-red-800 dark:border-slate-700" />
 					</div>
 
 					<span className="flex-1"></span>
 					<Language hideMenu={openItems["language"]} handleClose={handleCloseMenu} />
-					<hr className="border border-red-800" />
+					<hr className=" border-red-800 dark:border-slate-700" />
 					{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} />}
-					<hr className="border border-red-800" />
 				</div>
 			</div>
 			<div className="hidden w-full md:flex place-items-center px-2 gap-2">
