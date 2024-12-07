@@ -1,7 +1,7 @@
 "use client";
 
-import { createSpell } from "@/actions/create-spell-action";
-import { createSpellClasses } from "@/actions/create-spellClasses-action";
+import { createSpell } from "@/actions/spells/create-spell-action";
+import { createSpellClasses } from "@/actions/spells/create-spellClasses-action";
 import { useRouter } from "next/navigation";
 
 export default function NewSpellForm({ children }: { children: React.ReactNode }) {

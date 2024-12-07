@@ -1,7 +1,7 @@
 "use client";
 
-import { updateSpell } from "@/actions/update-spell-action";
-import { updateSpellClasses } from "@/actions/update-spellClasses-action";
+import { updateSpell } from "@/actions/spells/update-spell-action";
+import { updateSpellClasses } from "@/actions/spells/update-spellClasses-action";
 import { useParams, useRouter } from "next/navigation";
 
 export default function EditSpellForm({ children }: { children: React.ReactNode }) {

@@ -1,7 +1,7 @@
 "use server";
 
 import { UserLoginFormSchema } from "@/src/schema";
-import { checkPassword } from "../src/utils/auth";
+import { checkPassword } from "../../src/utils/auth";
 import { prisma } from "@/src/lib/prisma";
 import { createAuthCookie } from "@/src/utils/cookies";
 import { getJWT } from "@/src/utils/jwt";

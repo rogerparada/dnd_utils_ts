@@ -1,6 +1,6 @@
 "use client";
 
-import { changeLanguage } from "@/actions/create-languageCookie.action";
+import { changeLanguage } from "@/actions/auth/create-languageCookie.action";
 import { useState } from "react";
 
 const setLanguage = async (lang: string) => {

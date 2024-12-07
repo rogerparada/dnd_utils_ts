@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { login } from "@/actions/login-user-action";
+import { login } from "@/actions/auth/login-user-action";
 import { Dice } from "@/src/types";
 import Link from "next/link";
 import LoginDice from "@/src/components/ui/LoginDice";

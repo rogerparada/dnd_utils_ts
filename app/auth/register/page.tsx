@@ -1,6 +1,6 @@
 "use client";
 
-import createUser from "@/actions/register-user-action";
+import createUser from "@/actions/auth/register-user-action";
 import LoginDice from "@/src/components/ui/LoginDice";
 import { Dice } from "@/src/types";
 import Link from "next/link";
