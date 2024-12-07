@@ -1,8 +1,6 @@
-import PlayerBar from "@/src/components/player/ui/PlayerBar";
 import MenuBar from "@/src/components/ui/MenuBar";
 import { AuthTokenSchema } from "@/src/schema";
 import { checkAccessRole, checkLogin } from "@/src/utils/auth";
-import { redirect } from "next/navigation";
 
 export default async function PlayerLayout({ children }: { children: React.ReactNode }) {
 	const result = AuthTokenSchema.safeParse(checkLogin());
