@@ -97,7 +97,7 @@ export default async function ClassPage({
 	const route = level ? `/classes/${name}?level=${level}&` : `/classes/${name}?`;
 	return (
 		<>
-			<div className="mb-5 flex md:flex-row flex-col-reverse items-center">
+			<div className="mb-5 flex md:flex-row flex-col-reverse items-center text-white">
 				<div className="w-64 h-64 relative">
 					<Image src={src} alt={alt} fill />
 				</div>

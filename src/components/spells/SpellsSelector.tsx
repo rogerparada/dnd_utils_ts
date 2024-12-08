@@ -39,7 +39,7 @@ export default function SpellsSelector({ clases }: SpellsSelectorProps) {
 	};
 
 	return (
-		<div className="my-5 flex flex-col lg:flex-row gap-4 md:items-center">
+		<div className="my-5 flex flex-col lg:flex-row gap-4 md:items-center text-white">
 			<label htmlFor="clase" className="font-black">
 				Clase:
 			</label>
