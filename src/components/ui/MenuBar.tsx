@@ -79,11 +79,11 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 					{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} isAdmin={isAdmin} />}
 				</div>
 			</div>
-			<div className="hidden w-full md:flex place-items-center px-2 gap-2">
-				<div className="logo text-3xl w-56 text-white flex items-center gap-4">
+			<div className="hidden lg:container mx-auto w-full md:flex place-items-center px-2 gap-2">
+				<Link href={"/"} className="logo text-3xl w-56 text-white flex items-center gap-4">
 					<span className="icon-[game-icons--dice-twenty-faces-twenty]" />
 					<span className="text-xl font-black">Dnd Utilities</span>
-				</div>
+				</Link>
 
 				<div className="text-white font-black flex gap-4">
 					<Link href={"/spells"}>Conjuros</Link>
