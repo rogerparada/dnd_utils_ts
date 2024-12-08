@@ -8,10 +8,11 @@ export default function Home() {
 		{ name: "Master", link: "/master/combat", icon: "icon-[arcticons--rpg-dice]" },
 	];
 	return (
-		<div className="map-pattern">
-			<div className="container mx-auto h-screen flex flex-col justify-center items-center">
+		<>
+			<div className="map-pattern relative w-full h-screen"></div>
+			<div className="absolute top-0 z-0 container mx-auto h-screen flex flex-col justify-center items-center">
 				<span className="text-3xl lg:text-6xl font-black text-whiten text-slate-700">Bienvenido a Dnd Utils</span>
-				<div className="flex flex-wrap gap-2 mt-10 justify-center">
+				<div className=" flex flex-wrap gap-2 mt-10 justify-center">
 					{cards.map((card, index) => (
 						<div
 							id="card"
@@ -39,6 +40,6 @@ export default function Home() {
 					<span>Todos los derechos reservados.</span>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
