@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 
-import AdminSideBar from "@/src/components/AdminSideBar";
-import { checkAccessRole, checkLogin } from "@/src/utils/auth";
 import { AuthTokenSchema } from "@/src/schema";
-import MenuBar from "../../src/components/ui/MenuBar";
+import { checkAccessRole, checkLogin } from "@/src/utils/auth";
+import AdminSideBar from "@/src/components/AdminSideBar";
+import MenuBar from "@/src/components/ui/MenuBar";
 
 export default async function layout({ children }: { children: React.ReactNode }) {
 	const result = AuthTokenSchema.safeParse(checkLogin());

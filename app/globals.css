@@ -104,3 +104,38 @@ body {
 		width: 52px;
 	}
 }
+
+.map-pattern {
+	width: 100%;
+	height: 100%;
+	background: #dfdaaa;
+	position: relative;
+	overflow: hidden;
+	z-index: -98;
+}
+
+/* Líneas horizontales */
+.map-pattern::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+	background-size: 100% 80px;
+	z-index: -100;
+}
+
+/* Líneas verticales */
+.map-pattern::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+	background-size: 80px 100%;
+	z-index: -99;
+}
