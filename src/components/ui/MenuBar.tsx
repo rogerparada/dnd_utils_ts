@@ -41,7 +41,7 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 					/>
 				</div>
 				<div className={`w-full transition-all ease-in-out duration-500 ${hideMenu ? "max-h-0 opacity-0" : "max-h-128 opacity-100"}`}>
-					<div className="text-white font-black flex flex-col gap-2 w-full">
+					<div className={`${hideMenu ? "hidden " : ""}text-white font-black flex flex-col gap-2 w-full`}>
 						{!username && (
 							<div className="flex gap-3 w-full p-3 justify-between h-18 px-4">
 								<Link href={"/auth/login"} className="flex items-center gap-2 text-xl font-black border p-2 rounded-md ">

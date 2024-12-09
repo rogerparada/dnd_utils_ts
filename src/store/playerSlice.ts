@@ -7,6 +7,7 @@ export type PlayerSliceType = {
 	proficiency: number;
 	attributes: Attributes;
 	skillProficiency: Skills;
+	setPlayer: (player: Player) => void;
 	changeExperiencePoints: (exp: number) => void;
 	changeDescription: (name: string, value: string) => void;
 	changeAttributes: (name: string, value: number) => void;
@@ -62,6 +63,11 @@ export const createPlayerSlice: StateCreator<PlayerSliceType> = (set, get) => ({
 	proficiency: 2,
 	attributes: defaultAttributes,
 	skillProficiency: defaultSkill,
+	setPlayer: (player) => {
+		set(() => ({
+			player,
+		}));
+	},
 	changeExperiencePoints: (exp) => {
 		const level = calculateLevel(exp);
 
