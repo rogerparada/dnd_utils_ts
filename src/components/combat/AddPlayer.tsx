@@ -26,15 +26,15 @@ export default function AddPlayer() {
 
 	return (
 		<form action={handleSubmit} className="space-y-5">
-			<div className="">
+			<div className="flex flex-col gap-2">
 				<label htmlFor="name" className="text-white">
 					Nombre:
 				</label>
 				<input type="text" name="name" className="w-full" />
 			</div>
-			<div className="flex flex-col">
+			<div className="flex flex-col gap-2">
 				<label htmlFor="type" className="text-white">
-					Type:
+					Tipo:
 				</label>
 				<select name="type">
 					<option value={"Player"}>Jugador</option>
@@ -44,9 +44,9 @@ export default function AddPlayer() {
 					<option value={"Boss"}>Boss</option>
 				</select>
 			</div>
-			<div className="flex flex-col">
+			<div className="flex flex-col gap-2">
 				<label htmlFor="initiative" className="text-white">
-					Type:
+					Iniciativa:
 				</label>
 				<select name="initiative">
 					{initiative.reverse().map((i) => (
