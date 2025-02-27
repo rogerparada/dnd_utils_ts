@@ -21,16 +21,13 @@ const colors: FullCharacter = {
 
 export default function Player({ player }: PlayerProps) {
 	const combatMode = useAppStore((state) => state.combatMode);
-	const nextInCombat = useAppStore((state) => state.nextInCombat);
 
 	const color = colors[player.type];
 	return (
-		<button
+		<div
 			className={`min-w-32 h-40 border-4 ${color.border} rounded-lg flex flex-col ${color.bg} shadow-lg ${
 				combatMode ? "first-of-type:w-36 first-of-type:h-48 first-of-type:opacity-100 opacity-50" : ""
 			}`}
-			disabled={player.disabled}
-			onClick={() => nextInCombat(player.id)}
 		>
 			<div className="relative w-full rounded-t-lg flex-1">
 				<Image src={player.image || colors[player.type].image} alt={player.type} fill />
@@ -38,6 +35,6 @@ export default function Player({ player }: PlayerProps) {
 			<div className={`w-full border-t rounded-b-lg text-center ${color.border}`}>
 				<span className={`font-black ${color.text}`}>{player.name}</span>
 			</div>
-		</button>
+		</div>
 	);
 }

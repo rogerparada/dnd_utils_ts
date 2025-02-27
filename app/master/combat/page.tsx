@@ -10,7 +10,12 @@ import { useMemo } from "react";
 export default function CombatPage() {
 	const players = useAppStore((state) => state.players);
 	const clearPlayers = useAppStore((state) => state.clearPlayers);
+	const nextInCombat = useAppStore((state) => state.nextInCombat);
+	const combatMode = useAppStore((state) => state.combatMode);
+
 	const enableButton = useMemo(() => players.length < 2, [players.length]);
+	const activePlayer = useMemo(() => players[0], [players]);
+	const playersList = useMemo(() => (players.length > 1 ? players.slice(1) : players), [players]);
 
 	return (
 		<div className="container mx-auto p-5 min-h-dvh flex flex-col">
@@ -19,7 +24,13 @@ export default function CombatPage() {
 				&nbsp;Combate
 			</Heading>
 			<div className="flex flex-row gap-2 overflow-auto items-baseline">
-				{players.map((player, index) => (
+				{activePlayer && <Player player={activePlayer} />}
+				{combatMode && (
+					<button className="h-28 w-20 rounded-lg flex justify-center items-center" onClick={() => nextInCombat()}>
+						<span className="icon-[iconamoon--arrow-right-2-fill] text-8xl text-white" />
+					</button>
+				)}
+				{playersList.map((player, index) => (
 					<Player player={player} key={`player-${index}`} />
 				))}
 			</div>

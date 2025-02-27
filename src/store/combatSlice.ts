@@ -10,7 +10,7 @@ export type CombatSliceType = {
 	modifyInitiative: (id: Character["id"], initiative: number) => void;
 	clearPlayers: () => void;
 	changeCombatMode: () => void;
-	nextInCombat: (id: Character["id"]) => void;
+	nextInCombat: () => void;
 };
 
 export const createCombarSlice: StateCreator<CombatSliceType> = (set, get) => ({
@@ -48,17 +48,12 @@ export const createCombarSlice: StateCreator<CombatSliceType> = (set, get) => ({
 	},
 	clearPlayers: () => set(() => ({ players: [] })),
 	changeCombatMode: () => set((state) => ({ combatMode: !state.combatMode })),
-	nextInCombat: (id) => {
-		const newPlayers = get().players.map((p) => {
-			return { ...p, disabled: true };
-		});
-		const player = newPlayers.find((p) => p.id === id);
-		const restPlayers = newPlayers.filter((p) => p.id !== id);
-
-		if (player && restPlayers) {
-			restPlayers[0].disabled = false;
+	nextInCombat: () => {
+		const newPlayers = get().players;
+		const firstPlayer = newPlayers.shift();
+		if (newPlayers && firstPlayer) {
 			set(() => ({
-				players: [...restPlayers, { ...player, disabled: true }],
+				players: [...newPlayers, firstPlayer],
 			}));
 		}
 	},
