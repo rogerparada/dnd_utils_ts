@@ -79,7 +79,8 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 					{username && <UserMenu hideMenu={openItems["user"]} username={username} handleClose={handleCloseMenu} isAdmin={isAdmin} />}
 				</div>
 			</div>
-			<div className="hidden lg:container mx-auto w-full md:flex place-items-center px-2 gap-2">
+			{/* Large Menu */}
+			<div className="hidden lg:container mx-auto w-full md:flex place-items-center px-2 gap-2 md:text-sm">
 				<Link href={"/"} className="logo text-3xl w-56 text-white flex items-center gap-4">
 					<span className="icon-[game-icons--dice-twenty-faces-twenty]" />
 					<span className="text-xl font-black">Dnd Utilities</span>
@@ -102,14 +103,14 @@ export default function MenuBar({ username, isAdmin }: MenuBarProps) {
 							className="flex items-center gap-2 text-xl font-black border p-2 rounded-md transition-colors ease-in duration-300 hover:bg-white hover:dark:text-slate-800 hover:text-red-600"
 						>
 							<span className="icon-[fluent-mdl2--signin]" />
-							<span className="text-sm">Iniciar sesión</span>
+							<span className="text-sm md:text-xs">Iniciar sesión</span>
 						</Link>
 						<Link
 							href={"/auth/register"}
 							className="flex items-center gap-2 text-xl font-black border p-2 rounded-md transition-colors ease-in duration-300 hover:bg-white hover:dark:text-slate-800 hover:text-red-600"
 						>
 							<span className="icon-[grommet-icons--user-new]" />
-							<span className="text-sm">Registrarse</span>
+							<span className="text-sm md:text-xs">Registrarse</span>
 						</Link>
 					</div>
 				)}
