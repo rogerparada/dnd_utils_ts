@@ -5,6 +5,7 @@ import { Dice } from "@/src/types";
 import Link from "next/link";
 import LoginDice from "@/src/components/ui/LoginDice";
 import { redirect } from "next/navigation";
+import ErrorBanner from "@/src/components/ui/ErrorBanner";
 
 export default function LoginPage({ searchParams }: { searchParams: { verified: string } }) {
 	const [dice, setDice] = useState<Dice>({
@@ -17,7 +18,7 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 		rolling: true,
 	});
 
-	const [error, setError] = useState("");
+	const [error, setError] = useState<React.ReactNode>();
 
 	const verified = searchParams.verified;
 
@@ -31,7 +32,8 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 		const response = await login(data);
 
 		if (!response.success && response.errors) {
-			setError(`Pifia - ${response?.errors[0]}`);
+			const error = response.errors.map((issue, index) => <span key={`issue-${index}`}>{issue}</span>);
+			setError(<div className="flex flex-col gap-2">{error}</div>);
 			setDice({ ...dice, empty: false, value: 1, rolling: false });
 			return;
 		}
@@ -52,7 +54,7 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 					</div>
 				)}
 				<form action={handleSubmit} className="space-y-5 mx-12">
-					{error && <div className="p-4 bg-red-500 text-white uppercase font-black text-center text-xs">{error}</div>}
+					{error && <ErrorBanner>{error}</ErrorBanner>}
 					<div className="w-full borde-2 border-blue-400 rounded-lg flex">
 						<div className="bg-blue-500 text-white p-2 w-10 flex justify-center items-center rounded-l-lg">
 							<span className="icon-[lucide--user]" />
@@ -61,8 +63,8 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 							type="text"
 							name="username"
 							id="username"
-							placeholder="Correo electrónico"
-							className="rounded-r-lg flex-1 focus:border"
+							placeholder="Usuario"
+							className="rounded-r-lg flex-1 focus:border-2 focus:border-blue-500 text-sm"
 							required
 							aria-required
 						/>
@@ -71,13 +73,13 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 						<div className="bg-blue-500 text-white p-2 w-10 flex justify-center items-center rounded-l-lg">
 							<span className="icon-[game-icons--key]" />
 						</div>
-						<input type="password" name="password" id="password" placeholder="Contraseña" className="rounded-r-lg flex-1" required />
+						<input type="password" name="password" id="password" placeholder="Contraseña" className="rounded-r-lg flex-1 text-sm" required />
 					</div>
 					<input type="submit" value="Iniciar sesión" className="bg-blue-500 text-white uppercase font-black text-sm p-3 w-full rounded-lg" />
 				</form>
 			</div>
 
-			<div className="text-center mt-5">
+			<div className="text-center mt-5 text-white">
 				<span>Necesitas una cuenta, regístrate </span>
 				<Link href={"/auth/register"} className="text-blue-300">
 					aquí

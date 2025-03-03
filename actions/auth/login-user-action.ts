@@ -5,15 +5,14 @@ import { checkPassword } from "../../src/utils/auth";
 import { prisma } from "@/src/lib/prisma";
 import { createAuthCookie } from "@/src/utils/cookies";
 import { getJWT } from "@/src/utils/jwt";
-import { ZodIssue } from "zod";
 
-export async function login(data: unknown): Promise<{ success: boolean; errors?: ZodIssue[] | string[] }> {
+export async function login(data: unknown): Promise<{ success: boolean; errors?: string[] }> {
 	try {
 		const response = UserLoginFormSchema.safeParse(data);
 		if (!response.success) {
 			return {
 				success: false,
-				errors: response.error.issues,
+				errors: response.error.issues.map((issue) => issue.message),
 			};
 		}
 		const { username, password } = response.data;
@@ -34,7 +33,7 @@ export async function login(data: unknown): Promise<{ success: boolean; errors?:
 
 		const token = getJWT({ id: user.id, username: user.username });
 
-		return createAuthCookie(token);
+		return await createAuthCookie(token);
 	} catch (error) {
 		console.log(error);
 		return { success: false, errors: ["Error 500"] };

@@ -1,6 +1,7 @@
 "use client";
 
 import createUser from "@/actions/auth/register-user-action";
+import ErrorBanner from "@/src/components/ui/ErrorBanner";
 import LoginDice from "@/src/components/ui/LoginDice";
 import { Dice } from "@/src/types";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 
 export default function RegisterPage() {
-	const [error, setError] = useState("");
+	const [error, setError] = useState<React.ReactNode>();
 
 	const dice: Dice = { value: 20, id: 1, primary: "rgb(59 130 246)", secondary: "rgb(59 130 246)", symbols: "white" };
 
@@ -21,8 +22,8 @@ export default function RegisterPage() {
 		};
 		const response = await createUser(data);
 		if (response?.error) {
-			console.log(response.error);
-			setError(response.error);
+			const error = response.error.map((issue, index) => <span key={`issue-${index}`}>{issue}</span>);
+			setError(<div className="flex flex-col gap-2">{error}</div>);
 			return;
 		}
 		redirect("/auth/registered");
@@ -35,7 +36,7 @@ export default function RegisterPage() {
 					<LoginDice dice={dice} />
 				</div>
 				<form action={handleSubmit} className="space-y-5 mx-12">
-					{error && <div className="p-4 bg-red-500 text-white uppercase font-black text-center text-xs">{error}</div>}
+					{error && <ErrorBanner>{error}</ErrorBanner>}
 
 					<div className="w-full borde-2 border-blue-400 rounded-lg flex">
 						<div className="bg-blue-500 text-white p-2 w-10 flex justify-center items-center rounded-l-lg">
@@ -88,7 +89,7 @@ export default function RegisterPage() {
 				</form>
 			</div>
 
-			<div className="text-center mt-5 space-y-3">
+			<div className="text-center mt-5 space-y-3 text-white">
 				<div>
 					<span>Tienes una cuenta </span>
 					<Link href={"/auth/login"} className="text-blue-300">
