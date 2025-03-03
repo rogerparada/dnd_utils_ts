@@ -49,18 +49,20 @@ model SpellClass {
 }
 
 model Player {
-  id              String             @id @default(cuid())
-  name            String
-  className       String
-  race            String
-  background      String
-  alignment       String
-  userId          String
-  experience      Int
-  level           Int
-  PlayerSkills    PlayerSkills[]
-  PlayerAbilities PlayerAttributes[]
-  user            User               @relation(fields: [userId], references: [id])
+  id                 String             @id @default(cuid())
+  name               String
+  className          String
+  race               String
+  background         String
+  alignment          String
+  userId             String
+  experience         Int
+  level              Int
+  PlayerSkills       PlayerSkills[]
+  PlayerAbilities    PlayerAttributes[]
+  PLayerSpellsWeapon SpellsWeapon[]
+  PlayerMoney        Money[]
+  user               User               @relation(fields: [userId], references: [id])
 }
 
 model PlayerAttributes {
@@ -151,4 +153,28 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier])
+}
+
+/**
+ * Inventory
+ */
+
+model SpellsWeapon {
+  id         Int    @id @default(autoincrement())
+  name       String
+  bonus      Int
+  DamageType String
+  playerId   String
+  player     Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model Money {
+  id       Int    @id @default(autoincrement())
+  pc       Int    @default(0)
+  pp       Int    @default(0)
+  pe       Int    @default(0)
+  po       Int    @default(0)
+  ppt      Int    @default(0)
+  playerId String
+  player   Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
 }
