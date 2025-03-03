@@ -13,6 +13,7 @@ export type PlayerSliceType = {
 	changeAttributes: (name: string, value: number) => void;
 	changeAttributesProficiency: (name: string, proficiency: boolean) => void;
 	changeSkillsProficiency: (name: string, proficiency: boolean) => void;
+	resetPlayer: () => void;
 };
 
 const MIN_EXP = 0;
@@ -115,6 +116,14 @@ export const createPlayerSlice: StateCreator<PlayerSliceType> = (set, get) => ({
 				...state.skillProficiency,
 				[name]: proficiency,
 			},
+		}));
+	},
+	resetPlayer: () => {
+		set(() => ({
+			player: defaultPlayer,
+			proficiency: 2,
+			attributes: defaultAttributes,
+			skillProficiency: defaultSkill,
 		}));
 	},
 });

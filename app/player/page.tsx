@@ -6,10 +6,10 @@ import { Player } from "@prisma/client";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-const getPlayersData = async (playerName: string): Promise<Player[] | undefined> => {
+const getPlayersData = async (userId: string): Promise<Player[] | undefined> => {
 	return await prisma.player.findMany({
 		where: {
-			playerName,
+			userId,
 		},
 	});
 };
@@ -17,7 +17,7 @@ const getPlayersData = async (playerName: string): Promise<Player[] | undefined>
 export default async function PlayersPage() {
 	const result = AuthTokenSchema.safeParse(checkLogin());
 	if (!result.success) redirect("/player/new");
-	const playerData = await getPlayersData(result.data.username);
+	const playerData = await getPlayersData(result.data.id);
 
 	if (playerData && playerData.length > 0)
 		return (

@@ -25,28 +25,30 @@ export default function PlayerSheet({ newPlayer }: PlayerSheetProps) {
 	useEffect(() => {
 		if (newPlayer) {
 			setPlayer(newPlayer);
+			console.log(newPlayer);
 		}
-	}, []);
-
-	return (
-		<>
-			<div id="header" className="my-5 md:flex w-full border-black text-black border-2 rounded-lg gap-2 p-3 bg-white">
-				<PlayerHeader player={player} />
-			</div>
-			<div
-				id="columnas"
-				className="grid md:grid-cols-2 xl:grid-cols-3 border-black w-full border-2 my-5 rounded-lg min-h-96 md:gap-8 xl:gap-5 p-5 bg-white text-black"
-			>
-				<div id="col1" className="w-full">
-					<PlayerCharacteristics proficiency={proficiency} />
+	}, [newPlayer, setPlayer]);
+	if (player) {
+		return (
+			<>
+				<div id="header" className="my-5 md:flex w-full border-black text-black border-2 rounded-lg gap-2 p-3 bg-white">
+					<PlayerHeader player={player} />
 				</div>
-				<div id="col2" className="">
-					<PLayerEquipment dexterity={dexterity} speed={speed} special={special} />
+				<div
+					id="columnas"
+					className="grid md:grid-cols-2 xl:grid-cols-3 border-black w-full border-2 my-5 rounded-lg min-h-96 md:gap-8 xl:gap-5 p-5 bg-white text-black"
+				>
+					<div id="col1" className="w-full">
+						<PlayerCharacteristics proficiency={proficiency} />
+					</div>
+					<div id="col2" className="">
+						<PLayerEquipment dexterity={dexterity} speed={speed} special={special} />
+					</div>
+					<div id="col3" className="flex flex-col">
+						<PlayerTraits />
+					</div>
 				</div>
-				<div id="col3" className="flex flex-col">
-					<PlayerTraits />
-				</div>
-			</div>
-		</>
-	);
+			</>
+		);
+	}
 }

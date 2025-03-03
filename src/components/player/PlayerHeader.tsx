@@ -16,22 +16,22 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
 	return (
 		<>
 			<div id="playerName" className="playerName p-5 md:w-1/3 w-full">
-				<SimpleTextbox name="name" label={t("CharacterName")} value={player.name} />
+				<SimpleTextbox name="name" label={t("CharacterName")} value={player?.name} />
 				<LevelCalculator />
 			</div>
 			<div id="character" className="border-solid border-2 border-black p-5 w-full md:w-2/3 grid md:grid-cols-3 rounded-lg gap-3">
 				<div className="">
-					<SelectorPlayer items={classes} label={t("Class")} name="playerClass" value={player.playerClass} />
-					<SelectorPlayer items={races} label={t("Race")} name="race" value={player.race} />
+					<SelectorPlayer items={classes} label={t("Class")} name="playerClass" value={player?.playerClass} />
+					<SelectorPlayer items={races} label={t("Race")} name="race" value={player?.race} />
 				</div>
 				<div className="">
-					<SelectorPlayer items={background} label={t("Background")} name="background" value={player.background} />
-					<SelectorPlayer items={alignment} label={t("Alignment")} name="alignment" value={player.alignment} />
+					<SelectorPlayer items={background} label={t("Background")} name="background" value={player?.background} />
+					<SelectorPlayer items={alignment} label={t("Alignment")} name="alignment" value={player?.alignment} />
 				</div>
 
 				<div className="w-full">
-					<SimpleTextbox name="realName" label={t("PlayerName")} value={player.realName} />
-					<ExperienceInput name="Experience" label={t("ExpPoints")} value={player.experiencePoints} />
+					<SimpleTextbox name="realName" label={t("PlayerName")} value={player?.realName} />
+					<ExperienceInput name="Experience" label={t("ExpPoints")} value={player?.experiencePoints} />
 				</div>
 			</div>
 		</>

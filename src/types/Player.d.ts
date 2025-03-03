@@ -60,4 +60,17 @@ export type Skills = {
 	Survival: boolean;
 };
 
+export type FullPlayer = {
+	name: string;
+	className: string;
+	race: string;
+	background: string;
+	alignment: string;
+	userId: string;
+	experience: number;
+	level: number;
+	attributes: Attributes;
+	skills: Skills;
+};
+
 export type SkillDependence = { name: keyof Skills; dependence: keyof Attributes };

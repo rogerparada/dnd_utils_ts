@@ -41,10 +41,10 @@ export default function PlayersTable({ players, showOwner }: PlayersTableProps) 
 										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.level}</td>
 										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.race}</td>
 										<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.className}</td>
-										{showOwner && <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.playerName}</td>}
+										{showOwner && <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{player.userId}</td>}
 
 										<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-											<Link href={`/admin/players/${player.id}/edit`} className="text-blue-400 hover:text-blue-500">
+											<Link href={`/player/${player.id}/edit`} className="text-blue-400 hover:text-blue-500">
 												Editar<span className="sr-only">, {player.name}</span>
 											</Link>
 										</td>

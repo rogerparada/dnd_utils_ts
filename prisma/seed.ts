@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
 import { spells } from "./data/spells";
 import { clases } from "./data/clases";
 import { spellsClass } from "./data/spellClass";
-
-const prisma = new PrismaClient();
+import { prisma } from "../src/lib/prisma";
 
 async function main() {
 	try {
