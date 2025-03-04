@@ -3,6 +3,7 @@
 import { createNewPlayer } from "@/actions/player/create-player.action";
 import { useAppStore } from "@/src/store/useAppStore";
 import { UserInfo } from "@/src/types";
+import Swal from "sweetalert2";
 
 type PlayerBarProps = {
 	userInfo?: UserInfo;
@@ -11,9 +12,18 @@ type PlayerBarProps = {
 
 export default function PlayerBar({ userInfo, edit }: PlayerBarProps) {
 	const player = useAppStore((state) => state.player);
+	const resetPlayer = useAppStore((state) => state.resetPlayer);
 
-	const savePlayer = () => {
-		if (!edit) createNewPlayer({ ...player, ...userInfo });
+	const savePlayer = async () => {
+		if (!edit) {
+			const result = await createNewPlayer({ ...player, ...userInfo });
+			if (!result) {
+				Swal.fire({ title: "Error al crear personaje", icon: "error" });
+				return;
+			}
+			Swal.fire({ title: "Se ha creado tu personaje", icon: "success" });
+			resetPlayer();
+		}
 	};
 
 	return (
