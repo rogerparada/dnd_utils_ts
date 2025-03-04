@@ -9,7 +9,7 @@ export default function NewPlayer({ children }: { children: React.ReactNode }) {
 
 	useEffect(() => {
 		if (playerId) reset();
-	}, [playerId]);
+	}, [playerId, reset]);
 
 	return (
 		<div id="player" className="z-10 w-full xl:container mx-auto lg:pt-5 lg:px-0 mb-20">

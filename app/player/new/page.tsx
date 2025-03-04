@@ -1,4 +1,4 @@
-import NewPlayer from "@/src/components/player/NewPLayer";
+import NewPlayer from "@/src/components/player/NewPlayer";
 import PlayerSheet from "@/src/components/player/PlayerSheet";
 import PlayerBar from "@/src/components/player/ui/PlayerBar";
 import { AuthTokenSchema } from "@/src/schema";

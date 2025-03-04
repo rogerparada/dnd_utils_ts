@@ -1,13 +1,13 @@
 "use client";
 import { useAppStore } from "@/src/store/useAppStore";
 
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { calculateSpeed, speedSpecialModifier } from "@/src/utils";
 import PlayerHeader from "./PlayerHeader";
 import PlayerCharacteristics from "./PlayerCharacteristics";
 import PLayerEquipment from "./PLayerEquipment";
 import PlayerTraits from "./PlayerTraits";
-import { FullPlayer, UserInfo } from "@/src/types";
+import { UserInfo } from "@/src/types";
 
 type PlayerSheetProps = {
 	userInfo: UserInfo;
@@ -15,7 +15,6 @@ type PlayerSheetProps = {
 
 export default function PlayerSheet({ userInfo }: PlayerSheetProps) {
 	const player = useAppStore((state) => state.player);
-	const setPlayer = useAppStore((state) => state.setPlayer);
 	const proficiency = useAppStore((state) => state.player.proficiency);
 	const dexterity = useAppStore((state) => state.player.attributes.Dexterity.value);
 
