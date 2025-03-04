@@ -4,6 +4,7 @@ import { prisma } from "@/src/lib/prisma";
 import { AuthTokenSchema } from "@/src/schema";
 import { Attributes, FullPlayer } from "@/src/types";
 import { checkLogin } from "@/src/utils/auth";
+import Link from "next/link";
 
 async function getPlayerData(id: string): Promise<FullPlayer | undefined> {
 	try {
@@ -45,9 +46,25 @@ export default async function editPlayerPage({ params }: { params: { id: string 
 
 	const player = await getPlayerData(params.id);
 
-	if (!player) return <div>Not valid data</div>;
+	if (!player)
+		return (
+			<div className="z-10 w-full xl:container mx-auto lg:pt-5 lg:px-0 mb-20 flex flex-col justify-center items-center gap-4">
+				<span className="text-white text-3xl mt-10">Not valid Data</span>
+				<Link href={"/player/new"} className="p-4 bg-blue-600 text-white font-black rounded-md w-56 text-center shadow shadow-red-950">
+					Crear un nuevo personaje
+				</Link>
+			</div>
+		);
 
-	if (player.userId !== userInfo.userId) return <div className="z-10 w-full xl:container mx-auto lg:pt-5 lg:px-0 mb-20">Not allowed to edit</div>;
+	if (player.userId !== userInfo.userId)
+		return (
+			<div className="z-10 w-full xl:container mx-auto lg:pt-5 lg:px-0 mb-20 flex flex-col justify-center items-center gap-4">
+				<span className="text-white text-3xl mt-10">Not allowed to edit</span>
+				<Link href={"/player/new"} className="p-4 bg-blue-600 text-white font-black rounded-md w-56 text-center shadow shadow-red-950">
+					Crear un nuevo personaje
+				</Link>
+			</div>
+		);
 
 	return (
 		<>
