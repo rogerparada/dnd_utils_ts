@@ -1,3 +1,5 @@
+import { Money as MoneyPrisma, SpellsWeapon as SpellsWeaponPrisma, SpellsWeapon, PlayerSkills, Player as PlayerPrisma } from "@prisma/client";
+
 export type ItemSelect = {
 	name: string;
 	sub?: ItemSelect[];
@@ -12,23 +14,12 @@ export type HabilitesItem = Characteristic & { depende: string };
 
 export type onChangeChar = ({ name, value }: Pick<Characteristic, "name" | "value">) => void;
 
-export type Attack = {
-	id: number;
-	name?: string;
-	bonus?: string | number;
-	damage?: string;
-};
-
-export type Player = {
-	name: string;
-	realName: string;
-	level: number;
-	playerClass: string;
-	race: string;
-	background: string;
-	alignment: string;
-	experiencePoints: number;
-};
+// export type Attack = {
+// 	id: number;
+// 	name?: string;
+// 	bonus?: string | number;
+// 	damage?: string;
+// };
 
 export type Attributes = {
 	Strength: { value: number; proficiency: boolean };
@@ -39,38 +30,20 @@ export type Attributes = {
 	Charisma: { value: number; proficiency: boolean };
 };
 
-export type Skills = {
-	Acrobatics: boolean;
-	AnimalHandling: boolean;
-	Arcana: boolean;
-	Athletics: boolean;
-	Deception: boolean;
-	History: boolean;
-	Insight: boolean;
-	Intimidation: boolean;
-	Investigation: boolean;
-	Medicine: boolean;
-	Nature: boolean;
-	Perception: boolean;
-	Performance: boolean;
-	Persuasion: boolean;
-	Religion: boolean;
-	SleightOfHand: boolean;
-	Stealth: boolean;
-	Survival: boolean;
-};
+export type Player = Omit<PlayerPrisma, "id" | "userId">;
+export type Skills = Omit<PlayerSkills, "id" | "playerId">;
+export type Money = Pick<MoneyPrisma, "pc" | "pp" | "pe" | "po" | "ppt">;
+export type SpellsWeapon = Pick<SpellsWeaponPrisma, "id" | "name" | "DamageType" | "bonus">;
 
-export type FullPlayer = {
-	name: string;
-	className: string;
-	race: string;
-	background: string;
-	alignment: string;
+export type FullPlayer = Player & {
 	userId: string;
-	experience: number;
-	level: number;
 	attributes: Attributes;
 	skills: Skills;
 };
 
 export type SkillDependence = { name: keyof Skills; dependence: keyof Attributes };
+
+export type UserInfo = {
+	username?: string;
+	userId?: string;
+};

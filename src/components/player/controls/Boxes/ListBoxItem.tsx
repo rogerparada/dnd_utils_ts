@@ -13,7 +13,7 @@ export default function ListBoxItem({ name, value, checked }: ListBoxItemProps) 
 	const t = useTranslations("common");
 
 	const changeAttributesProficiency = useAppStore((state) => state.changeAttributesProficiency);
-	const proficiency = useAppStore((state) => state.proficiency);
+	const proficiency = useAppStore((state) => state.player.proficiency);
 
 	const calculated = useMemo(() => (checked ? calculateProficiency(value, proficiency) : calculateValue(value)), [value, checked, proficiency]);
 	const label = useMemo(() => t(name), [name, t]);

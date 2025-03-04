@@ -1,13 +1,10 @@
 import { StateCreator } from "zustand";
-import { Attributes, Player, Skills } from "../types/Player";
+import { Attributes, FullPlayer, Skills } from "../types";
 import { calculateLevel } from "../utils";
 
 export type PlayerSliceType = {
-	player: Player;
-	proficiency: number;
-	attributes: Attributes;
-	skillProficiency: Skills;
-	setPlayer: (player: Player) => void;
+	player: FullPlayer;
+	setPlayer: (player: FullPlayer) => void;
 	changeExperiencePoints: (exp: number) => void;
 	changeDescription: (name: string, value: string) => void;
 	changeAttributes: (name: string, value: number) => void;
@@ -26,16 +23,6 @@ const defaultAttributes: Attributes = {
 	Intelligence: { value: 10, proficiency: false },
 	Strength: { value: 10, proficiency: false },
 	Wisdom: { value: 10, proficiency: false },
-};
-const defaultPlayer: Player = {
-	name: "",
-	realName: "",
-	playerClass: "",
-	level: 1,
-	race: "",
-	background: "",
-	alignment: "",
-	experiencePoints: 0,
 };
 
 const defaultSkill: Skills = {
@@ -59,11 +46,23 @@ const defaultSkill: Skills = {
 	Survival: false,
 };
 
+const defaultPlayer: FullPlayer = {
+	name: "",
+	className: "",
+	level: 1,
+	race: "",
+	userId: "",
+	background: "",
+	alignment: "",
+	experience: 0,
+	proficiency: 2,
+	skills: defaultSkill,
+	attributes: defaultAttributes,
+};
+
 export const createPlayerSlice: StateCreator<PlayerSliceType> = (set, get) => ({
 	player: defaultPlayer,
-	proficiency: 2,
-	attributes: defaultAttributes,
-	skillProficiency: defaultSkill,
+
 	setPlayer: (player) => {
 		set(() => ({
 			player,
@@ -76,8 +75,7 @@ export const createPlayerSlice: StateCreator<PlayerSliceType> = (set, get) => ({
 
 		if (exp >= MIN_EXP && exp <= MAX_EXP) {
 			set((state) => ({
-				player: { ...state.player, experiencePoints: exp, level },
-				proficiency,
+				player: { ...state.player, experience: exp, level, proficiency },
 			}));
 		}
 	},
@@ -89,41 +87,44 @@ export const createPlayerSlice: StateCreator<PlayerSliceType> = (set, get) => ({
 	changeAttributes: (name, value) => {
 		if (value >= 0 && value <= 20) {
 			set((state) => ({
-				...state,
-				attributes: {
-					...state.attributes,
-					[name]: { value, proficiency: false },
+				player: {
+					...state.player,
+					attributes: {
+						...state.player.attributes,
+						[name]: { value, proficiency: false },
+					},
 				},
 			}));
 		}
 	},
 	changeAttributesProficiency: (name, proficiency) => {
 		const key = name as keyof Attributes;
-		const value = get().attributes[key].value;
+		const value = get().player.attributes[key].value;
 
 		set((state) => ({
-			...state,
-			attributes: {
-				...state.attributes,
-				[key]: { value, proficiency },
+			player: {
+				...state.player,
+				attributes: {
+					...state.player.attributes,
+					[key]: { value, proficiency },
+				},
 			},
 		}));
 	},
 	changeSkillsProficiency: (name, proficiency) => {
 		set((state) => ({
-			...state,
-			skillProficiency: {
-				...state.skillProficiency,
-				[name]: proficiency,
+			player: {
+				...state.player,
+				skills: {
+					...state.player.skills,
+					[name]: proficiency,
+				},
 			},
 		}));
 	},
 	resetPlayer: () => {
 		set(() => ({
 			player: defaultPlayer,
-			proficiency: 2,
-			attributes: defaultAttributes,
-			skillProficiency: defaultSkill,
 		}));
 	},
 });

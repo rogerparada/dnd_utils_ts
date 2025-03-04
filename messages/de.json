@@ -71,7 +71,7 @@
 		"Electron": "EM",
 		"Platinum": "PM"
 	},
-	"playerClass": {
+	"className": {
 		"Barbarian": "Barbar",
 		"Bard": "Barde",
 		"Warlock": "Hexenmeister",

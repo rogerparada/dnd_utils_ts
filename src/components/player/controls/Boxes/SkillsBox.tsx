@@ -8,8 +8,8 @@ type SalvationBoxProps = {
 };
 
 export default function SalvationBox({ name }: SalvationBoxProps) {
-	const attributes = useAppStore((state) => state.attributes);
-	const skillProficiency = useAppStore((state) => state.skillProficiency);
+	const attributes = useAppStore((state) => state.player.attributes);
+	const skillProficiency = useAppStore((state) => state.player.skills);
 
 	return (
 		<div className="mt-3 border-solid border-2 p-3 overflow-hidden relative w-full rounded-lg border-black">

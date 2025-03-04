@@ -9,9 +9,10 @@ import ExperienceInput from "./controls/ExperienceInput";
 
 type PlayerHeaderProps = {
 	player: Player;
+	username?: string;
 };
 
-export default function PlayerHeader({ player }: PlayerHeaderProps) {
+export default function PlayerHeader({ player, username }: PlayerHeaderProps) {
 	const t = useTranslations("player");
 	return (
 		<>
@@ -21,7 +22,7 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
 			</div>
 			<div id="character" className="border-solid border-2 border-black p-5 w-full md:w-2/3 grid md:grid-cols-3 rounded-lg gap-3">
 				<div className="">
-					<SelectorPlayer items={classes} label={t("Class")} name="playerClass" value={player?.playerClass} />
+					<SelectorPlayer items={classes} label={t("Class")} name="className" value={player?.className} />
 					<SelectorPlayer items={races} label={t("Race")} name="race" value={player?.race} />
 				</div>
 				<div className="">
@@ -30,8 +31,8 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
 				</div>
 
 				<div className="w-full">
-					<SimpleTextbox name="realName" label={t("PlayerName")} value={player?.realName} />
-					<ExperienceInput name="Experience" label={t("ExpPoints")} value={player?.experiencePoints} />
+					<SimpleTextbox name="realName" label={t("PlayerName")} value={username ?? ""} />
+					<ExperienceInput name="Experience" label={t("ExpPoints")} value={player?.experience} />
 				</div>
 			</div>
 		</>

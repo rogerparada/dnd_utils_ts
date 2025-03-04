@@ -7,7 +7,7 @@ type SalvationBoxProps = {
 };
 
 export default function SalvationBox({ name }: SalvationBoxProps) {
-	const attributesStore = useAppStore((state) => state.attributes);
+	const attributesStore = useAppStore((state) => state.player.attributes);
 
 	return (
 		<div className="mt-3 border-solid border-2 p-3 overflow-hidden relative w-full rounded-lg border-black">

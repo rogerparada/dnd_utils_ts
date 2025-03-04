@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl";
 export default function PassivePerceptionBox() {
 	const t = useTranslations("common");
 
-	const wisdom = useAppStore((state) => state.attributes.Wisdom.value);
-	const perceptionProficiency = useAppStore((state) => state.skillProficiency.Perception);
-	const proficiency = useAppStore((state) => state.proficiency);
+	const wisdom = useAppStore((state) => state.player.attributes.Wisdom.value);
+	const perceptionProficiency = useAppStore((state) => state.player.skills.Perception);
+	const proficiency = useAppStore((state) => state.player.proficiency);
 
 	const calculated = useMemo(
 		() => (perceptionProficiency ? 10 + Math.floor((wisdom - 10) / 2) + proficiency : 10 + Math.floor((wisdom - 10) / 2)),

@@ -14,7 +14,7 @@ export default function ListBoxSkillItem({ name, value, dependence, checked }: L
 	const t = useTranslations("common");
 
 	const changeSkillsProficiency = useAppStore((state) => state.changeSkillsProficiency);
-	const proficiency = useAppStore((state) => state.proficiency);
+	const proficiency = useAppStore((state) => state.player.proficiency);
 
 	const calculated = useMemo(() => (checked ? calculateProficiency(value, proficiency) : calculateValue(value)), [value, checked, proficiency]);
 	const label = useMemo(() => t(name), [name, t]);

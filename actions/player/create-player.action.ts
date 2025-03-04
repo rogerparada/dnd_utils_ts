@@ -1,22 +1,29 @@
 "use server";
 
 import { prisma } from "@/src/lib/prisma";
-import { Attributes, FullPlayer, Skills } from "@/src/types/Player";
+import { FullPlayerSchema } from "@/src/schema/PlayerSchema";
+import { Attributes, FullPlayer, Money, Skills, SpellsWeapon } from "@/src/types/Player";
 import { verifyJWT } from "@/src/utils/jwt";
 import { cookies } from "next/headers";
 
-export async function createNewPlayer(player: FullPlayer) {
+export async function createNewPlayer(player: FullPlayer): Promise<boolean> {
+	const validatePlayer = FullPlayerSchema.safeParse(player);
+
+	if (!validatePlayer.success) {
+		validatePlayer.error.issues.forEach((issue) => console.log("Error Player Validation: ", issue.message));
+		return false;
+	}
+
 	const cookieStore = cookies();
 	const cookieToken = cookieStore.get("auth_token")?.value;
 
-	if (!cookieToken) return;
+	if (!cookieToken) return false;
 
 	const userToken = verifyJWT(cookieToken);
 
 	if (userToken && typeof userToken === "object") {
 		try {
-			const { attributes, skills, ...newPlayer } = player;
-			newPlayer.userId = userToken.id;
+			const { attributes, skills, ...newPlayer } = validatePlayer.data;
 			const createdPlayer = await prisma.player.create({
 				data: newPlayer,
 			});
@@ -25,10 +32,15 @@ export async function createNewPlayer(player: FullPlayer) {
 			const playerId = createdPlayer.id;
 			createAttributes(playerId, attributes);
 			createSkills(playerId, skills);
+			// createPlayerSpellsWeapons(playerId, spellsWeapons);
+			// createPlayerMoney(playerId, money);
 		} catch (error) {
 			console.log(error);
+			return false;
 		}
 	}
+
+	return true;
 }
 
 export async function createSkills(playerId: string, skills: Skills) {
@@ -39,6 +51,24 @@ export async function createSkills(playerId: string, skills: Skills) {
 		},
 	});
 	console.log(playerId, skills);
+}
+export async function createPlayerMoney(playerId: string, money: Money) {
+	await prisma.playerSkills.create({
+		data: {
+			playerId,
+			...money,
+		},
+	});
+	console.log(playerId, money);
+}
+export async function createPlayerSpellsWeapons(playerId: string, spellsWeapons: SpellsWeapon[]) {
+	await prisma.playerSkills.createMany({
+		data: {
+			playerId,
+			...spellsWeapons,
+		},
+	});
+	console.log(playerId, spellsWeapons);
 }
 
 export async function createAttributes(playerId: string, attributes: Attributes) {

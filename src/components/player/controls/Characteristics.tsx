@@ -6,7 +6,7 @@ import Card from "./Card";
 export default function Characteristics() {
 	const t = useTranslations("common");
 
-	const attributesStore = useAppStore((state) => state.attributes);
+	const attributesStore = useAppStore((state) => state.player.attributes);
 	const changeAttributes = useAppStore((state) => state.changeAttributes);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

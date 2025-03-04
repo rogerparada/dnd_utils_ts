@@ -20,7 +20,7 @@ const dices: { [key: string]: number } = {
 export default function HitDices() {
 	const t = useTranslations("player");
 	const level = useAppStore((state) => state.player.level);
-	const playerClass = useAppStore((state) => state.player.playerClass);
+	const playerClass = useAppStore((state) => state.player.className);
 
 	const hitDice = useMemo(() => (dices[playerClass] ? `${level}d${dices[playerClass]}` : ""), [level, playerClass]);
 

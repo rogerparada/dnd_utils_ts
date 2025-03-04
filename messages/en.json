@@ -72,7 +72,7 @@
 		"Electron": "EP",
 		"Platinum": "PP"
 	},
-	"playerClass": {
+	"className": {
 		"Barbarian": "Barbarian",
 		"Bard": "Bard",
 		"Warlock": "Warlock",

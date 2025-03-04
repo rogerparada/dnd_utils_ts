@@ -58,6 +58,7 @@ model Player {
   userId             String
   experience         Int
   level              Int
+  proficiency        Int
   PlayerSkills       PlayerSkills[]
   PlayerAbilities    PlayerAttributes[]
   PLayerSpellsWeapon SpellsWeapon[]
@@ -155,10 +156,7 @@ model VerificationToken {
   @@id([identifier])
 }
 
-/**
- * Inventory
- */
-
+// Inventory
 model SpellsWeapon {
   id         Int    @id @default(autoincrement())
   name       String

@@ -7,20 +7,21 @@ import PlayerHeader from "./PlayerHeader";
 import PlayerCharacteristics from "./PlayerCharacteristics";
 import PLayerEquipment from "./PLayerEquipment";
 import PlayerTraits from "./PlayerTraits";
-import { Player } from "@/src/types/Player";
+import { FullPlayer, UserInfo } from "@/src/types";
 
 type PlayerSheetProps = {
-	newPlayer?: Player;
+	newPlayer?: FullPlayer;
+	userInfo: UserInfo;
 };
 
-export default function PlayerSheet({ newPlayer }: PlayerSheetProps) {
+export default function PlayerSheet({ newPlayer, userInfo }: PlayerSheetProps) {
 	const player = useAppStore((state) => state.player);
 	const setPlayer = useAppStore((state) => state.setPlayer);
-	const proficiency = useAppStore((state) => state.proficiency);
-	const dexterity = useAppStore((state) => state.attributes.Dexterity.value);
+	const proficiency = useAppStore((state) => state.player.proficiency);
+	const dexterity = useAppStore((state) => state.player.attributes.Dexterity.value);
 
 	const speed = useMemo(() => calculateSpeed(player.race), [player.race]);
-	const special = useMemo(() => speedSpecialModifier(player.playerClass), [player.playerClass]);
+	const special = useMemo(() => speedSpecialModifier(player.className), [player.className]);
 
 	useEffect(() => {
 		if (newPlayer) {
@@ -32,7 +33,7 @@ export default function PlayerSheet({ newPlayer }: PlayerSheetProps) {
 		return (
 			<>
 				<div id="header" className="my-5 md:flex w-full border-black text-black border-2 rounded-lg gap-2 p-3 bg-white">
-					<PlayerHeader player={player} />
+					<PlayerHeader player={player} username={userInfo.username} />
 				</div>
 				<div
 					id="columnas"
