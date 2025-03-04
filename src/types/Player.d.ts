@@ -36,6 +36,7 @@ export type Money = Pick<MoneyPrisma, "pc" | "pp" | "pe" | "po" | "ppt">;
 export type SpellsWeapon = Pick<SpellsWeaponPrisma, "id" | "name" | "DamageType" | "bonus">;
 
 export type FullPlayer = Player & {
+	id?: string;
 	userId: string;
 	attributes: Attributes;
 	skills: Skills;

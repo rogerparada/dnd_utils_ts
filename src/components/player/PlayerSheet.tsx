@@ -10,11 +10,10 @@ import PlayerTraits from "./PlayerTraits";
 import { FullPlayer, UserInfo } from "@/src/types";
 
 type PlayerSheetProps = {
-	newPlayer?: FullPlayer;
 	userInfo: UserInfo;
 };
 
-export default function PlayerSheet({ newPlayer, userInfo }: PlayerSheetProps) {
+export default function PlayerSheet({ userInfo }: PlayerSheetProps) {
 	const player = useAppStore((state) => state.player);
 	const setPlayer = useAppStore((state) => state.setPlayer);
 	const proficiency = useAppStore((state) => state.player.proficiency);
@@ -23,12 +22,6 @@ export default function PlayerSheet({ newPlayer, userInfo }: PlayerSheetProps) {
 	const speed = useMemo(() => calculateSpeed(player.race), [player.race]);
 	const special = useMemo(() => speedSpecialModifier(player.className), [player.className]);
 
-	useEffect(() => {
-		if (newPlayer) {
-			setPlayer(newPlayer);
-			console.log(newPlayer);
-		}
-	}, [newPlayer, setPlayer]);
 	if (player) {
 		return (
 			<>

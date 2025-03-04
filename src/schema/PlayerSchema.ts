@@ -46,3 +46,10 @@ export const FullPlayerSchema = PlayerSchema.extend({
 	attributes: AttributeSchema,
 	skills: SkillSchema,
 });
+
+export const FullPlayerEditableSchema = PlayerSchema.extend({
+	id: z.string().min(1, "Se necesita un playerId"),
+	userId: z.string().min(1, "UserId no valido"),
+	attributes: AttributeSchema,
+	skills: SkillSchema,
+});

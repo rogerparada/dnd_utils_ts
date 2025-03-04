@@ -1,7 +1,9 @@
+import EditPlayer from "@/src/components/player/EditPlayer";
 import PlayerSheet from "@/src/components/player/PlayerSheet";
 import PlayerBar from "@/src/components/player/ui/PlayerBar";
 import { prisma } from "@/src/lib/prisma";
 import { AuthTokenSchema } from "@/src/schema";
+import { FullPlayerEditableSchema } from "@/src/schema/PlayerSchema";
 import { Attributes, FullPlayer } from "@/src/types";
 import { checkLogin } from "@/src/utils/auth";
 import Link from "next/link";
@@ -27,7 +29,9 @@ async function getPlayerData(id: string): Promise<FullPlayer | undefined> {
 				Charisma: { value: dbAttr.Charisma, proficiency: dbAttr.CharismaProficiency },
 			};
 
-			return { ...player, attributes, skills };
+			const validatePlayer = FullPlayerEditableSchema.safeParse({ ...player, attributes, skills });
+			if (!validatePlayer.success) return;
+			return validatePlayer.data;
 		}
 	} catch (error) {
 		console.log("DB ERROR:", error);
@@ -68,9 +72,9 @@ export default async function editPlayerPage({ params }: { params: { id: string 
 
 	return (
 		<>
-			<div id="player" className="z-10 w-full xl:container mx-auto lg:pt-5 lg:px-0 mb-20">
-				<PlayerSheet newPlayer={player} userInfo={userInfo} />
-			</div>
+			<EditPlayer newPlayer={player}>
+				<PlayerSheet userInfo={userInfo} />
+			</EditPlayer>
 			<PlayerBar userInfo={userInfo} edit />
 		</>
 	);
