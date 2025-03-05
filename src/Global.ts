@@ -10,8 +10,20 @@ export const colors: Colors = {
 	Sorcerer: { bg: "bg-red-500", text: "text-red-500", border: "border-red-500" },
 	Wizard: { bg: "bg-blue-600", text: "text-blue-600", border: "border-blue-600" },
 	Paladin: { bg: "bg-amber-300", text: "text-amber-300", border: "border-amber-300" },
+	Unknown: { bg: "bg-indigo-100", text: "text-indigo-100", border: "border-indigo-100" },
 	None: { bg: "bg-cyan-900", text: "text-cyan-900", border: "border-cyan-900" },
 };
+
+export const magicSchoolColors: Colors = {
+	Abjuration: { bg: "bg-blue-400", text: "text-blue-400", border: "border-blue-400" },
+	Conjuration: { bg: "bg-teal-400", text: "text-teal-400", border: "border-teal-400" },
+	Divination: { bg: "bg-yellow-500", text: "text-yellow-500", border: "border-yellow-500" },
+	Enchantment: { bg: "bg-pink-400", text: "text-pink-400", border: "border-pink-400" },
+	Evocation: { bg: "bg-red-400", text: "text-red-400", border: "border-red-400" },
+	Illusion: { bg: "bg-purple-400", text: "text-purple-400", border: "border-purple-400" },
+	Necromancy: { bg: "bg-gray-700", text: "text-gray-700", border: "border-gray-700" },
+	Transmutation: { bg: "bg-green-400", text: "text-green-400", border: "border-green-400" },
+} as const;
 
 export const images: ClassImages = {
 	Bard: { src: "/images/Classes/Bardo.svg", alt: "Bard" },

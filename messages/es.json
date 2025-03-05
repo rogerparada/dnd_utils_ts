@@ -135,5 +135,24 @@
 	},
 	"message": {
 		"SpeedSpecial": "Su clase puede tener un modificador"
+	},
+	"magicSchools": {
+		"Abjuration": "Abjuración",
+		"Conjuration": "Conjuración",
+		"Divination": "Adivinación",
+		"Enchantment": "Encantamiento",
+		"Evocation": "Evocación",
+		"Illusion": "Ilusión",
+		"Necromancy": "Nigromancia",
+		"Transmutation": "Transmutación"
+	},
+	"modifiers": {
+		"School": "Escuela",
+		"Components": "Componentes",
+		"Casting": "Tiempo de lanzamiento",
+		"Range": "Alcance",
+		"Duration": "Duración",
+		"Concentration": "Concentración",
+		"SpellList": "Lista de conjuros"
 	}
 }

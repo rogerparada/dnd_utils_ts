@@ -42,7 +42,7 @@ export default async function SpellPage({ searchParams }: { searchParams: { page
 			<div className="w-full my-5 flex justify-end">
 				<SpellSearchForm />
 			</div>
-			<SpellCardList className="None" spells={spells} />
+			<SpellCardList spells={spells} school />
 			<Pagination page={page} totalPages={totalPages} route={`/spells?`} items={pageSize} />
 		</>
 	);

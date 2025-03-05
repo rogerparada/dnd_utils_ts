@@ -1,27 +1,19 @@
 import { Color } from "@/src/types";
+import Link from "next/link";
+import formatName from "./RitualFormatter";
 
 type SpellTitleProps = {
 	name: string;
 	color: Color;
+	id: number;
 };
 
-export default function SpellTitle({ name, color }: SpellTitleProps) {
-	const formatName = () => {
-		const regex = /(.*)\(ritual\)(.*)/;
-		const match = name.toLocaleLowerCase().match(regex);
-		if (!match) return name;
-
-		return (
-			<>
-				{match[1]}
-				<div
-					className={`w-10 h-10 z-10 absolute top-0 right-0 bg-white flex items-center justify-center rounded-bl-2xl border ${color.border} text-3xl ${color.text}`}
-				>
-					<span className="icon-[game-icons--pentacle]" />
-				</div>
-			</>
-		);
-	};
-
-	return <div className="uppercase pt-2 pl-10 pr-2 font-bold text-sm">{formatName()}</div>;
+export default function SpellTitle({ name, color, id }: SpellTitleProps) {
+	return (
+		<div className="uppercase pl-10 pr-2 font-bold text-sm pt-2">
+			<Link href={`/spells/spell/${id}`} target="_blank">
+				{formatName(name, color)}
+			</Link>
+		</div>
+	);
 }

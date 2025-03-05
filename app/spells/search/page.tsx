@@ -54,7 +54,7 @@ export default async function SpellPage({ searchParams }: { searchParams: { sear
 			<div className="w-full my-5 flex items-end justify-end">
 				<SpellSearchForm />
 			</div>
-			<SpellCardList className="None" spells={spells} />
+			<SpellCardList spells={spells} school />
 			<Pagination page={page} totalPages={totalPages} route={`/spells/search?search=${search}&`} items={pageSize} />
 		</>
 	);

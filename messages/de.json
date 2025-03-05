@@ -134,5 +134,24 @@
 	},
 	"message": {
 		"SpeedSpecial": "Ihre Klasse kann einen Modifikator haben"
+	},
+	"magicSchools": {
+		"Abjuration": "Bannzauber",
+		"Conjuration": "Beschwörung",
+		"Divination": "Wahrsagerei",
+		"Enchantment": "Verzauberung",
+		"Evocation": "Hervorrufung",
+		"Illusion": "Illusion",
+		"Necromancy": "Nekromantie",
+		"Transmutation": "Verwandlung"
+	},
+	"modifiers": {
+		"School": "Schule",
+		"Components": "Komponenten",
+		"Casting": "Zauberzeit",
+		"Range": "Reichweite",
+		"Duration": "Dauer",
+		"Concentration": "Konzentration",
+		"SpellList": "Zauberliste"
 	}
 }
