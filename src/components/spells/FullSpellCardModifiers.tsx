@@ -1,12 +1,11 @@
 "use client";
 
-import { Spell } from "@prisma/client";
 import { useTranslations } from "next-intl";
-import React from "react";
 import Casting from "./Casting";
+import { FullSpell } from "@/src/types";
 
 type Props = {
-	spell: Spell;
+	spell: FullSpell;
 };
 
 export default function FullSpellCardModifiers({ spell }: Props) {
@@ -16,14 +15,14 @@ export default function FullSpellCardModifiers({ spell }: Props) {
 		<div className="flex flex-col pl-5 text-xs lg:text-sm gap-2">
 			<div>
 				<b>{m("School")}: </b>
-				{t(spell.school)}
+				{t(spell?.school)}
 			</div>
 			<div>
 				<b>{m("Components")}: </b>
-				{spell.components}
-				{spell.material && <span className="italic"> ({spell.material})</span>}
+				{spell?.components}
+				{spell?.material && <span className="italic"> ({spell?.material})</span>}
 			</div>
-			{spell.concentration && (
+			{spell?.concentration && (
 				<div className="">
 					<b>{m("Concentration")}: </b>
 					<span className="icon-[lucide--focus]" />
@@ -31,19 +30,19 @@ export default function FullSpellCardModifiers({ spell }: Props) {
 			)}
 			<div className="flex flex-row gap-2">
 				<b>{m("Casting")}: </b>
-				<Casting type={spell.casting} />
+				<Casting type={spell?.casting} />
 			</div>
 			<div>
 				<b>{m("Range")}: </b>
-				{spell.range}
+				{spell?.range}
 			</div>
 			<div>
 				<b>{m("Duration")}: </b>
-				{spell.duration}
+				{spell?.duration}
 			</div>
 			<div>
 				<b>{m("SpellList")}: </b>
-				{/* {spell.classes.map((clase) => clase.class.lang_es).join(", ")} */}
+				{spell?.classes.map((clase) => clase.class.lang_es).join(", ")}
 			</div>
 		</div>
 	);

@@ -4,8 +4,9 @@ import { prisma } from "@/src/lib/prisma";
 import Markdown from "markdown-to-jsx";
 import formatName from "@/src/components/spells/ui/RitualFormatter";
 import FullSpellCardModifiers from "@/src/components/spells/FullSpellCardModifiers";
+import { FullSpell } from "@/src/types";
 
-async function getSpell(id: number) {
+async function getSpell(id: number): Promise<FullSpell | null> {
 	return prisma.spell.findUnique({
 		where: { id },
 		include: {

@@ -4,5 +4,5 @@ type HeadingProps = {
 };
 
 export default function Heading({ children, className }: HeadingProps) {
-	return <h1 className={`text-4xl md:text-5xl font-black text-white ${className}`}>{children}</h1>;
+	return <h1 className={`text-4xl md:text-5xl font-black text-black ${className}`}>{children}</h1>;
 }

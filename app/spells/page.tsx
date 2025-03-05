@@ -21,6 +21,9 @@ async function searchSpells(pageSize: number, skip: number) {
 				},
 			},
 		},
+		orderBy: {
+			name: "asc",
+		},
 	});
 }
 

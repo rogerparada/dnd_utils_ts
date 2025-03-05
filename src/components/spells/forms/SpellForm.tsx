@@ -13,7 +13,16 @@ async function getClasses() {
 
 export default async function SpellForm({ spell }: SpellFormProps) {
 	const levels = Array.from({ length: 10 }, (_, i) => i);
-	const schools = ["Abjuración", "Adivinación", "Conjuración", "Encantamiento", "Evocación", "Ilusión", "Nigromancia", "Transmutación"];
+	const schools: { [key: string]: string } = {
+		Abjuration: "Abjuración",
+		Divination: "Adivinación",
+		Conjuration: "Conjuración",
+		Enchantment: "Encantamiento",
+		Evocation: "Evocación",
+		Illusion: "Ilusión",
+		Necromancy: "Nigromancia",
+		Transmutation: "Transmutación",
+	};
 	const classes = await getClasses();
 
 	return (
@@ -29,9 +38,9 @@ export default async function SpellForm({ spell }: SpellFormProps) {
 					Escuela:
 				</label>
 				<select className="w-full col-span-4 text-sm" name="school" defaultValue={spell?.school}>
-					{schools.map((school, index) => (
+					{Object.keys(schools).map((school, index) => (
 						<option value={school} key={`school-${index}`}>
-							{school}
+							{schools[school]}
 						</option>
 					))}
 				</select>

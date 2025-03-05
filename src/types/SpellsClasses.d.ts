@@ -29,7 +29,7 @@ export type Abilities = {
 	[key: string]: Ability;
 };
 
-export type FullSpellClass = SpellClass & { clase: Classes };
+export type FullSpellClass = SpellClass & { class: Classes };
 
 export type FullSpell = Spell & {
 	classes: FullSpellClass[];

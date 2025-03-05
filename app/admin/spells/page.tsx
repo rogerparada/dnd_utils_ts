@@ -21,20 +21,23 @@ async function getSpells(skip: number, pageSize: number) {
 				},
 			},
 		},
+		orderBy: {
+			name: "asc",
+		},
 	});
 }
 
-export default async function SpellsAdminPage({ searchParams }: { searchParams: { page: string } }) {
+export default async function SpellsAdminPage({ searchParams }: { searchParams: { page: string; items: string } }) {
 	const page = +searchParams.page || 1;
-	const pageSize = 10;
-	const skip = (page - 1) * 10;
+	const pageSize = +searchParams.items || 100;
+	const skip = (page - 1) * pageSize;
 
 	if (page < 0) redirect("/admin/spells");
-
 	const totalSpellsData = spellsCount();
 	const spellsData = getSpells(skip, pageSize);
 	const [spells, totalSpells] = await Promise.all([spellsData, totalSpellsData]);
 	const totalPages = Math.ceil(totalSpells / pageSize);
+	console.log({ page, pageSize, skip, totalSpells });
 	return (
 		<div className="p-5">
 			<Heading className="mt-10">Administrar conjuros</Heading>
