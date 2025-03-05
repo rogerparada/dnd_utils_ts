@@ -110,7 +110,7 @@ export default async function ClassPage({
 				</div>
 			</div>
 			<SpellsSelector clases={classes} />
-			<SpellCardList className={clase.name} spells={spells} />
+			<SpellCardList colorName={clase.name} spells={spells} />
 			<Pagination page={page} totalPages={totalPages} route={route} items={pageSize} />
 		</>
 	);
