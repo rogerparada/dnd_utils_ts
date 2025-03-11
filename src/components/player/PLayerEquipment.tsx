@@ -15,7 +15,7 @@ type PLayerEquipmentProps = {
 	special?: boolean;
 };
 
-export default function PLayerEquipment({ dexterity, speed, special = false }: PLayerEquipmentProps) {
+export default function PlayerEquipment({ dexterity, speed, special = false }: PLayerEquipmentProps) {
 	const message = useTranslations("message");
 	const t = useTranslations("player");
 

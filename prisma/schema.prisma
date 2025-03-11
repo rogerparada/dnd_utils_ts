@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Spell {
-  id            Int          @id @default(autoincrement())
+  id            Int                @id @default(autoincrement())
   level         Int
   name          String
   casting       String
@@ -27,6 +27,7 @@ model Spell {
   material      String
   school        String
   classes       SpellClass[]
+  spellList     PlayerSpellsList[]
 }
 
 model Classes {
@@ -63,6 +64,8 @@ model Player {
   PlayerAbilities    PlayerAttributes[]
   PLayerSpellsWeapon SpellsWeapon[]
   PlayerMoney        Money[]
+  PlayerSpells       PlayerSpells[]
+  PlayerSpellsList   PlayerSpellsList[]
   user               User               @relation(fields: [userId], references: [id])
 }
 
@@ -175,4 +178,39 @@ model Money {
   ppt      Int    @default(0)
   playerId String
   player   Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model PlayerSpells {
+  id           Int    @id @default(autoincrement())
+  playerId     String
+  level_0      Int
+  level_1      Int
+  level_2      Int
+  level_3      Int
+  level_4      Int
+  level_5      Int
+  level_6      Int
+  level_7      Int
+  level_8      Int
+  level_9      Int
+  level_0_used Int
+  level_1_used Int
+  level_2_used Int
+  level_3_used Int
+  level_4_used Int
+  level_5_used Int
+  level_6_used Int
+  level_7_used Int
+  level_8_used Int
+  level_9_used Int
+  player       Player @relation(fields: [playerId], references: [id], onDelete: Cascade)
+}
+
+model PlayerSpellsList {
+  id       Int     @id @default(autoincrement())
+  spellId  Int
+  playerId String
+  ready    Boolean
+  player   Player  @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  spell    Spell   @relation(fields: [spellId], references: [id], onDelete: Cascade)
 }

@@ -1,4 +1,4 @@
-import { Money as MoneyPrisma, SpellsWeapon as SpellsWeaponPrisma, SpellsWeapon, PlayerSkills, Player as PlayerPrisma } from "@prisma/client";
+import { Money as MoneyPrisma, SpellsWeapon as SpellsWeaponPrisma, SpellsWeapon, PlayerSkills, Player as PlayerPrisma, Spell } from "@prisma/client";
 
 export type ItemSelect = {
 	name: string;
@@ -47,4 +47,9 @@ export type SkillDependence = { name: keyof Skills; dependence: keyof Attributes
 export type UserInfo = {
 	username?: string;
 	userId?: string;
+};
+
+export type PlayerSpellsItem = {
+	level: number;
+	items: { id: Spell["id"]; name: Spell["name"] }[];
 };
