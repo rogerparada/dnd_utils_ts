@@ -2,9 +2,7 @@
 
 import { spellCastingAbility } from "@/src/Global";
 import { useAppStore } from "@/src/store/useAppStore";
-import { calculateValue } from "@/src/utils";
 import { useTranslations } from "next-intl";
-import { useMemo } from "react";
 
 type SpellsHeaderProps = {
 	className: string;

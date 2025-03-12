@@ -15,7 +15,6 @@ type PlayerSheetProps = {
 
 export default function PlayerSheet({ userInfo }: PlayerSheetProps) {
 	const player = useAppStore((state) => state.player);
-	if (!player) return;
 
 	const proficiency = useAppStore((state) => state.player.proficiency);
 	const dexterity = useAppStore((state) => state.player.attributes?.Dexterity.value);

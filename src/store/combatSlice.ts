@@ -13,7 +13,7 @@ export type CombatSliceType = {
 	nextInCombat: () => void;
 };
 
-export const createCombarSlice: StateCreator<CombatSliceType> = (set, get) => ({
+export const createCombatSlice: StateCreator<CombatSliceType> = (set, get) => ({
 	players: [],
 	combatMode: false,
 	fillPlayers: (newPlayers) => {

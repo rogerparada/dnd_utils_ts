@@ -1,14 +1,14 @@
 import { Character } from "@/src/schema";
-import { useAppStore } from "@/src/store/useAppStore";
+import { useCombatStore } from "@/src/store/useCombatStore";
 
 type PlayerListItemProps = {
 	player: Character;
 };
 
 export default function PlayerListItem({ player }: PlayerListItemProps) {
-	const modifyInitiative = useAppStore((state) => state.modifyInitiative);
-	const deletePlayer = useAppStore((state) => state.deletePlayer);
-	const combatMode = useAppStore((state) => state.combatMode);
+	const modifyInitiative = useCombatStore((state) => state.modifyInitiative);
+	const deletePlayer = useCombatStore((state) => state.deletePlayer);
+	const combatMode = useCombatStore((state) => state.combatMode);
 
 	return (
 		<div

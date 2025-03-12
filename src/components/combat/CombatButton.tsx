@@ -1,12 +1,12 @@
-import { useAppStore } from "@/src/store/useAppStore";
+import { useCombatStore } from "@/src/store/useCombatStore";
 
 type CombatButtonProps = {
 	enabled: boolean;
 };
 
 export default function CombatButton({ enabled }: CombatButtonProps) {
-	const combatMode = useAppStore((state) => state.combatMode);
-	const changeCombatMode = useAppStore((state) => state.changeCombatMode);
+	const combatMode = useCombatStore((state) => state.combatMode);
+	const changeCombatMode = useCombatStore((state) => state.changeCombatMode);
 
 	return (
 		<button

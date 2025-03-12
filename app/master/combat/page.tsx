@@ -4,14 +4,14 @@ import CombatButton from "@/src/components/combat/CombatButton";
 import Player from "@/src/components/combat/Player";
 import PlayerList from "@/src/components/combat/PlayerList";
 import Heading from "@/src/components/ui/Heading";
-import { useAppStore } from "@/src/store/useAppStore";
+import { useCombatStore } from "@/src/store/useCombatStore";
 import { useMemo } from "react";
 
 export default function CombatPage() {
-	const players = useAppStore((state) => state.players);
-	const clearPlayers = useAppStore((state) => state.clearPlayers);
-	const nextInCombat = useAppStore((state) => state.nextInCombat);
-	const combatMode = useAppStore((state) => state.combatMode);
+	const players = useCombatStore((state) => state.players);
+	const clearPlayers = useCombatStore((state) => state.clearPlayers);
+	const nextInCombat = useCombatStore((state) => state.nextInCombat);
+	const combatMode = useCombatStore((state) => state.combatMode);
 
 	const enableButton = useMemo(() => players.length < 2, [players.length]);
 	const activePlayer = useMemo(() => players[0], [players]);

@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import { CombatSliceType, createCombarSlice } from "./combatSlice";
 import { createPlayerSlice, PlayerSliceType } from "./playerSlice";
 import { createEquipmentSlice, EquipmentSliceType } from "./equipmentSlice";
+import { PlayerSpellSliceType, createPlayerSpellSlice } from "./spellsSlice";
 
-export const useAppStore = create<CombatSliceType & PlayerSliceType & EquipmentSliceType>()(
+export const useAppStore = create<PlayerSliceType & EquipmentSliceType & PlayerSpellSliceType>()(
 	devtools(
 		persist(
 			(...a) => ({
-				...createCombarSlice(...a),
 				...createPlayerSlice(...a),
 				...createEquipmentSlice(...a),
+				...createPlayerSpellSlice(...a),
 			}),
 			{ name: "dnd-storage" }
 		)
