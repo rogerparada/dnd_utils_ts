@@ -21,6 +21,8 @@ export type onChangeChar = ({ name, value }: Pick<Characteristic, "name" | "valu
 // 	damage?: string;
 // };
 
+export type Attribute = "Strength" | "Dexterity" | "Constitution" | "Intelligence" | "Wisdom" | "Charisma";
+
 export type Attributes = {
 	Strength: { value: number; proficiency: boolean };
 	Dexterity: { value: number; proficiency: boolean };

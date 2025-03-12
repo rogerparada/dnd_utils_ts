@@ -3,7 +3,7 @@ import SpellsPlates from "./ui/SpellsPlates";
 import PlayerSpellsSelector from "./ui/PlayerSpellsSelector";
 import { PlayerSpellsItem } from "@/src/types";
 import { prisma } from "@/src/lib/prisma";
-import { spellLevelByClass } from "@/src/Global";
+import { spellLevelByClass, spellsCasters } from "@/src/Global";
 
 type SpellsSheetProps = {
 	spells?: PlayerSpellsItem[];
@@ -51,13 +51,19 @@ export default async function SpellsSheet({ className, level }: SpellsSheetProps
 				<SpellsHeader className={className} />
 				<div className="flex flex-col md:flex-row">
 					<div className="w-full md:w-72 lg:w-80 p-2 flex flex-col items-center">
-						<div className="w-96 md:w-72 lg:w-80">
-							{levels.map((level) => (
-								<SpellsPlates level={level} total={1} used={0} key={`level-${level}`} name={`level_${level}`} />
+						<div className="w-96 md:w-72 lg:w-80 ml-4">
+							{levels.map((item) => (
+								<SpellsPlates
+									total={spellsCasters[className][level][`slot_${item}`] ?? 0}
+									level={item}
+									used={0}
+									key={`level-${item}`}
+									name={`level_${item}`}
+								/>
 							))}
 						</div>
 					</div>
-					<div className="flex-1 px-4">
+					<div className="flex-1 px-4 mb-4">
 						<PlayerSpellsSelector spells={spells} />
 					</div>
 				</div>

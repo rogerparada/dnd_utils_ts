@@ -27,11 +27,15 @@ function formatName(name: string) {
 
 export default function PlayerSpellsSelector({ spells }: SpellsSelectorProps) {
 	return (
-		<div className="w-full flex flex-col min-h-32 border border-1 border-black rounded-md gap-2">
+		<div className="w-full flex flex-col min-h-32 border border-1 border-black rounded-md p-3">
 			{spells &&
 				spells.map((spell, index) => (
-					<div className="p-3" key={index}>
-						<span>{spell.level === 0 ? "Trucos" : `Nivel ${spell.level}`}</span>
+					<details className="group mb-2" key={index}>
+						<summary className="cursor-pointer font-bold pl-6 relative flex items-center list-none appearance-none">
+							<span className="icon-[uiw--plus-square-o] absolute left-0 transition-transform group-open:hidden" />
+							<span className="icon-[uiw--minus-square-o] absolute left-0 transition-transform hidden group-open:inline" />
+							{spell.level === 0 ? "Trucos" : `Nivel ${spell.level}`}
+						</summary>
 						<div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-3">
 							{spell.items.map((item) => (
 								<div className="flex gap-3 items-center border border-slate-700 p-3 rounded-lg relative text-sm" key={item.name}>
@@ -40,7 +44,7 @@ export default function PlayerSpellsSelector({ spells }: SpellsSelectorProps) {
 								</div>
 							))}
 						</div>
-					</div>
+					</details>
 				))}
 		</div>
 	);

@@ -1,5 +1,5 @@
 import { Colors, ClassImages } from "./types";
-import { Attributes, ClassSelect, HabilitesItem, ItemSelect, SkillDependence } from "./types/Player";
+import { Attribute, Attributes, ClassSelect, HabilitesItem, ItemSelect, SkillDependence } from "./types/Player";
 
 export const colors: Colors = {
 	Bard: { bg: "bg-fuchsia-400", text: "text-fuchsia-400", border: "border-fuchsia-400" },
@@ -189,4 +189,104 @@ export const spellLevelByClass: Record<string, Record<number, number>> = {
 	Paladin: { 1: 0, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 2, 9: 3, 10: 3, 11: 3, 12: 3, 13: 4, 14: 4, 15: 4, 16: 4, 17: 5, 18: 5, 19: 5, 20: 5 },
 	Ranger: { 1: 0, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 2, 9: 3, 10: 3, 11: 3, 12: 3, 13: 4, 14: 4, 15: 4, 16: 4, 17: 5, 18: 5, 19: 5, 20: 5 },
 	Warlock: { 1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 5, 10: 5, 11: 5, 12: 5, 13: 5, 14: 5, 15: 5, 16: 5, 17: 5, 18: 5, 19: 5, 20: 5 },
+};
+
+// type SpellSlotLevels = `slot_${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}`;
+
+type SpellSlots = Partial<Record<string, number>>;
+
+type CasterProgression = Record<string, SpellSlots>;
+
+type SpellsCaster = Record<"fullCaster" | "halfCaster" | "warlock", CasterProgression>;
+
+const spellsCaster: SpellsCaster = {
+	fullCaster: {
+		"1": { slot_1: 2 },
+		"2": { slot_1: 3 },
+		"3": { slot_1: 4, slot_2: 2 },
+		"4": { slot_1: 4, slot_2: 3 },
+		"5": { slot_1: 4, slot_2: 3, slot_3: 2 },
+		"6": { slot_1: 4, slot_2: 3, slot_3: 3 },
+		"7": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 1 },
+		"8": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 2 },
+		"9": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 1 },
+		"10": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2 },
+		"11": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1 },
+		"12": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1 },
+		"13": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1, slot_7: 1 },
+		"14": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1, slot_7: 1 },
+		"15": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1, slot_7: 1, slot_8: 1 },
+		"16": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1, slot_7: 1, slot_8: 1 },
+		"17": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2, slot_6: 1, slot_7: 1, slot_8: 1, slot_9: 1 },
+		"18": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 3, slot_6: 1, slot_7: 1, slot_8: 1, slot_9: 1 },
+		"19": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 3, slot_6: 2, slot_7: 1, slot_8: 1, slot_9: 1 },
+		"20": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 3, slot_6: 2, slot_7: 2, slot_8: 1, slot_9: 1 },
+	},
+	halfCaster: {
+		"1": {},
+		"2": { slot_1: 2 },
+		"3": { slot_1: 3 },
+		"4": { slot_1: 3 },
+		"5": { slot_1: 4, slot_2: 2 },
+		"6": { slot_1: 4, slot_2: 2 },
+		"7": { slot_1: 4, slot_2: 3 },
+		"8": { slot_1: 4, slot_2: 3 },
+		"9": { slot_1: 4, slot_2: 3, slot_3: 2 },
+		"10": { slot_1: 4, slot_2: 3, slot_3: 2 },
+		"11": { slot_1: 4, slot_2: 3, slot_3: 3 },
+		"12": { slot_1: 4, slot_2: 3, slot_3: 3 },
+		"13": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 1 },
+		"14": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 1 },
+		"15": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 2 },
+		"16": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 2 },
+		"17": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 1 },
+		"18": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 1 },
+		"19": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2 },
+		"20": { slot_1: 4, slot_2: 3, slot_3: 3, slot_4: 3, slot_5: 2 },
+	},
+
+	warlock: {
+		"1": { slot_1: 1 },
+		"2": { slot_1: 2 },
+		"3": { slot_1: 2 },
+		"4": { slot_2: 2 },
+		"5": { slot_2: 2 },
+		"6": { slot_3: 2 },
+		"7": { slot_3: 2 },
+		"8": { slot_4: 2 },
+		"9": { slot_4: 2 },
+		"10": { slot_5: 2 },
+		"11": { slot_5: 3 },
+		"12": { slot_5: 3 },
+		"13": { slot_5: 3 },
+		"14": { slot_5: 3 },
+		"15": { slot_5: 3 },
+		"16": { slot_5: 3 },
+		"17": { slot_5: 4 },
+		"18": { slot_5: 4 },
+		"19": { slot_5: 4 },
+		"20": { slot_5: 4 },
+	},
+};
+
+export const spellsCasters: Record<string, CasterProgression> = {
+	Bard: spellsCaster["fullCaster"],
+	Cleric: spellsCaster["fullCaster"],
+	Druid: spellsCaster["fullCaster"],
+	Paladin: spellsCaster["halfCaster"],
+	Ranger: spellsCaster["halfCaster"],
+	Sorcerer: spellsCaster["fullCaster"],
+	Warlock: spellsCaster["warlock"],
+	Wizard: spellsCaster["fullCaster"],
+};
+
+export const spellCastingAbility: Record<string, Attribute> = {
+	Bard: "Charisma",
+	Cleric: "Wisdom",
+	Druid: "Wisdom",
+	Paladin: "Charisma",
+	Ranger: "Wisdom",
+	Sorcerer: "Charisma",
+	Warlock: "Charisma",
+	Wizard: "Wisdom",
 };
