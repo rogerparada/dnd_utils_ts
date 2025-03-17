@@ -1,5 +1,4 @@
 import { StateCreator } from "zustand";
-import { PlayerSpellsItem } from "../types";
 import { Spell } from "@prisma/client";
 
 export type PlayerSpellSliceType = {

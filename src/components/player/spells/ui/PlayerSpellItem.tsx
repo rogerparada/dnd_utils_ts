@@ -30,7 +30,8 @@ export default function PlayerSpellItem({ name, id }: PlayerSpellItemProps) {
 
 	const handleCheckedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { checked } = e.target;
-		checked ? addSpell(id) : removeSpell(id);
+		if (checked) addSpell(id);
+		else removeSpell(id);
 	};
 	return (
 		<div className="flex gap-3 items-center border border-slate-700 p-3 rounded-lg relative text-sm" key={name}>
