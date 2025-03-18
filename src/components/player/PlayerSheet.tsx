@@ -8,6 +8,7 @@ import PlayerCharacteristics from "./PlayerCharacteristics";
 
 import PlayerTraits from "./PlayerTraits";
 import { UserInfo } from "@/src/types";
+import PlayerEquipment from "./PlayerEquipment";
 
 type PlayerSheetProps = {
 	userInfo: UserInfo;
@@ -35,7 +36,7 @@ export default function PlayerSheet({ userInfo }: PlayerSheetProps) {
 					<PlayerCharacteristics proficiency={proficiency} />
 				</div>
 				<div id="col2" className="">
-					{/* <PlayerEquipment dexterity={dexterity} speed={speed} special={special} /> */}
+					<PlayerEquipment dexterity={dexterity} speed={speed} special={special} />
 				</div>
 				<div id="col3" className="flex flex-col">
 					<PlayerTraits />
