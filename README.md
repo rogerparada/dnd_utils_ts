@@ -1,6 +1,5 @@
 # Dungeons and Dragons Utilities
 
-# Dungeons and Dragons Utils
 <article>
 
 ## D&D Utilities for players and Dungeons Masters
