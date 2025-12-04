@@ -16,8 +16,9 @@ async function getUsers(skip: number, pageSize: number) {
 	});
 }
 
-export default async function UsersPage({ searchParams }: { searchParams: { page: string } }) {
-	const page = +searchParams.page || 1;
+export default async function UsersPage({ searchParams }: { searchParams: Promise<{ page: string }> }) {
+	const { page: paramPage } = await searchParams;
+	const page = +paramPage || 1;
 	const pageSize = 10;
 	const skip = (page - 1) * 10;
 

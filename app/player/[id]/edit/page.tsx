@@ -38,8 +38,9 @@ async function getPlayerData(id: string): Promise<FullPlayer | undefined> {
 	}
 }
 
-export default async function editPlayerPage({ params }: { params: { id: string } }) {
-	const result = AuthTokenSchema.safeParse(checkLogin());
+export default async function editPlayerPage({ params }: { params: Promise<{ id: string }> }) {
+	const { id } = await params;
+	const result = AuthTokenSchema.safeParse(await checkLogin());
 	if (!result.success) {
 		result.error.issues.forEach((issue) => console.log("Edit: Player", { issue }));
 	}
@@ -48,7 +49,7 @@ export default async function editPlayerPage({ params }: { params: { id: string 
 		userId: result.data?.id,
 	};
 
-	const player = await getPlayerData(params.id);
+	const player = await getPlayerData(id);
 
 	if (!player)
 		return (

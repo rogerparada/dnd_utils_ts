@@ -19,8 +19,9 @@ async function getSpell(id: number): Promise<FullSpell | null> {
 	});
 }
 
-export default async function SpellPage({ params }: { params: { id: string } }) {
-	const id = Number(params.id);
+export default async function SpellPage({ params }: { params: Promise<{ id: string }> }) {
+	const { id: paramId } = await params;
+	const id = Number(paramId);
 	const spell = await getSpell(id);
 	if (spell) {
 		const color = magicSchoolColors[spell.school];

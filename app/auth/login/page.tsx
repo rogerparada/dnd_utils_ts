@@ -7,7 +7,8 @@ import LoginDice from "@/src/components/ui/LoginDice";
 import { redirect } from "next/navigation";
 import ErrorBanner from "@/src/components/ui/ErrorBanner";
 
-export default function LoginPage({ searchParams }: { searchParams: { verified: string } }) {
+export default async function LoginPage({ searchParams }: { searchParams: Promise<{ verified: string }> }) {
+	const { verified } = await searchParams;
 	const [dice, setDice] = useState<Dice>({
 		id: 1,
 		value: 1,
@@ -19,8 +20,6 @@ export default function LoginPage({ searchParams }: { searchParams: { verified: 
 	});
 
 	const [error, setError] = useState<React.ReactNode>();
-
-	const verified = searchParams.verified;
 
 	const handleSubmit = async (formData: FormData) => {
 		setDice({ ...dice, rolling: true });

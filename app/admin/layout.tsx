@@ -6,7 +6,7 @@ import AdminSideBar from "@/src/components/AdminSideBar";
 import MenuBar from "@/src/components/ui/MenuBar";
 
 export default async function layout({ children }: { children: React.ReactNode }) {
-	const result = AuthTokenSchema.safeParse(checkLogin());
+	const result = AuthTokenSchema.safeParse(await checkLogin());
 
 	if (!result.success) {
 		result.error.issues.forEach((issue) => console.log({ issue }));

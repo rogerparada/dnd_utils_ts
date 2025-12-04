@@ -16,8 +16,9 @@ async function getSpell(id: number) {
 	});
 }
 
-export default async function EditSpellPage({ params }: { params: { id: string } }) {
-	const spell = await getSpell(+params.id);
+export default async function EditSpellPage({ params }: { params: Promise<{ id: string }> }) {
+	const { id } = await params;
+	const spell = await getSpell(+id);
 
 	if (spell === null) redirect("/");
 

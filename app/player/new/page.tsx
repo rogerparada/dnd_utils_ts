@@ -5,7 +5,7 @@ import { AuthTokenSchema } from "@/src/schema";
 import { checkLogin } from "@/src/utils/auth";
 
 export default async function PlayerPage() {
-	const result = AuthTokenSchema.safeParse(checkLogin());
+	const result = AuthTokenSchema.safeParse(await checkLogin());
 	if (!result.success) {
 		result.error.issues.forEach((issue) => console.log("Edit: Player", { issue }));
 	}

@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
 export async function createAuthCookie(token: string) {
-	const cookieStore = cookies();
+	const cookieStore = await cookies();
 
 	// Crear la cookie
 	cookieStore.set("auth_token", token, {

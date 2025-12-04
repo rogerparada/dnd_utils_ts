@@ -11,9 +11,9 @@ export const checkPassword = async (enteredPassword: string, storedPassword: str
 	return await bcrypt.compare(enteredPassword, storedPassword);
 };
 
-export const checkLogin = () => {
+export const checkLogin = async () => {
 	const { cookies } = require("next/headers");
-	const cookieStore = cookies();
+	const cookieStore = await cookies();
 	const auth = cookieStore.get("auth_token");
 	const value = auth?.value;
 

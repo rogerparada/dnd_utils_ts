@@ -7,8 +7,8 @@ const getUser = async (id: string) => {
 	return await prisma.user.findUnique({ where: { id } });
 };
 
-export default async function EditUserPage({ params }: { params: { id: string } }) {
-	const id = params.id;
+export default async function EditUserPage({ params }: { params: Promise<{ id: string }> }) {
+	const { id } = await params;
 	const user = await getUser(id);
 
 	if (!user) redirect("/admin/users");

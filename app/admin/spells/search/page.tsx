@@ -34,9 +34,10 @@ async function searchProducts(search: string, skip: number, pageSize: number) {
 	});
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: { search: string; page: string } }) {
-	const search = searchParams.search;
-	const page = +searchParams.page || 1;
+export default async function SearchPage({ searchParams }: { searchParams: Promise<{ search: string; page: string }> }) {
+	const sp = await searchParams;
+	const search = sp.search;
+	const page = +sp.page || 1;
 	const pageSize = 10;
 	const skip = (page - 1) * 10;
 

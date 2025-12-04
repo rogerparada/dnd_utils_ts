@@ -27,9 +27,10 @@ async function getSpells(skip: number, pageSize: number) {
 	});
 }
 
-export default async function SpellsAdminPage({ searchParams }: { searchParams: { page: string; items: string } }) {
-	const page = +searchParams.page || 1;
-	const pageSize = +searchParams.items || 100;
+export default async function SpellsAdminPage({ searchParams }: { searchParams: Promise<{ page: string; items: string }> }) {
+	const sp = await searchParams;
+	const page = +sp.page || 1;
+	const pageSize = +sp.items || 100;
 	const skip = (page - 1) * pageSize;
 
 	if (page < 0) redirect("/admin/spells");

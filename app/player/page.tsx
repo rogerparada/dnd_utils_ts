@@ -15,7 +15,7 @@ const getPlayersData = async (userId: string): Promise<Player[] | undefined> => 
 };
 
 export default async function PlayersPage() {
-	const result = AuthTokenSchema.safeParse(checkLogin());
+	const result = AuthTokenSchema.safeParse(await checkLogin());
 	if (!result.success) redirect("/player/new");
 	const playerData = await getPlayersData(result.data.id);
 

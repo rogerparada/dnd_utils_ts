@@ -13,11 +13,11 @@ export const generateStaticParams = async () => {
 	return classes.map((clase) => ({ name: clase.name }));
 };
 
-export const generateMetadata = async ({ params }: { params: { name: string } }) => {
-	const id = params.name ? " ⋅ " + params.name : "";
-
+export const generateMetadata = async ({ params }: { params: Promise<{ name: string }> }) => {
+	const { name } = await params;
+	const id = name ? " ⋅ " + name : "";
 	return {
-		title: `Dnd Utils ${id.replaceAll("_", " ")}`,
+		title: "Clases" + id,
 	};
 };
 
@@ -75,13 +75,14 @@ export default async function ClassPage({
 	params,
 	searchParams,
 }: {
-	params: { name: string };
-	searchParams: { level: string; page: number; items: number };
+	params: Promise<{ name: string }>;
+	searchParams: Promise<{ level: string; page: number; items: number }>;
 }) {
-	const name = params.name;
-	const level = +searchParams.level;
-	const page = +searchParams.page || 1;
-	const pageSize = +searchParams.items || PAGE_SIZE;
+	const { name } = await params;
+	const sp = await searchParams;
+	const level = +sp.level;
+	const page = +sp.page || 1;
+	const pageSize = +sp.items || PAGE_SIZE;
 	const skip = (page - 1) * pageSize;
 	const clase = await getClassInfo(name);
 

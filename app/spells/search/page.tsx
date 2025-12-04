@@ -37,11 +37,12 @@ async function searchSpells(search: string, pageSize: number, skip: number) {
 
 export type SpellWithClasses = Awaited<ReturnType<typeof searchSpells>>;
 
-export default async function SpellPage({ searchParams }: { searchParams: { search: string; page: string; items: string } }) {
-	const pageSize = +searchParams.items || 20;
-	const page = +searchParams.page || 1;
+export default async function SpellPage({ searchParams }: { searchParams: Promise<{ search: string; page: string; items: string }> }) {
+	const sp = await searchParams;
+	const pageSize = +sp.items || 20;
+	const page = +sp.page || 1;
 	const skip = (page - 1) * pageSize;
-	const search = searchParams.search;
+	const search = sp.search;
 
 	if (page < 0) return redirect("/spells");
 	const spells = await searchSpells(search, pageSize, skip);

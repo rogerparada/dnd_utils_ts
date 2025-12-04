@@ -29,9 +29,10 @@ async function searchSpells(pageSize: number, skip: number) {
 
 export type SpellWithClasses = Awaited<ReturnType<typeof searchSpells>>;
 
-export default async function SpellPage({ searchParams }: { searchParams: { page: string; items: string } }) {
-	const pageSize = +searchParams.items || 20;
-	const page = +searchParams.page || 1;
+export default async function SpellPage({ searchParams }: { searchParams: Promise<{ page: string; items: string }> }) {
+	const sp = await searchParams;
+	const pageSize = +sp.items || 20;
+	const page = +sp.page || 1;
 	const skip = (page - 1) * pageSize;
 
 	if (page < 0) return redirect("/spells");

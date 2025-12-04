@@ -1,9 +1,9 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
 
-const readLanguageCookie = (): string => {
+const readLanguageCookie = async (): Promise<string> => {
 	const languages = ["es", "en", "de"];
-	const cookieStore = cookies();
+	const cookieStore = await cookies();
 
 	const localeCookie = cookieStore.get("NEXT_LOCALE")?.value || "en";
 	if (!languages.includes(localeCookie)) {
@@ -14,7 +14,7 @@ const readLanguageCookie = (): string => {
 };
 
 export default getRequestConfig(async () => {
-	const locale = readLanguageCookie();
+	const locale = await readLanguageCookie();
 
 	return {
 		locale,

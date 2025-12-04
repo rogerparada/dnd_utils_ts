@@ -14,7 +14,7 @@ export async function createNewPlayer(player: FullPlayer): Promise<boolean> {
 		return false;
 	}
 
-	const cookieStore = cookies();
+	const cookieStore = await cookies();
 	const cookieToken = cookieStore.get("auth_token")?.value;
 
 	if (!cookieToken) return false;
